@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+        <array key="Poppins-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--On Boarding View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="OnBoardingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="OnBoardingViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_onboard_screen" translatesAutoresizingMaskIntoConstraints="NO" id="5dl-5r-cbg">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="222" translatesAutoresizingMaskIntoConstraints="NO" id="HNC-q6-Ol3">
+                                <rect key="frame" x="28.333333333333343" y="110" width="318.66666666666663" height="652.33333333333337"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="HSG-p8-YgC">
+                                        <rect key="frame" x="0.0" y="0.0" width="318.66666666666669" height="131"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_chef_het" translatesAutoresizingMaskIntoConstraints="NO" id="hJW-LZ-P1z">
+                                                <rect key="frame" x="119.66666666666669" y="0.0" width="79" height="79"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="79" id="kjZ-wh-dEj"/>
+                                                    <constraint firstAttribute="width" constant="79" id="nry-wJ-5U3"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100K+ Premium Recipe " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQD-fK-cNx">
+                                                <rect key="frame" x="0.0" y="93" width="318.66666666666669" height="38"/>
+                                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="27"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="64" translatesAutoresizingMaskIntoConstraints="NO" id="wLv-zK-3qb">
+                                        <rect key="frame" x="33.333333333333314" y="353" width="252" height="299.33333333333326"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="E2o-mx-Ezn">
+                                                <rect key="frame" x="0.0" y="0.0" width="252" height="182.66666666666666"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8oC-4f-ZWb">
+                                                        <rect key="frame" x="6.3333333333333286" y="0.0" width="239.33333333333337" height="140"/>
+                                                        <string key="text">GET
+COOKING</string>
+                                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="50"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Simple way to find Tasty Recipe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bka-L0-hv1">
+                                                        <rect key="frame" x="0.0" y="160" width="252" height="22.666666666666657"/>
+                                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1FO-M6-iTE">
+                                                <rect key="frame" x="0.0" y="246.6666666666666" width="252" height="52.666666666666657"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                <color key="tintColor" red="0.073450945320000002" green="0.58522206539999999" blue="0.45850461720000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="9" maxY="0.0"/>
+                                                <state key="normal" title="Start Cooking">
+                                                    <imageReference key="image" image="arrow.right" catalog="system" symbolScale="default" variableValue="1"/>
+                                                </state>
+                                                <buttonConfiguration key="configuration" style="filled" imagePlacement="trailing" title="Start Cooking" imagePadding="9" cornerStyle="fixed">
+                                                    <imageReference key="image" image="arrow.right" catalog="system" symbolScale="default" variableValue="1"/>
+                                                    <backgroundConfiguration key="background" cornerRadius="10"/>
+                                                    <fontDescription key="titleFontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                                    <directionalEdgeInsets key="contentInsets" top="15" leading="50" bottom="15" trailing="50"/>
+                                                    <color key="baseBackgroundColor" red="0.073450945320000002" green="0.58522206539999999" blue="0.45850461720000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="startButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ljS-7A-TMB"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="HNC-q6-Ol3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BTy-4B-4Gc"/>
+                            <constraint firstAttribute="bottom" secondItem="5dl-5r-cbg" secondAttribute="bottom" id="Cte-ot-s74"/>
+                            <constraint firstItem="5dl-5r-cbg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="NbA-av-agT"/>
+                            <constraint firstAttribute="trailing" secondItem="5dl-5r-cbg" secondAttribute="trailing" id="iKN-Ne-EUj"/>
+                            <constraint firstItem="HNC-q6-Ol3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="oq8-MG-Ubz"/>
+                            <constraint firstItem="5dl-5r-cbg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="rF6-BR-XQ2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="5dl-5r-cbg" id="j5z-KP-Jct"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="112.8" y="-27.339901477832512"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="arrow.right" catalog="system" width="128" height="95"/>
+        <image name="bg_onboard_screen" width="809" height="1011"/>
+        <image name="ic_chef_het" width="79" height="79"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
