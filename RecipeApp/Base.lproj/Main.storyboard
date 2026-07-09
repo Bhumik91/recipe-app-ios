@@ -86,6 +86,9 @@ COOKING</string>
                                                     <directionalEdgeInsets key="contentInsets" top="15" leading="50" bottom="15" trailing="50"/>
                                                     <color key="baseBackgroundColor" red="0.073450945320000002" green="0.58522206539999999" blue="0.45850461720000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="startButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ljS-7A-TMB"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>

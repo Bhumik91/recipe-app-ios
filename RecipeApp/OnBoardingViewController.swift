@@ -39,3 +39,9 @@ extension OnBoardingViewController {
         backgroundImageView.layer.addSublayer(gradientLayer)
     }
 }
+//MARK: Extensions for handling IBActions taps
+extension OnBoardingViewController {
+    @IBAction private func startButtonTapped(_ sender:UIButton) {
+        //TODO: Navigate towards Authentication flow
+    }
+}
