@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OnboardingViewController: UIViewController {
+class OnBoardingViewController: UIViewController {
     
     // MARK: IBOutlets
     @IBOutlet private weak var backgroundImageView: UIImageView!
@@ -26,7 +26,7 @@ class OnboardingViewController: UIViewController {
     }
 }
 //MARK: Extension for implementing of UI related things
-extension OnboardingViewController {
+extension OnBoardingViewController {
     private func setupUi() {
         setupGredient()
         
