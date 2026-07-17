@@ -7,16 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		49F7AC1E2FFFD814002D9B85 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49F7AC1B2FFFD814002D9B85 /* Poppins-Bold.ttf */; };
-		49F7AC1F2FFFD814002D9B85 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49F7AC1D2FFFD814002D9B85 /* Poppins-SemiBold.ttf */; };
-		49F7AC202FFFD814002D9B85 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49F7AC1C2FFFD814002D9B85 /* Poppins-Regular.ttf */; };
+		498627543004E01200B8F000 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 498627533004E01200B8F000 /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4979759A2FFE93EA00EB3804 /* RecipeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		49F7AC1B2FFFD814002D9B85 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
-		49F7AC1C2FFFD814002D9B85 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
-		49F7AC1D2FFFD814002D9B85 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -45,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				498627543004E01200B8F000 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,7 +50,6 @@
 		497975912FFE93EA00EB3804 = {
 			isa = PBXGroup;
 			children = (
-				49F7AC212FFFD880002D9B85 /* Fonts */,
 				4979759C2FFE93EA00EB3804 /* RecipeApp */,
 				4979759B2FFE93EA00EB3804 /* Products */,
 			);
@@ -66,16 +61,6 @@
 				4979759A2FFE93EA00EB3804 /* RecipeApp.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		49F7AC212FFFD880002D9B85 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				49F7AC1B2FFFD814002D9B85 /* Poppins-Bold.ttf */,
-				49F7AC1C2FFFD814002D9B85 /* Poppins-Regular.ttf */,
-				49F7AC1D2FFFD814002D9B85 /* Poppins-SemiBold.ttf */,
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -98,6 +83,7 @@
 			);
 			name = RecipeApp;
 			packageProductDependencies = (
+				498627533004E01200B8F000 /* Alamofire */,
 			);
 			productName = RecipeApp;
 			productReference = 4979759A2FFE93EA00EB3804 /* RecipeApp.app */;
@@ -127,6 +113,9 @@
 			);
 			mainGroup = 497975912FFE93EA00EB3804;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				498627523004E01200B8F000 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4979759B2FFE93EA00EB3804 /* Products */;
 			projectDirPath = "";
@@ -142,9 +131,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49F7AC1E2FFFD814002D9B85 /* Poppins-Bold.ttf in Resources */,
-				49F7AC1F2FFFD814002D9B85 /* Poppins-SemiBold.ttf in Resources */,
-				49F7AC202FFFD814002D9B85 /* Poppins-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +344,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		498627523004E01200B8F000 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.12.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		498627533004E01200B8F000 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 498627523004E01200B8F000 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 497975922FFE93EA00EB3804 /* Project object */;
 }
