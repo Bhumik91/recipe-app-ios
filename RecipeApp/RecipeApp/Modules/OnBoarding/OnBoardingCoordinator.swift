@@ -6,11 +6,13 @@
 //
 import UIKit
 
-final class OnBoardingCoordinator: Coordinator {
+final class OnBoardingCoordinator: ChildCoordinator {
+    // MARK: - ChildCoordinator
+    typealias ParentDelegate = OnBoardingCoordinatorDelegate
     // MARK: - Properties
-    var childCoordinators: [any Coordinator] = []
     var navigationController: UINavigationController
     weak var parentDelegate: OnBoardingCoordinatorDelegate?
+    var container: DependencyContainer? { nil }
     private let storyboard = UIStoryboard(name: "Main", bundle: nil)
     // MARK: - Initializer
     init(navigationController: UINavigationController) {

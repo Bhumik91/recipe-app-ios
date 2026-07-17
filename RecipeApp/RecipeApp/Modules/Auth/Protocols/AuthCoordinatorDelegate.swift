@@ -6,5 +6,5 @@
 //
 
 protocol AuthCoordinatorDelegate: AnyObject {
-    func authFlowDidFinish(_ coordinator: Coordinator)
+    func authFlowDidFinish(_ coordinator: any Coordinator)
 }

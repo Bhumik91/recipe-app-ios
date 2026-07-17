@@ -6,6 +6,6 @@
 //
 
 protocol OnBoardingCoordinatorDelegate: AnyObject {
-    func onBoardingFlowDidFinish(_ coordinator: Coordinator)
+    func onBoardingFlowDidFinish(_ coordinator: any Coordinator)
 }
 

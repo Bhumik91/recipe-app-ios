@@ -6,11 +6,12 @@
 //
 import UIKit
 
-final class AuthCoordinator: Coordinator {
+final class AuthCoordinator: ChildCoordinator {
+    // MARK: - ChildCoordinator
+    typealias ParentDelegate = AuthCoordinatorDelegate
     // MARK: - Properties
-    var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
-    var container: DependencyContainer
+    var container: DependencyContainer?
     weak var parentDelegate: AuthCoordinatorDelegate?
     // MARK: - Constants
     let storyboard = UIStoryboard(name: "Auth", bundle: nil)
@@ -31,6 +32,9 @@ extension AuthCoordinator {
             withIdentifier: "LoginViewController"
         ) as? LoginViewController else {
             fatalError("LoginViewController not found in Auth.storyboard")
+        }
+        guard let container else {
+            fatalError("AuthCoordinator requires a DependencyContainer to show Login")
         }
         loginVC.viewModel = LoginViewModel(authRepository: container.authRepository)
         loginVC.coordinatorDelegate = self

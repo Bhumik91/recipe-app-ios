@@ -6,12 +6,11 @@
 // this coordinator owns the window, decides which flow is in root
 import UIKit
 
-final class AppCoordinator: Coordinator {
+final class AppCoordinator: ParentCoordinator {
     // MARK: - Properties
-    var childCoordinators: [Coordinator] = []
-    var navigationController: UINavigationController = UINavigationController()
+    var childCoordinators: [any Coordinator] = []
     // MARK: - Dependencies
-    private let window: UIWindow
+    let window: UIWindow
     private let container: DependencyContainer
     // MARK: - Initializer
     init(window: UIWindow, container: DependencyContainer) {

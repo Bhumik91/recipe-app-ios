@@ -121,7 +121,7 @@ extension LoginViewController {
     }
     @objc
     private func navigateToSignupVC() {
-        coordinatorDelegate?.loginDidTapSingUp()
+        coordinatorDelegate?.loginDidTapSignUp()
     }
 }
 // MARK: - Actions
