@@ -74,5 +74,4 @@ extension AppCoordinator: AuthCoordinatorDelegate {
 }
 // MARK: - DashboardCoordinatorDelegate
 extension AppCoordinator: DashboardCoordinatorDelegate {
-    
 }
