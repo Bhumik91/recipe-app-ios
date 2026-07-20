@@ -23,7 +23,6 @@ final class DashboardCoordinator: ChildCoordinator, ParentCoordinator {
         self.navigationController = navigationController
         self.container = container
     }
-
     // MARK: - Start
     func start() {
         let controller = DashboardTabBarController()

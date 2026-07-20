@@ -20,7 +20,7 @@ final class APIClient: APIClientProtocol {
     }
     // MARK: - Request Methods
     func request<T: Decodable>(_ endpoint: APIEndPoint,responseType: T.Type) async throws -> T {
-        let urlRequest = try buildURLRequest(endpoint)
+        let urlRequest = try buildURLRequest(for: endpoint)
         
         return try await withCheckedThrowingContinuation { continuation in
             session.request(urlRequest).validate().responseDecodable(of: T.self) { response in
@@ -32,7 +32,7 @@ final class APIClient: APIClientProtocol {
         }
     }
     // MARK: - Helper Methods
-    private func buildURLRequest(_ endpoint: APIEndPoint) throws -> URLRequest {
+    private func buildURLRequest(for endpoint: APIEndPoint) throws -> URLRequest {
         // Making URLComponenet from base url and path
         guard var components = URLComponents(string: (endpoint.baseURL + endpoint.path)) else {
             throw NetworkError.invalidURL

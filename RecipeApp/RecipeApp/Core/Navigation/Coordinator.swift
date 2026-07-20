@@ -6,6 +6,7 @@
 //
 import UIKit
 
+@MainActor
 protocol Coordinator: AnyObject {
     // MARK: - Methods
     func start()

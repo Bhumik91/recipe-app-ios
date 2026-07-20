@@ -58,9 +58,9 @@ final class CustomTabBar: UITabBar {
         layoutFAB()
 
         // Reposition UITabBarButtons to create a gap in the center for the FAB.
-        // We rely on string-matching "UITabBarButton" (private UIKit class) — future iOS
-        // versions could rename this, breaking layout silently. Keep in sync with
-        // TabBarItem.allCases.count so adding new tabs is caught, not silently ignored.
+        // WARNING: Relies on string-matching "UITabBarButton" (private UIKit class) — fragile.
+        // Time constraint: implemented for MVP. Future scope: refactor to a custom container
+        // that doesn't depend on private UIKit internals, once core features are stable.
         let buttons = subviews.filter { String(describing: type(of: $0)).contains("UITabBarButton") }
         let tabCount = TabBarItem.allCases.count
         guard buttons.count == tabCount else {
