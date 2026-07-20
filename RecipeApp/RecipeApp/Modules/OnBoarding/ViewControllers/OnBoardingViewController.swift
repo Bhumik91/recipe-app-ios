@@ -8,30 +8,28 @@
 import UIKit
 
 class OnBoardingViewController: UIViewController {
-    
-    // MARK: IBOutlets
+    // MARK: - IBOutlets
     @IBOutlet private weak var backgroundImageView: UIImageView!
-    
-    // MARK: UI related Properties
+    // MARK: - UI Properties
     private let gradientLayer = CAGradientLayer()
-    
-    // MARK: Lifecycle
+    // MARK: - Properties
+    weak var coordinatorDelegate: OnBoardingViewDelegates?
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUi()
+        configureUI()
     }
     override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         // The frame size of the gredient is given after image view bounds are calculated
         gradientLayer.frame = backgroundImageView.bounds
     }
 }
-//MARK: Extension for implementing of UI related things
+// MARK: - UI Configuration
 extension OnBoardingViewController {
-    private func setupUi() {
+    private func configureUI() {
         setupGredient()
-        
     }
-    //MARK: Setup gredient on back ground image
     private func setupGredient() {
         gradientLayer.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
@@ -39,9 +37,9 @@ extension OnBoardingViewController {
         backgroundImageView.layer.addSublayer(gradientLayer)
     }
 }
-//MARK: Extensions for handling IBActions taps
+// MARK: - Actions
 extension OnBoardingViewController {
     @IBAction private func startButtonTapped(_ sender:UIButton) {
-        //TODO: Navigate towards Authentication flow
+        coordinatorDelegate?.onBoardingDidTapStartCook()
     }
 }
