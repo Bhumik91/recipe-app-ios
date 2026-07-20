@@ -105,7 +105,10 @@ COOKING</string>
                             <constraint firstAttribute="bottom" secondItem="5dl-5r-cbg" secondAttribute="bottom" id="Cte-ot-s74"/>
                             <constraint firstItem="5dl-5r-cbg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="NbA-av-agT"/>
                             <constraint firstAttribute="trailing" secondItem="5dl-5r-cbg" secondAttribute="trailing" id="iKN-Ne-EUj"/>
-                            <constraint firstItem="HNC-q6-Ol3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="oq8-MG-Ubz"/>
+                            <constraint firstItem="HNC-q6-Ol3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="oq8-MG-Ubz">
+                                <variation key="heightClass=compact-widthClass=compact" constant="30"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="60"/>
+                            </constraint>
                             <constraint firstItem="5dl-5r-cbg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="rF6-BR-XQ2"/>
                         </constraints>
                     </view>
