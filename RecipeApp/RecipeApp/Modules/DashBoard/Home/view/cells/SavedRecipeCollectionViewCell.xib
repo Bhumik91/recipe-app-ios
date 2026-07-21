@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="SavedRecipeCollectionViewCell" customModule="RecipeApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="168" height="264"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="168" height="264"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="savedCardView">
+                        <rect key="frame" x="2" y="56" width="164" height="198"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="4aF-FR-DE7">
+                                <rect key="frame" x="16" y="64" width="132" height="91.666666666666686"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Recipe Title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="titleLabel">
+                                        <rect key="frame" x="0.0" y="0.0" width="132" height="36.333333333333336"/>
+                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
+                                        <color key="textColor" name="BrandGray1"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="TPw-96-NYt">
+                                        <rect key="frame" x="0.0" y="55.333333333333343" width="132" height="36.333333333333343"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="timeLabelTextView">
+                                                <rect key="frame" x="0.0" y="0.0" width="27" height="15.666666666666666"/>
+                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="11"/>
+                                                <color key="textColor" name="BrandGray3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="timeLabel">
+                                                <rect key="frame" x="0.0" y="20.666666666666657" width="41.666666666666664" height="15.666666666666664"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="15 mins">
+                                                        <attributes>
+                                                            <color key="NSColor" name="BrandGray1"/>
+                                                            <font key="NSFont" size="11" name="Poppins-SemiBold"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_saved" translatesAutoresizingMaskIntoConstraints="NO" id="bookmarkImageView">
+                                <rect key="frame" x="124" y="158" width="30" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="btn-w"/>
+                                    <constraint firstAttribute="width" secondItem="bookmarkImageView" secondAttribute="height" multiplier="1:1" id="uKW-FB-FTA"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="18"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" name="BrandPrimary20"/>
+                        <constraints>
+                            <constraint firstItem="4aF-FR-DE7" firstAttribute="leading" secondItem="savedCardView" secondAttribute="leading" constant="16" id="7lv-Fi-IEu"/>
+                            <constraint firstAttribute="trailing" secondItem="4aF-FR-DE7" secondAttribute="trailing" constant="16" id="BZc-OH-1Oh"/>
+                            <constraint firstAttribute="bottom" secondItem="bookmarkImageView" secondAttribute="bottom" constant="10" id="bookmark-b"/>
+                            <constraint firstAttribute="trailing" secondItem="bookmarkImageView" secondAttribute="trailing" constant="10" id="bookmark-r"/>
+                            <constraint firstAttribute="height" constant="198" id="card-h"/>
+                            <constraint firstItem="4aF-FR-DE7" firstAttribute="top" secondItem="savedCardView" secondAttribute="top" constant="64" id="s84-Il-TUa"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="18"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                <integer key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                <color key="value" name="BrandPrimary20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_default_image" translatesAutoresizingMaskIntoConstraints="NO" id="recipeImageView">
+                        <rect key="frame" x="28" y="0.0" width="112" height="112"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="112" id="img-w"/>
+                            <constraint firstAttribute="width" secondItem="recipeImageView" secondAttribute="height" multiplier="1:1" id="miv-ol-z4b"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="56"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="recipeImageView" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="8Zs-eS-ekA"/>
+                <constraint firstAttribute="bottom" secondItem="savedCardView" secondAttribute="bottom" constant="10" id="card-b"/>
+                <constraint firstItem="savedCardView" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="2" id="card-l"/>
+                <constraint firstAttribute="trailing" secondItem="savedCardView" secondAttribute="trailing" constant="2" id="card-r"/>
+                <constraint firstItem="savedCardView" firstAttribute="top" secondItem="recipeImageView" secondAttribute="centerY" id="card-t"/>
+                <constraint firstItem="recipeImageView" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="img-t"/>
+            </constraints>
+            <size key="customSize" width="168" height="264"/>
+            <connections>
+                <outlet property="bookmarkImageView" destination="bookmarkImageView" id="outlet-bookmark"/>
+                <outlet property="recipeImageView" destination="recipeImageView" id="outlet-img"/>
+                <outlet property="savedCardView" destination="savedCardView" id="outlet-card"/>
+                <outlet property="timeLabel" destination="timeLabel" id="outlet-time"/>
+                <outlet property="titleLabel" destination="titleLabel" id="outlet-title"/>
+            </connections>
+            <point key="canvasLocation" x="135.87786259541986" y="20.422535211267608"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="ic_default_image" width="109" height="110"/>
+        <image name="ic_saved" width="24" height="24"/>
+        <namedColor name="BrandGray1">
+            <color red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BrandGray3">
+            <color red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BrandPrimary20">
+            <color red="0.96470588235294119" green="0.98039215686274506" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
