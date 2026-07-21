@@ -6,11 +6,8 @@
 //
 import UIKit
 
-protocol ParentCoordinator: Coordinator {
-    var window: UIWindow { get }
-    // Uses `any Coordinator` (not `any ChildCoordinator`) intentionally:
-    // ChildCoordinator has an associatedtype which prevents its use as an
-    // existential inside another protocol requirement.
+/// Anyone who owns and manages child coordinators.
+protocol ParentCoordinator: AnyObject, Coordinator {
     var childCoordinators: [any Coordinator] { get set }
     func addChild(_ coordinator: any Coordinator)
     func removeChild(_ coordinator: any Coordinator)
@@ -22,8 +19,6 @@ extension ParentCoordinator {
     }
 
     func removeChild(_ coordinator: any Coordinator) {
-        childCoordinators.removeAll {
-            $0 === coordinator
-        }
+        childCoordinators.removeAll { $0 === coordinator }
     }
 }
