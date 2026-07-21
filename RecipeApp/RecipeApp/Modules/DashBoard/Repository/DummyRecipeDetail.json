@@ -1,0 +1,38 @@
+{
+  "id": 671169,
+  "title": "Mysore Masala Dosa",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Rameshwaram_Cafe_Dosa.jpg/1280px-Rameshwaram_Cafe_Dosa.jpg",
+  "servings": 4,
+  "readyInMinutes": 40,
+  "sourceName": "Ammaji's Kitchen",
+  "spoonacularSourceUrl": "https://en.wikipedia.org/wiki/Masala_dosa",
+  "extendedIngredients": [
+    { "id": 20081, "name": "dosa batter", "image": "rice-flour.png", "measures": { "metric": { "amount": 500.0, "unitShort": "g", "unitLong": "grams" } } },
+    { "id": 11362, "name": "red chutney (Mysore style)", "image": "red-sauce.jpg", "measures": { "metric": { "amount": 100.0, "unitShort": "g", "unitLong": "grams" } } },
+    { "id": 11352, "name": "potatoes", "image": "potatoes-yukon-gold.png", "measures": { "metric": { "amount": 4.0, "unitShort": "", "unitLong": "" } } },
+    { "id": 11282, "name": "onion", "image": "brown-onion.png", "measures": { "metric": { "amount": 2.0, "unitShort": "", "unitLong": "" } } },
+    { "id": 20027, "name": "mustard seeds", "image": "mustard-seeds.jpg", "measures": { "metric": { "amount": 1.0, "unitShort": "tsp", "unitLong": "teaspoon" } } },
+    { "id": 1002030, "name": "curry leaves", "image": "curry-leaves.jpg", "measures": { "metric": { "amount": 10.0, "unitShort": "", "unitLong": "" } } },
+    { "id": 1032010, "name": "turmeric powder", "image": "turmeric.jpg", "measures": { "metric": { "amount": 0.5, "unitShort": "tsp", "unitLong": "teaspoon" } } },
+    { "id": 11821, "name": "green chilies", "image": "green-chile.jpg", "measures": { "metric": { "amount": 2.0, "unitShort": "", "unitLong": "" } } },
+    { "id": 4053, "name": "vegetable oil", "image": "vegetable-oil.jpg", "measures": { "metric": { "amount": 60.0, "unitShort": "ml", "unitLong": "milliliters" } } },
+    { "id": 1001009, "name": "ghee", "image": "butter-sliced.jpg", "measures": { "metric": { "amount": 40.0, "unitShort": "g", "unitLong": "grams" } } },
+    { "id": 2047, "name": "salt", "image": "salt.jpg", "measures": { "metric": { "amount": 4.0, "unitShort": "servings", "unitLong": "servings" } } }
+  ],
+  "analyzedInstructions": [
+    {
+      "name": "",
+      "steps": [
+        { "number": 1, "step": "Boil the potatoes until fork-tender, then peel and roughly mash them, leaving some texture.", "ingredients": [ { "id": 11352, "name": "potatoes" } ] },
+        { "number": 2, "step": "Heat oil in a pan, add mustard seeds and let them splutter. Add curry leaves and chopped green chilies.", "ingredients": [ { "id": 20027, "name": "mustard seeds" }, { "id": 1002030, "name": "curry leaves" }, { "id": 11821, "name": "green chilies" } ] },
+        { "number": 3, "step": "Add sliced onions and sauté until translucent, then stir in turmeric powder.", "ingredients": [ { "id": 11282, "name": "onion" }, { "id": 1032010, "name": "turmeric powder" } ] },
+        { "number": 4, "step": "Add the mashed potatoes and salt, mix well, and cook for 2-3 minutes until everything comes together as the potato masala filling.", "ingredients": [ { "id": 11352, "name": "potatoes" }, { "id": 2047, "name": "salt" } ], "length": { "number": 3, "unit": "minutes" } },
+        { "number": 5, "step": "Heat a dosa tawa and pour a ladle of batter, spreading it into a thin circle from the center outward.", "ingredients": [ { "id": 20081, "name": "dosa batter" } ] },
+        { "number": 6, "step": "Spread a thin layer of the red Mysore chutney evenly over the dosa while it cooks.", "ingredients": [ { "id": 11362, "name": "red chutney (Mysore style)" } ] },
+        { "number": 7, "step": "Drizzle ghee around the edges and let the dosa crisp up until golden brown.", "ingredients": [ { "id": 1001009, "name": "ghee" } ] },
+        { "number": 8, "step": "Place a portion of the potato masala on one half of the dosa and fold it over into a semicircle.", "ingredients": [ { "id": 11352, "name": "potatoes" } ] },
+        { "number": 9, "step": "Serve hot with coconut chutney and sambar on the side.", "ingredients": [] }
+      ]
+    }
+  ]
+}

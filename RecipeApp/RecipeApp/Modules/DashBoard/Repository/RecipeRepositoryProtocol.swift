@@ -8,7 +8,6 @@ import Foundation
 
 enum Page { static let size = 10 }
 
-@MainActor
 protocol RecipeRepositoryProtocol {
     // Network-backed reads (fall back to dummy data on quota exhaustion)
     // TODO: consumed by the Home screen's explore list
@@ -18,7 +17,9 @@ protocol RecipeRepositoryProtocol {
     func fetchSavedRecipes() async throws -> [RecipeUIModel]
     // TODO: consumed by the Search screen
     func searchRecipes(query: String, diet: String?) async throws -> [RecipeUIModel]
-
+    //TODO: consumed by the cuisine recipe details
+    func fetchRecipeDetail(id: Int) async throws -> RecipeDetailDTO
+    
     // Local-only operations (never hit the network)
     // TODO: consumed by the recipe card's bookmark toggle
     func toggleSavedRecipe(recipeId: Int)

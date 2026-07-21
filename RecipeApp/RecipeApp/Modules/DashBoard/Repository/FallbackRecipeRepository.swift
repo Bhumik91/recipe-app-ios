@@ -7,7 +7,6 @@
 
 import Foundation
 
-// Tries the network impl first, falling back to the bundled-JSON dummy impl only on a 402 (quota exhausted).
 final class FallbackRecipeRepository: RecipeRepositoryProtocol {
     private let remote: RecipeRepositoryProtocol
     private let dummy: RecipeRepositoryProtocol
@@ -56,6 +55,10 @@ final class FallbackRecipeRepository: RecipeRepositoryProtocol {
         )
     }
 
+    // Local-only operations delegate only to remote (not wrapped in withFallback).
+    // This is safe because both remote and dummy share the same savedDishesManager instance,
+    // so delegating to either gives the same result. If repositories ever get separate
+    // managers, this contract must change to delegate to both or switch based on which is active.
     func toggleSavedRecipe(recipeId: Int) {
         remote.toggleSavedRecipe(recipeId: recipeId)
     }
@@ -70,5 +73,12 @@ final class FallbackRecipeRepository: RecipeRepositoryProtocol {
 
     func getCuisines() -> [String] {
         remote.getCuisines()
+    }
+
+    func fetchRecipeDetail(id: Int) async throws -> RecipeDetailDTO {
+        try await withFallback(
+            remoteCall: { try await remote.fetchRecipeDetail(id: id) },
+            dummyCall: { try await dummy.fetchRecipeDetail(id: id) }
+        )
     }
 }
