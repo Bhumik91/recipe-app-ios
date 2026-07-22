@@ -139,7 +139,6 @@
                 <outlet property="containerView" destination="containerView" id="outlet-container"/>
                 <outlet property="recipeImageView" destination="recipeImageView" id="outlet-img"/>
                 <outlet property="timeLabel" destination="timeLabel" id="outlet-time"/>
-                <outlet property="timerIcon" destination="timerIcon" id="outlet-timer"/>
                 <outlet property="titleLabel" destination="titleLabel" id="outlet-title"/>
             </connections>
             <point key="canvasLocation" x="136.64122137404578" y="40.140845070422536"/>

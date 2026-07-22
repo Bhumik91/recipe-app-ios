@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fov-ud-gUN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fov-ud-gUN">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+        <array key="Poppins-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Home View Controller-->
         <scene sceneID="home-scene-id">
@@ -16,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="mainTableView">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="784"/>
                                 <visualEffectView key="tableFooterView" opaque="NO" contentMode="scaleToFill" id="vh2-NY-hhx">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -70,9 +78,71 @@
                     <view key="view" contentMode="scaleToFill" id="SavedViewID">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="166" sectionHeaderHeight="0.0" sectionFooterHeight="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="SavedTableViewID">
+                                <rect key="frame" x="0.0" y="118" width="393" height="734"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SavedErrorContainerID" userLabel="Error State Container">
+                                <rect key="frame" x="0.0" y="118" width="393" height="734"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Something went wrong." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SavedErrorMessageLabelID">
+                                        <rect key="frame" x="20" y="337.66666666666669" width="353" height="22.666666666666686"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Try Again" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SavedRetryLabelID">
+                                        <rect key="frame" x="162.66666666666666" y="376.33333333333331" width="68" height="19.666666666666686"/>
+                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
+                                        <color key="textColor" red="0.074509803920000006" green="0.58522206539999999" blue="0.45850461720000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="SavedErrorMessageLabelID" firstAttribute="centerX" secondItem="SavedErrorContainerID" secondAttribute="centerX" id="SavedErrMsgCenterXID"/>
+                                    <constraint firstItem="SavedErrorMessageLabelID" firstAttribute="centerY" secondItem="SavedErrorContainerID" secondAttribute="centerY" constant="-18" id="SavedErrMsgCenterYID"/>
+                                    <constraint firstItem="SavedErrorMessageLabelID" firstAttribute="leading" secondItem="SavedErrorContainerID" secondAttribute="leading" constant="20" id="SavedErrMsgLeadID"/>
+                                    <constraint firstItem="SavedErrorMessageLabelID" firstAttribute="trailing" secondItem="SavedErrorContainerID" secondAttribute="trailing" constant="-20" id="SavedErrMsgTrailID"/>
+                                    <constraint firstItem="SavedRetryLabelID" firstAttribute="centerX" secondItem="SavedErrorContainerID" secondAttribute="centerX" id="SavedRetryCenterXID"/>
+                                    <constraint firstItem="SavedRetryLabelID" firstAttribute="top" secondItem="SavedErrorMessageLabelID" secondAttribute="bottom" constant="16" id="SavedRetryTopID"/>
+                                </constraints>
+                            </view>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SavedTopGlassID" userLabel="Top Glass Block">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="60"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="SavedTopGlassContentID">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="60"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="SavedTopGlassHeightID"/>
+                                </constraints>
+                                <blurEffect style="regular"/>
+                            </visualEffectView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="SavedSafeAreaID"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SavedErrorContainerID" firstAttribute="bottom" secondItem="SavedViewID" secondAttribute="bottom" id="SavedErrBotID"/>
+                            <constraint firstItem="SavedErrorContainerID" firstAttribute="leading" secondItem="SavedViewID" secondAttribute="leading" id="SavedErrLeadID"/>
+                            <constraint firstItem="SavedErrorContainerID" firstAttribute="top" secondItem="SavedSafeAreaID" secondAttribute="top" id="SavedErrTopID"/>
+                            <constraint firstItem="SavedErrorContainerID" firstAttribute="trailing" secondItem="SavedViewID" secondAttribute="trailing" id="SavedErrTrailID"/>
+                            <constraint firstItem="SavedTableViewID" firstAttribute="bottom" secondItem="SavedViewID" secondAttribute="bottom" id="SavedTableBotID"/>
+                            <constraint firstItem="SavedTableViewID" firstAttribute="leading" secondItem="SavedViewID" secondAttribute="leading" id="SavedTableLeadID"/>
+                            <constraint firstItem="SavedTableViewID" firstAttribute="top" secondItem="SavedViewID" secondAttribute="top" id="SavedTableTopID"/>
+                            <constraint firstItem="SavedTableViewID" firstAttribute="trailing" secondItem="SavedViewID" secondAttribute="trailing" id="SavedTableTrailID"/>
+                            <constraint firstItem="SavedTopGlassID" firstAttribute="top" secondItem="SavedViewID" secondAttribute="top" id="SavedTopGlassTopID"/>
+                            <constraint firstItem="SavedTopGlassID" firstAttribute="leading" secondItem="SavedViewID" secondAttribute="leading" id="SavedTopGlassLeadID"/>
+                            <constraint firstAttribute="trailing" secondItem="SavedTopGlassID" secondAttribute="trailing" id="SavedTopGlassTrailID"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="errorContainerView" destination="SavedErrorContainerID" id="SavedOutletErrContainerID"/>
+                        <outlet property="errorMessageLabel" destination="SavedErrorMessageLabelID" id="SavedOutletErrMsgID"/>
+                        <outlet property="retryLabel" destination="SavedRetryLabelID" id="SavedOutletRetryID"/>
+                        <outlet property="tableView" destination="SavedTableViewID" id="SavedOutletTableID"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SavedPlaceholderID" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
