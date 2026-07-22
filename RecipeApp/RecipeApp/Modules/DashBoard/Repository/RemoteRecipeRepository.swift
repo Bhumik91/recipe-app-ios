@@ -61,7 +61,12 @@ final class RemoteRecipeRepository: RecipeRepositoryProtocol {
             dto.toUIModel(isSaved: savedDishesManager.isSaved(dishId: dto.id))
         }
     }
+    
+    func fetchRecipeDetail(id: Int) async throws -> RecipeDetailDTO {
+        try await apiClient.request(RecipeEndpoint.detail(id: id), responseType: RecipeDetailDTO.self)
+    }
 
+    // Local-only operations (never hit the network)
     func toggleSavedRecipe(recipeId: Int) {
         savedDishesManager.toggleSaved(dishId: recipeId)
     }

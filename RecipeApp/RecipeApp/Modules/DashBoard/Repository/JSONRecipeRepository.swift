@@ -5,20 +5,24 @@
 
 import Foundation
 
+// MARK: - Performance Issue & Fix Strategy
 final class JSONRecipeRepository: RecipeRepositoryProtocol {
     // MARK: - Properties
     private let savedDishesManager: SavedRecipeStoring
     private let fileName: String
+    private let detailFileName: String
     private let bundle: Bundle
 
     // MARK: - Initialization
     init(
         savedDishesManager: SavedRecipeStoring,
         fileName: String = "DummyRecipeData",
+        detailFileName: String = "DummyRecipeDetail",
         bundle: Bundle = .main
     ) {
         self.savedDishesManager = savedDishesManager
         self.fileName = fileName
+        self.detailFileName = detailFileName
         self.bundle = bundle
     }
 
@@ -78,6 +82,18 @@ final class JSONRecipeRepository: RecipeRepositoryProtocol {
     }
 
     // MARK: - Private Helpers
+    func fetchRecipeDetail(id: Int) async throws -> RecipeDetailDTO {
+        guard let url = bundle.url(forResource: detailFileName, withExtension: "json") else {
+            throw NetworkError.requestFailed(message: "\(detailFileName).json not found in bundle")
+        }
+        let data = try Data(contentsOf: url)
+        do {
+            return try JSONDecoder().decode(RecipeDetailDTO.self, from: data)
+        } catch {
+            throw NetworkError.decodingFailed
+        }
+    }
+
     private func loadResponse() throws -> RecipeSearchResponse {
         guard let url = bundle.url(forResource: fileName, withExtension: "json") else {
             throw NetworkError.requestFailed(message: "\(fileName).json not found in bundle")
