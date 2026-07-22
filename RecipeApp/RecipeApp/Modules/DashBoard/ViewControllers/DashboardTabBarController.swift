@@ -27,6 +27,9 @@ final class DashboardTabBarController: UITabBarController {
 private extension DashboardTabBarController {
     func installCustomTabBar() {
         // Replace the default UITabBar with our custom subclass using KVC.
+        // WARNING: Uses private API (forKey: "tabBar") — fragile against App Store review and iOS updates.
+        // Time constraint: implemented for MVP. Future scope: refactor to a custom bottom-bar container VC
+        // that doesn't rely on private APIs, when core dashboard features are stable.
         setValue(customTabBar, forKey: "tabBar")
         tabBar.tintColor = UIColor(resource: .brandPrimary)
         tabBar.unselectedItemTintColor = .systemGray

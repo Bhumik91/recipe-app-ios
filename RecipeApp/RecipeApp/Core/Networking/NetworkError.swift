@@ -13,6 +13,7 @@ enum NetworkError {
     case unauthorized
     case forbidden
     case notFound
+    case quotaExceeded
     case serverError(statusCode: Int)
     case decodingFailed
     case requestFailed(message: String)
@@ -33,6 +34,8 @@ extension NetworkError {
             return "Forbidden"
         case .notFound:
             return "Not Found"
+        case .quotaExceeded:
+            return "Quota Exceeded"
         case .serverError(statusCode: _):
             return "Server Error"
         case .decodingFailed:
@@ -56,15 +59,17 @@ extension NetworkError: DisplayableError {
             return "Your session has expired. Please sign in again."
         case .forbidden: 
             return "You don't have permission to do that."
-        case .notFound: 
+        case .notFound:
             return "Cannot find what you are looking for"
-        case .serverError(statusCode: _): 
+        case .quotaExceeded:
+            return "Daily request limit reached. Showing sample recipes instead."
+        case .serverError(statusCode: _):
             return "Something went wrong on our end. Please try again later."
         case .decodingFailed: 
             return "Something went wrong while reading the response."
         case .requestFailed(message: let message):
             return message
-        case .unknown: 
+        case .unknown:
             return "An unexpected error occurred."
         }
     }
@@ -77,7 +82,8 @@ extension NetworkError {
         }
         switch error.responseCode {
         case 401: return .unauthorized
-        case 402: return .forbidden
+        case 402: return .quotaExceeded
+        case 403: return .forbidden
         case 404: return .notFound
         case .some(let code) where code>=500: return .serverError(statusCode: code)
         default: break

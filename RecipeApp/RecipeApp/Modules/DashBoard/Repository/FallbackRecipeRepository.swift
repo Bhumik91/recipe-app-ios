@@ -1,0 +1,74 @@
+//
+//  FallbackRecipeRepository.swift
+//  RecipeApp
+//
+//  Created by Bhumik Poshiya on 21/07/26.
+//
+
+import Foundation
+
+// Tries the network impl first, falling back to the bundled-JSON dummy impl only on a 402 (quota exhausted).
+final class FallbackRecipeRepository: RecipeRepositoryProtocol {
+    private let remote: RecipeRepositoryProtocol
+    private let dummy: RecipeRepositoryProtocol
+
+    init(remote: RecipeRepositoryProtocol, dummy: RecipeRepositoryProtocol) {
+        self.remote = remote
+        self.dummy = dummy
+    }
+
+    private func withFallback<T>(
+        remoteCall: () async throws -> T,
+        dummyCall: () async throws -> T
+    ) async throws -> T {
+        do {
+            return try await remoteCall()
+        } catch NetworkError.quotaExceeded {
+            return try await dummyCall()
+        }
+    }
+
+    func fetchRecipes(cuisine: String?, diet: String?, offset: Int) async throws -> PaginatedRecipes {
+        try await withFallback(
+            remoteCall: { try await remote.fetchRecipes(cuisine: cuisine, diet: diet, offset: offset) },
+            dummyCall: { try await dummy.fetchRecipes(cuisine: cuisine, diet: diet, offset: offset) }
+        )
+    }
+
+    func fetchRecipes(byIds ids: [Int]) async throws -> [RecipeUIModel] {
+        try await withFallback(
+            remoteCall: { try await remote.fetchRecipes(byIds: ids) },
+            dummyCall: { try await dummy.fetchRecipes(byIds: ids) }
+        )
+    }
+
+    func fetchSavedRecipes() async throws -> [RecipeUIModel] {
+        try await withFallback(
+            remoteCall: { try await remote.fetchSavedRecipes() },
+            dummyCall: { try await dummy.fetchSavedRecipes() }
+        )
+    }
+
+    func searchRecipes(query: String, diet: String?) async throws -> [RecipeUIModel] {
+        try await withFallback(
+            remoteCall: { try await remote.searchRecipes(query: query, diet: diet) },
+            dummyCall: { try await dummy.searchRecipes(query: query, diet: diet) }
+        )
+    }
+
+    func toggleSavedRecipe(recipeId: Int) {
+        remote.toggleSavedRecipe(recipeId: recipeId)
+    }
+
+    func removeSavedRecipe(recipeId: Int) {
+        remote.removeSavedRecipe(recipeId: recipeId)
+    }
+
+    func isRecipeSaved(recipeId: Int) -> Bool {
+        remote.isRecipeSaved(recipeId: recipeId)
+    }
+
+    func getCuisines() -> [String] {
+        remote.getCuisines()
+    }
+}
