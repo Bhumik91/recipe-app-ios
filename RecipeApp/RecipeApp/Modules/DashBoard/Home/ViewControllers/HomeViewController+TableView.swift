@@ -71,6 +71,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
             }
             cell.configure(recipes: savedRecipes)
+            cell.onRecipeSelected = { [weak self] recipe in
+                self?.coordinator?.recipeTapped(id: recipe.id)
+            }
             return cell
 
         case .exploreHeader:
@@ -91,6 +94,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             }
             return cell
         }
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        guard case .exploreRecipes = sections[indexPath.section] else { return }
+        coordinator?.recipeTapped(id: exploreRecipes[indexPath.row].id)
     }
 
     // MARK: - Pagination

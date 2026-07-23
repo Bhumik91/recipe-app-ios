@@ -31,4 +31,9 @@ final class HomeCoordinator: ChildCoordinator {
     // TODO: push/present the real Search and Filter screens once they exist.
     func searchTapped() {}
     func filterTapped() {}
+
+    // MARK: - Recipe selection
+    func recipeTapped(id: Int) {
+        parentDelegate?.homeCoordinator(self, didSelectRecipeWithId: id)
+    }
 }

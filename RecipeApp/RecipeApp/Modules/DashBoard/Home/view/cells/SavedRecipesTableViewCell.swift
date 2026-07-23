@@ -14,6 +14,8 @@ class SavedRecipesTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<Int, RecipeUIModel>!
 
+    var onRecipeSelected: ((RecipeUIModel) -> Void)?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCollectionView()
@@ -40,5 +42,15 @@ class SavedRecipesTableViewCell: UITableViewCell {
             return cell
         }
         collectionView.dataSource = dataSource
+        collectionView.delegate = self
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+extension SavedRecipesTableViewCell: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        guard let recipe = dataSource.itemIdentifier(for: indexPath) else { return }
+        onRecipeSelected?(recipe)
     }
 }
