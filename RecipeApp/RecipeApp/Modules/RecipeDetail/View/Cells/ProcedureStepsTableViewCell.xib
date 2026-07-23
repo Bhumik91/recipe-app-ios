@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="110" id="proc-cell" customClass="ProcedureStepsTableViewCell" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="proc-cell" id="proc-content">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="proc-card" userLabel="Card">
+                        <rect key="frame" x="4" y="6" width="367" height="98"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="proc-stack">
+                                <rect key="frame" x="16" y="16" width="335" height="66"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" verticalCompressionResistancePriority="753" text="Step 1" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="1" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="proc-step-number">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="19"/>
+                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="15"/>
+                                        <color key="textColor" name="BrandPrimary"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" text="Preheat the oven to 200°C and line a baking tray with parchment paper." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="proc-instruction">
+                                        <rect key="frame" x="0.0" y="23" width="335" height="19"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="15"/>
+                                        <color key="textColor" name="BrandGray1"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Required ingredients: garlic, scallions" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="proc-required">
+                                        <rect key="frame" x="0.0" y="46" width="335" height="20"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="13"/>
+                                        <color key="textColor" name="BrandGray3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="proc-stack" firstAttribute="top" secondItem="proc-card" secondAttribute="top" constant="16" id="proc-c1"/>
+                            <constraint firstAttribute="bottom" secondItem="proc-stack" secondAttribute="bottom" constant="16" id="proc-c2"/>
+                            <constraint firstItem="proc-stack" firstAttribute="leading" secondItem="proc-card" secondAttribute="leading" constant="16" id="proc-c3"/>
+                            <constraint firstAttribute="trailing" secondItem="proc-stack" secondAttribute="trailing" constant="16" id="proc-c4"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="proc-card" firstAttribute="top" secondItem="proc-content" secondAttribute="top" constant="6" id="proc-c5"/>
+                    <constraint firstAttribute="bottom" secondItem="proc-card" secondAttribute="bottom" constant="6" id="proc-c6"/>
+                    <constraint firstItem="proc-card" firstAttribute="leading" secondItem="proc-content" secondAttribute="leading" constant="4" id="proc-c7"/>
+                    <constraint firstAttribute="trailing" secondItem="proc-card" secondAttribute="trailing" constant="4" id="proc-c8"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="proc-safe"/>
+            <connections>
+                <outlet property="cardView" destination="proc-card" id="proc-oc1"/>
+                <outlet property="instructionLabel" destination="proc-instruction" id="proc-oc2"/>
+                <outlet property="requiredIngredientsLabel" destination="proc-required" id="proc-oc3"/>
+                <outlet property="stepNumberLabel" destination="proc-step-number" id="proc-oc4"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="BrandGray1">
+            <color red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BrandGray3">
+            <color red="0.47450980392156861" green="0.47450980392156861" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BrandPrimary">
+            <color red="0.070588235294117646" green="0.58431372549019611" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

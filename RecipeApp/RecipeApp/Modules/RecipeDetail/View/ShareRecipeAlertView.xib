@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Bold.ttf">
+            <string>Poppins-Bold</string>
+        </array>
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+        <array key="Poppins-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" customClass="ShareRecipeAlertView" customModule="RecipeApp" customModuleProvider="target">
+            <connections>
+                <outlet property="closeButton" destination="sra-close" id="sra-oc2"/>
+                <outlet property="contentView" destination="sra-root" id="sra-oc3"/>
+                <outlet property="copyButton" destination="sra-copy" id="sra-oc4"/>
+                <outlet property="linkLabel" destination="sra-link-label" id="sra-oc6"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="sra-root" userLabel="ShareRecipeAlertView Content">
+            <rect key="frame" x="0.0" y="0.0" width="345" height="220"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sra-card" userLabel="Card">
+                    <rect key="frame" x="0.0" y="0.0" width="345" height="220"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sra-close">
+                            <rect key="frame" x="297" y="24" width="24" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="24" id="sra-c1"/>
+                                <constraint firstAttribute="height" constant="24" id="sra-c2"/>
+                            </constraints>
+                            <color key="tintColor" name="BrandGray2"/>
+                            <state key="normal" image="xmark" catalog="system"/>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Link" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sra-title">
+                            <rect key="frame" x="24" y="24" width="138" height="39"/>
+                            <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="24"/>
+                            <color key="textColor" name="BrandGray1"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="252" text="Copy recipe link and share your recipe link with friends and family." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sra-subtitle">
+                            <rect key="frame" x="24" y="71" width="297" height="45"/>
+                            <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                            <color key="textColor" name="BrandGray3"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sra-link-card" userLabel="Link Row">
+                            <rect key="frame" x="24" y="140" width="297" height="56"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1" text="app.Recipe.co/jollof_rice" textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sra-link-label">
+                                    <rect key="frame" x="16" y="0.0" width="212" height="56"/>
+                                    <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="15"/>
+                                    <color key="textColor" name="BrandGray1"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sra-copy">
+                                    <rect key="frame" x="228" y="0.0" width="69" height="56"/>
+                                    <color key="backgroundColor" name="BrandPrimary"/>
+                                    <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
+                                    <state key="normal" title="Copy Link">
+                                        <color key="titleColor" name="BrandWhite"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" name="BrandGray4"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="56" id="sra-c10"/>
+                                <constraint firstItem="sra-link-label" firstAttribute="leading" secondItem="sra-link-card" secondAttribute="leading" constant="16" id="sra-c3"/>
+                                <constraint firstItem="sra-link-label" firstAttribute="top" secondItem="sra-link-card" secondAttribute="top" id="sra-c4"/>
+                                <constraint firstAttribute="bottom" secondItem="sra-link-label" secondAttribute="bottom" id="sra-c5"/>
+                                <constraint firstItem="sra-copy" firstAttribute="leading" secondItem="sra-link-label" secondAttribute="trailing" id="sra-c6"/>
+                                <constraint firstAttribute="trailing" secondItem="sra-copy" secondAttribute="trailing" id="sra-c7"/>
+                                <constraint firstItem="sra-copy" firstAttribute="top" secondItem="sra-link-card" secondAttribute="top" id="sra-c8"/>
+                                <constraint firstAttribute="bottom" secondItem="sra-copy" secondAttribute="bottom" id="sra-c9"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="12"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" name="BrandWhite"/>
+                    <constraints>
+                        <constraint firstItem="sra-close" firstAttribute="top" secondItem="sra-card" secondAttribute="top" constant="24" id="sra-c11"/>
+                        <constraint firstAttribute="trailing" secondItem="sra-close" secondAttribute="trailing" constant="24" id="sra-c12"/>
+                        <constraint firstItem="sra-title" firstAttribute="top" secondItem="sra-card" secondAttribute="top" constant="24" id="sra-c13"/>
+                        <constraint firstItem="sra-title" firstAttribute="leading" secondItem="sra-card" secondAttribute="leading" constant="24" id="sra-c14"/>
+                        <constraint firstItem="sra-title" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="sra-close" secondAttribute="leading" constant="-8" id="sra-c15"/>
+                        <constraint firstItem="sra-subtitle" firstAttribute="top" secondItem="sra-title" secondAttribute="bottom" constant="8" id="sra-c16"/>
+                        <constraint firstItem="sra-subtitle" firstAttribute="leading" secondItem="sra-card" secondAttribute="leading" constant="24" id="sra-c17"/>
+                        <constraint firstAttribute="trailing" secondItem="sra-subtitle" secondAttribute="trailing" constant="24" id="sra-c18"/>
+                        <constraint firstItem="sra-link-card" firstAttribute="top" secondItem="sra-subtitle" secondAttribute="bottom" constant="24" id="sra-c19"/>
+                        <constraint firstItem="sra-link-card" firstAttribute="leading" secondItem="sra-card" secondAttribute="leading" constant="24" id="sra-c20"/>
+                        <constraint firstAttribute="trailing" secondItem="sra-link-card" secondAttribute="trailing" constant="24" id="sra-c21"/>
+                        <constraint firstAttribute="bottom" secondItem="sra-link-card" secondAttribute="bottom" constant="24" id="sra-c22"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="sra-card" firstAttribute="top" secondItem="sra-root" secondAttribute="top" id="sra-c23"/>
+                <constraint firstAttribute="bottom" secondItem="sra-card" secondAttribute="bottom" id="sra-c24"/>
+                <constraint firstItem="sra-card" firstAttribute="leading" secondItem="sra-root" secondAttribute="leading" id="sra-c25"/>
+                <constraint firstAttribute="trailing" secondItem="sra-card" secondAttribute="trailing" id="sra-c26"/>
+                <constraint firstAttribute="width" priority="750" constant="345" id="sra-c27"/>
+                <constraint firstAttribute="height" priority="750" constant="220" id="sra-c28"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="139" y="120"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+        <namedColor name="BrandGray1">
+            <color red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BrandGray2">
+            <color red="0.47450980392156861" green="0.47450980392156861" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BrandGray3">
+            <color red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BrandGray4">
+            <color red="0.85098039215686272" green="0.85098039215686272" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BrandPrimary">
+            <color red="0.074509803921568626" green="0.58431372549019611" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BrandWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
