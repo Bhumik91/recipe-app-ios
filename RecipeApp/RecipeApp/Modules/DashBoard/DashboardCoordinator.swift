@@ -44,10 +44,24 @@ private extension DashboardCoordinator {
             tag: item.rawValue
         )
 
+        guard let container else {
+            assertionFailure("DashboardCoordinator requires a DependencyContainer")
+            return nav
+        }
+
         let coordinator: Coordinator
         switch item {
         case .home:
-            coordinator = HomeCoordinator(navigationController: nav)
+            let homeCoordinator = HomeCoordinator(
+                navigationController: nav,
+                homeViewModel: HomeViewModel(
+                    recipeRepository: container.recipeRepository,
+                    sessionManager: container.sessionManager
+                ),
+                container: container
+            )
+            homeCoordinator.parentDelegate = self
+            coordinator = homeCoordinator
         case .saved:
             coordinator = SavedCoordinator(navigationController: nav)
         case .notification:
@@ -78,3 +92,5 @@ extension DashboardCoordinator: AddCoordinatorDelegate {
         removeChild(coordinator)
     }
 }
+// MARK: - Child coordinator delegates (currently no requirements — empty by design)
+extension DashboardCoordinator: HomeCoordinatorDelegate {}

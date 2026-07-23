@@ -51,7 +51,10 @@ extension AppCoordinator {
     }
     private func showDashboard() {
         let nav = UINavigationController()
-        let dashboardCoordinator = DashboardCoordinator(navigationController: nav, container: container)
+        let dashboardCoordinator = DashboardCoordinator(
+            navigationController: nav,
+            container: container
+        )
         dashboardCoordinator.parentDelegate = self
         addChild(dashboardCoordinator)
         dashboardCoordinator.start()

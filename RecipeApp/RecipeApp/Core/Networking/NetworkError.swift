@@ -73,6 +73,17 @@ extension NetworkError: DisplayableError {
             return "An unexpected error occurred."
         }
     }
+
+    // Re-fetching can't fix a permission/auth/response-contract problem, so those cases
+    // skip the "Try Again" affordance; everything transient (network/server/unknown) keeps it.
+    var isRetryable: Bool {
+        switch self {
+        case .unauthorized, .forbidden, .notFound, .decodingFailed:
+            return false
+        case .invalidURL, .noInternetConnection, .quotaExceeded, .serverError, .requestFailed, .unknown:
+            return true
+        }
+    }
 }
 // MARK: Implemented function which maps Alamofire errors with custom errors
 extension NetworkError {

@@ -6,6 +6,7 @@
 //
 import UIKit
 
+@MainActor
 protocol ChildCoordinator: Coordinator {
     // `ParentDelegate` is constrained to class-bound protocols (AnyObject) by convention
     // via each coordinator's typealias — we omit the AnyObject constraint here because
