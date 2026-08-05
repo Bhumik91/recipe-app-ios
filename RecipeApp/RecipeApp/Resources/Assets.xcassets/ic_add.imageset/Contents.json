@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "ic_saved_outlined.pdf",
+      "filename" : "ic_add.pdf",
       "idiom" : "universal"
     }
   ],
@@ -10,7 +10,6 @@
     "version" : 1
   },
   "properties" : {
-    "preserves-vector-representation" : true,
     "template-rendering-intent" : "template"
   }
 }
