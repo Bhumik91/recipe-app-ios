@@ -45,6 +45,12 @@ extension SavedViewController: UITableViewDelegate {
         return config
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        guard viewModel.recipes.indices.contains(indexPath.row) else { return }
+        coordinator?.recipeTapped(id: viewModel.recipes[indexPath.row].id)
+    }
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         updateNavigationBarVisibility(for: scrollView)
     }
