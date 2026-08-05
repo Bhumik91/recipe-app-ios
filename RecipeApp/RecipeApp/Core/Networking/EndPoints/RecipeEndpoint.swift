@@ -7,11 +7,12 @@
 import Alamofire
 import Foundation
 
-fileprivate let SPOONACULAR_API_KEYS = ["ed46c147ed734413b3b10e16a8fa0b93", "65c419295e3e43509b01d5a7720f3e43", "c2767743e1f54f828fd0f5f5ce1428be"]
+fileprivate let SPOONACULAR_API_KEYS = ["ed46c147ed734413b3b10e16a8fa0b93", "65c419295e3e43509b01d5a7720f3e43", "c2767743e1f54f828fd0f5f5ce1428be",
+    "7355913421ea473d9889c7c50442c78a"]
 // TODO: Key rotation scaffolding — INDEX is hardcoded to 0, keys[1] and keys[2] unused.
 // Future scope: Implement key rotation on quota exhaustion (402 response) via request interceptors.
 // Ref: FallbackRecipeRepository for fallback pattern; consider similar pattern.
-fileprivate let INDEX = 0
+fileprivate let INDEX = 3
 enum RecipeEndpoint {
     case search(query: String = "", cuisine: String? = nil, diet: String? = nil, offset: Int = 0, number: Int = 10)
     case bulkDetails(ids: [Int])

@@ -10,6 +10,9 @@ struct RecipeUIModel: Hashable {
     let readyInMinutes: Int
     let imageURL: String
     var isSaved: Bool
+    // Lowercased for case-insensitive matching against FilterState.selectedCuisines —
+    // see HomeViewModel.matchesActiveFilters.
+    let cuisines: [String]
 }
 
 struct PaginatedRecipes {
@@ -26,7 +29,8 @@ extension RecipeSummaryDTO {
             title: title,
             readyInMinutes: readyInMinutes ?? 0,
             imageURL: image ?? "",
-            isSaved: isSaved
+            isSaved: isSaved,
+            cuisines: (cuisines ?? []).map { $0.lowercased() }
         )
     }
 }
