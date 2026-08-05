@@ -1,5 +1,5 @@
 //
-//  SavedViewModel.swift
+//  SavedRecipeViewModel.swift
 //  RecipeApp
 //
 //  Created by Bhumik Poshiya on 22/07/26.
@@ -7,19 +7,19 @@
 
 import Combine
 
-enum SavedSnackbarEvent {
+enum SavedRecipeSnackbarEvent {
     case showUndo
 }
 
 @MainActor
-final class SavedViewModel {
+final class SavedRecipeViewModel {
 
     // MARK: - Published State
     @Published private(set) var recipes: [RecipeUIModel] = []
     @Published private(set) var state: ViewState<[RecipeUIModel]> = .idle
     /// One-shot events. A PassthroughSubject (not @Published) so the snackbar isn't
     /// replayed to a late subscriber when the view reappears.
-    let snackbarEvent = PassthroughSubject<SavedSnackbarEvent, Never>()
+    let snackbarEvent = PassthroughSubject<SavedRecipeSnackbarEvent, Never>()
 
     // MARK: - Dependencies
     private let recipeRepository: RecipeRepositoryProtocol

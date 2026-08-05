@@ -1,5 +1,5 @@
 //
-//  SavedCoordinator.swift
+//  SavedRecipeCoordinator.swift
 //  RecipeApp
 //
 //  Created by Bhumik Poshiya on 15/07/26.
@@ -7,12 +7,12 @@
 
 import UIKit
 
-final class SavedCoordinator: ChildCoordinator {
+final class SavedRecipeCoordinator: ChildCoordinator {
     // MARK: - ChildCoordinator
-    typealias ParentDelegate = SavedCoordinatorDelegate
+    typealias ParentDelegate = SavedRecipeCoordinatorDelegate
     // MARK: - Properties
     var navigationController: UINavigationController
-    weak var parentDelegate: SavedCoordinatorDelegate?
+    weak var parentDelegate: SavedRecipeCoordinatorDelegate?
     let container: DependencyContainer?
 
     // MARK: - Init
@@ -24,16 +24,16 @@ final class SavedCoordinator: ChildCoordinator {
     // MARK: - Coordinator
     func start() {
         guard let container else {
-            fatalError("SavedCoordinator requires a DependencyContainer")
+            fatalError("SavedRecipeCoordinator requires a DependencyContainer")
         }
-        let viewModel = SavedViewModel(recipeRepository: container.recipeRepository)
-        let savedVC = SavedViewController.instantiate(viewModel: viewModel)
+        let viewModel = SavedRecipeViewModel(recipeRepository: container.recipeRepository)
+        let savedVC = SavedRecipeViewController.instantiate(viewModel: viewModel)
         savedVC.coordinator = self
         navigationController.setViewControllers([savedVC], animated: false)
     }
 
     // MARK: - Recipe selection
     func recipeTapped(id: Int) {
-        parentDelegate?.savedCoordinator(self, didSelectRecipeWithId: id)
+        parentDelegate?.savedRecipeCoordinator(self, didSelectRecipeWithId: id)
     }
 }

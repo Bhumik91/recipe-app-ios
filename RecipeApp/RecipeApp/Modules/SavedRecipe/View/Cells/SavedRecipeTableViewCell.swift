@@ -1,5 +1,5 @@
 //
-//  SavedTableViewCell.swift
+//  SavedRecipeTableViewCell.swift
 //  RecipeApp
 //
 
@@ -7,9 +7,9 @@ import UIKit
 
 /// Recipe card: full-bleed image with a dark gradient at the bottom so the title and
 /// time stay readable. The bookmark icon is decoration only — removal is by swipe.
-final class SavedTableViewCell: UITableViewCell {
+final class SavedRecipeTableViewCell: UITableViewCell {
 
-    static let reuseID = "SavedTableViewCell"
+    static let reuseID = "SavedRecipeTableViewCell"
 
     // MARK: - IBOutlets
     @IBOutlet weak var cardView: UIView!

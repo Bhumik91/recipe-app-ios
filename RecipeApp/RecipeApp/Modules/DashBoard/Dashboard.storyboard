@@ -75,7 +75,7 @@
         <!--Saved View Controller-->
         <scene sceneID="saved-scene-id">
             <objects>
-                <viewController storyboardIdentifier="SavedViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SavedViewControllerID" customClass="SavedViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SavedRecipeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SavedViewControllerID" customClass="SavedRecipeViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SavedViewID">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

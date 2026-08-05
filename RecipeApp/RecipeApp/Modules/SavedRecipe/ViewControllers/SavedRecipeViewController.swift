@@ -1,5 +1,5 @@
 //
-//  SavedViewController.swift
+//  SavedRecipeViewController.swift
 //  RecipeApp
 //
 //  Created by Bhumik Poshiya on 15/07/26.
@@ -14,11 +14,11 @@ import Combine
 /// - this one          : properties, lifecycle, one-time setup
 /// - `+TableView`      : rows, swipe-to-delete, hide/show nav bar on scroll
 /// - `+Bindings`       : view model subscriptions and loading/error states
-final class SavedViewController: UIViewController {
+final class SavedRecipeViewController: UIViewController {
 
     // MARK: - Properties
-    weak var coordinator: SavedCoordinator?
-    var viewModel: SavedViewModel!
+    weak var coordinator: SavedRecipeCoordinator?
+    var viewModel: SavedRecipeViewModel!
     var cancellables = Set<AnyCancellable>()
 
     // MARK: - IBOutlets
@@ -61,7 +61,7 @@ final class SavedViewController: UIViewController {
 }
 
 // MARK: - Setup
-private extension SavedViewController {
+private extension SavedRecipeViewController {
 
     func setupNavigationBar() {
         navigationItem.largeTitleDisplayMode = .never
@@ -86,8 +86,8 @@ private extension SavedViewController {
         tableView.dataSource = self
         tableView.sectionHeaderTopPadding = 0
         tableView.register(
-            UINib(nibName: SavedTableViewCell.reuseID, bundle: nil),
-            forCellReuseIdentifier: SavedTableViewCell.reuseID
+            UINib(nibName: SavedRecipeTableViewCell.reuseID, bundle: nil),
+            forCellReuseIdentifier: SavedRecipeTableViewCell.reuseID
         )
     }
 
@@ -114,14 +114,14 @@ private extension SavedViewController {
 }
 
 // MARK: - Instantiation
-extension SavedViewController {
+extension SavedRecipeViewController {
 
-    static func instantiate(viewModel: SavedViewModel) -> SavedViewController {
+    static func instantiate(viewModel: SavedRecipeViewModel) -> SavedRecipeViewController {
         let storyboard = UIStoryboard(name: "Dashboard", bundle: nil)
         guard let vc = storyboard.instantiateViewController(
-            withIdentifier: "SavedViewController"
-        ) as? SavedViewController else {
-            fatalError("SavedViewController not found in Dashboard.storyboard")
+            withIdentifier: "SavedRecipeViewController"
+        ) as? SavedRecipeViewController else {
+            fatalError("SavedRecipeViewController not found in Dashboard.storyboard")
         }
         vc.viewModel = viewModel
         return vc
