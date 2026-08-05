@@ -1,5 +1,5 @@
 //
-//  SearchHomeViewModel.swift
+//  SearchViewModel.swift
 //  RecipeApp
 //
 //  Created by Bhumik Poshiya on 23/07/26.
@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 @MainActor
-final class SearchHomeViewModel {
+final class SearchViewModel {
     // MARK: - Published State
     @Published var searchQuery: String = ""
     @Published private(set) var searchState: ViewState<[SearchRecipeUIModel]> = .idle

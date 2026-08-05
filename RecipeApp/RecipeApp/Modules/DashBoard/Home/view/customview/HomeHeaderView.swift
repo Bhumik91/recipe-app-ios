@@ -15,13 +15,11 @@ final class HomeHeaderView: UIView {
     @IBOutlet weak var searchContainerView: HighlightableControl!
     @IBOutlet weak var searchIconImageView: UIImageView!
     @IBOutlet weak var searchTextField: UITextField!
-    @IBOutlet weak var filterButton: UIButton!
     @IBOutlet weak var chipsCollectionView: UICollectionView!
 
     /// The search field is display-only — tapping it should navigate to a dedicated
     /// search screen rather than open the keyboard in place.
     var onSearchTapped: (() -> Void)?
-    var onFilterTapped: (() -> Void)?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -74,16 +72,10 @@ final class HomeHeaderView: UIView {
         // target. It's a HighlightableControl (not a plain UIView), so this also gets
         // the same press-down dimming feedback a UIButton has built in.
         searchContainerView.addTarget(self, action: #selector(searchContainerTapped), for: .touchUpInside)
-
-        filterButton.addTarget(self, action: #selector(filterButtonTapped), for: .touchUpInside)
     }
 
     @objc private func searchContainerTapped() {
         onSearchTapped?()
-    }
-
-    @objc private func filterButtonTapped() {
-        onFilterTapped?()
     }
 
     private func applyShadow(to view: UIView) {

@@ -71,6 +71,7 @@ class HomeViewController: UIViewController {
             return
         }
         viewModel.loadSavedRecipes()
+        viewModel.refreshExploreSavedStatuses()
     }
 
     func setupChipsCollectionView() {
@@ -82,12 +83,7 @@ class HomeViewController: UIViewController {
 
     private func setupHeaderTapHandlers() {
         headerView.onSearchTapped = { [weak self] in
-            // TODO: navigate to the dedicated Search screen once it exists.
             self?.coordinator?.searchTapped()
-        }
-        headerView.onFilterTapped = { [weak self] in
-            // TODO: navigate to the dedicated Filter screen once it exists.
-            self?.coordinator?.filterTapped()
         }
     }
 
