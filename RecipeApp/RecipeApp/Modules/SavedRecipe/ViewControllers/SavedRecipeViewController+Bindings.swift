@@ -1,12 +1,12 @@
 //
-//  SavedViewController+Bindings.swift
+//  SavedRecipeViewController+Bindings.swift
 //  RecipeApp
 //
 
 import UIKit
 
 // MARK: - View Model Bindings
-extension SavedViewController {
+extension SavedRecipeViewController {
 
     /// Subscribes to everything the view model publishes. Called once, from viewDidLoad.
     func bindViewModel() {
@@ -28,7 +28,7 @@ extension SavedViewController {
 }
 
 // MARK: - Screen States
-private extension SavedViewController {
+private extension SavedRecipeViewController {
 
     func render(_ state: ViewState<[RecipeUIModel]>) {
         switch state {

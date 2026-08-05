@@ -1,12 +1,12 @@
 //
-//  SavedViewController+TableView.swift
+//  SavedRecipeViewController+TableView.swift
 //  RecipeApp
 //
 
 import UIKit
 
 // MARK: - Data Source
-extension SavedViewController: UITableViewDataSource {
+extension SavedRecipeViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.recipes.count
@@ -14,9 +14,9 @@ extension SavedViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: SavedTableViewCell.reuseID,
+            withIdentifier: SavedRecipeTableViewCell.reuseID,
             for: indexPath
-        ) as? SavedTableViewCell else {
+        ) as? SavedRecipeTableViewCell else {
             return UITableViewCell()
         }
         cell.configure(recipe: viewModel.recipes[indexPath.row])
@@ -25,7 +25,7 @@ extension SavedViewController: UITableViewDataSource {
 }
 
 // MARK: - Delegate
-extension SavedViewController: UITableViewDelegate {
+extension SavedRecipeViewController: UITableViewDelegate {
 
     /// Swipe left to delete. The view model holds the recipe for a few seconds so the
     /// snackbar's Undo can put it back.
@@ -57,7 +57,7 @@ extension SavedViewController: UITableViewDelegate {
 }
 
 // MARK: - Hide Nav Bar While Scrolling
-extension SavedViewController {
+extension SavedRecipeViewController {
 
     /// Hides the title bar as the user reads down the list, brings it back when they
     /// scroll up or return to the top.

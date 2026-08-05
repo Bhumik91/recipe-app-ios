@@ -65,10 +65,10 @@ private extension DashboardCoordinator {
             )
             homeCoordinator.parentDelegate = self
             coordinator = homeCoordinator
-        case .saved:
-            let savedCoordinator = SavedCoordinator(navigationController: nav, container: container)
-            savedCoordinator.parentDelegate = self
-            coordinator = savedCoordinator
+        case .savedRecipe:
+            let savedRecipeCoordinator = SavedRecipeCoordinator(navigationController: nav, container: container)
+            savedRecipeCoordinator.parentDelegate = self
+            coordinator = savedRecipeCoordinator
         case .notification:
             coordinator = NotificationCoordinator(navigationController: nav)
         case .profile:
@@ -122,9 +122,9 @@ extension DashboardCoordinator: SearchCoordinatorDelegate {
     }
 }
 
-// MARK: - SavedCoordinatorDelegate
-extension DashboardCoordinator: SavedCoordinatorDelegate {
-    func savedCoordinator(_ coordinator: SavedCoordinator, didSelectRecipeWithId id: Int) {
+// MARK: - SavedRecipeCoordinatorDelegate
+extension DashboardCoordinator: SavedRecipeCoordinatorDelegate {
+    func savedRecipeCoordinator(_ coordinator: SavedRecipeCoordinator, didSelectRecipeWithId id: Int) {
         showRecipeDetail(id: id, on: coordinator.navigationController)
     }
 }
