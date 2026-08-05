@@ -19,11 +19,17 @@ class ExploreRecipeTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        selectionStyle = .none
+        setupCard()
         bookmarkButton.addTarget(self, action: #selector(bookmarkTapped), for: .touchUpInside)
     }
 
     @objc private func bookmarkTapped() {
         onBookmarkTapped?()
+    }
+
+    private func setupCard() {
+        containerView.applyCardStyle()
     }
 
     func configure(recipe: RecipeUIModel) {

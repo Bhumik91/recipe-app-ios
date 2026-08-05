@@ -29,6 +29,9 @@ final class DashboardCoordinator: ChildCoordinator, ParentCoordinator {
         controller.tabBarDelegate = self
         controller.viewControllers = TabBarItem.allCases.map { makeTab(for: $0) }
         self.tabBarController = controller
+        // Each tab hosts its own navigation controller, so this outer one would otherwise
+        // stack a second, permanently empty bar above every dashboard screen.
+        navigationController.setNavigationBarHidden(true, animated: false)
         navigationController.setViewControllers([controller], animated: false)
     }
 }
@@ -63,7 +66,7 @@ private extension DashboardCoordinator {
             homeCoordinator.parentDelegate = self
             coordinator = homeCoordinator
         case .saved:
-            coordinator = SavedCoordinator(navigationController: nav)
+            coordinator = SavedCoordinator(navigationController: nav, container: container)
         case .notification:
             coordinator = NotificationCoordinator(navigationController: nav)
         case .profile:
@@ -94,3 +97,6 @@ extension DashboardCoordinator: AddCoordinatorDelegate {
 }
 // MARK: - Child coordinator delegates (currently no requirements — empty by design)
 extension DashboardCoordinator: HomeCoordinatorDelegate {}
+
+// MARK: - SavedCoordinatorDelegate (currently no requirements — empty by design)
+extension DashboardCoordinator: SavedCoordinatorDelegate {}
