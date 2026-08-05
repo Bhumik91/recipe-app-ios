@@ -13,6 +13,7 @@ final class DependencyContainer {
     let apiClient: APIClientProtocol
     let authRepository: AuthRepositoryProtocol
     let savedDishesManager: SavedRecipeStoring
+    let recentSearchesManager: RecentSearchesStoring
     let recipeRepository: RecipeRepositoryProtocol
     // MARK: - Initializer
     init() {
@@ -22,6 +23,7 @@ final class DependencyContainer {
         self.apiClient = apiClient
         let savedDishesManager = UserDefaultsSavedRecipeStore(userId: sessionManager.userId)
         self.savedDishesManager = savedDishesManager
+        self.recentSearchesManager = UserDefaultsRecentSearchesStore(userId: sessionManager.userId)
         let jsonRecipeRepository = JSONRecipeRepository(
             savedDishesManager: savedDishesManager
         )
