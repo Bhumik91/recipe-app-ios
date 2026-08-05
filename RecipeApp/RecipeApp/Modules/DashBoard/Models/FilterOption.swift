@@ -15,7 +15,7 @@ extension Array where Element == String {
 }
 
 // Cuisine chip selection state for the Home screen. Home has no diet filter of its own —
-// that's Search's (SearchHomeViewModel.selectedDiets), a separate, unrelated state.
+// that's Search's (SearchViewModel.selectedDiets), a separate, unrelated state.
 struct FilterState {
     var cuisineChips: [FilterOption] = [FilterOption(label: "All", isSelected: true)]
     var selectedCuisines: Set<String> = []

@@ -28,9 +28,9 @@ final class HomeCoordinator: ChildCoordinator {
         navigationController.setViewControllers([homeVC], animated: false)
     }
     // MARK: - Header taps
-    // TODO: push/present the real Search and Filter screens once they exist.
-    func searchTapped() {}
-    func filterTapped() {}
+    func searchTapped() {
+        parentDelegate?.homeCoordinatorDidTapSearch(self)
+    }
 
     // MARK: - Recipe selection
     func recipeTapped(id: Int) {

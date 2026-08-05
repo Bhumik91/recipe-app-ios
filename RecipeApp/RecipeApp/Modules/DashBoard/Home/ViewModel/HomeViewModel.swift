@@ -113,7 +113,6 @@ final class HomeViewModel {
         }
         explorePageTask = Task {
             do {
-                // TODO: thread the diet filter selection through once the Filter screen ships.
                 let page = try await recipeRepository.fetchRecipes(cuisine: selectedCuisineQuery, diet: nil, offset: currentOffset)
                 guard !Task.isCancelled else { return }
                 exploreItems += page.results
@@ -131,18 +130,52 @@ final class HomeViewModel {
         }
     }
 
+    // Re-checks isSaved for every explore item against the repository (the source of truth) —
+    // catches saves/unsaves done elsewhere, e.g. on the Recipe Detail screen.
+    func refreshExploreSavedStatuses() {
+        guard case .success = exploreState else { return }
+        var didChange = false
+        for index in exploreItems.indices {
+            let isSaved = recipeRepository.isRecipeSaved(recipeId: exploreItems[index].id)
+            if exploreItems[index].isSaved != isSaved {
+                exploreItems[index].isSaved = isSaved
+                didChange = true
+            }
+        }
+        if didChange {
+            exploreState = .success(exploreItems)
+        }
+    }
+
+    // Saved recipes are fetched by fixed ID (fetchRecipes(byIds:)), so — unlike the explore
+    // list — there's no server-side cuisine/diet query to send. The active filter is applied
+    // locally instead; a recipe with none of the selected cuisines/diets just doesn't appear,
+    // and HomeViewController already drops the whole section once savedRecipes is empty.
     func loadSavedRecipes() {
         savedState = .loading
         Task {
             do {
                 let recipes = try await recipeRepository.fetchSavedRecipes()
-                savedState = .success(recipes)
+                savedState = .success(recipes.filter(matchesActiveFilters))
             } catch let error as NetworkError {
                 savedState = .failure(error)
             } catch {
                 savedState = .failure(NetworkError.unknown)
             }
         }
+    }
+
+    // A recipe matches when it has at least one of the selected cuisines — the same
+    // "match any of the selection" rule the explore list gets for free from the server's
+    // cuisine query parameter.
+    //
+    // Chip labels are Title Case ("Italian") but Spoonacular's per-recipe cuisines come
+    // back lowercase — recipe.cuisines is lowercased once in RecipeSummaryDTO.toUIModel,
+    // so the selection is lowercased here to match.
+    private func matchesActiveFilters(_ recipe: RecipeUIModel) -> Bool {
+        let selectedCuisines = Set(filterState.selectedCuisines.map { $0.lowercased() })
+        guard !selectedCuisines.isEmpty else { return true }
+        return !selectedCuisines.isDisjoint(with: recipe.cuisines)
     }
 
     // MARK: - Bookmark Management

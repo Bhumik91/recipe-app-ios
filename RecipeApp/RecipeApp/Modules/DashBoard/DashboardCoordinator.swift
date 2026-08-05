@@ -102,6 +102,24 @@ extension DashboardCoordinator: HomeCoordinatorDelegate {
     func homeCoordinator(_ coordinator: HomeCoordinator, didSelectRecipeWithId id: Int) {
         showRecipeDetail(id: id, on: coordinator.navigationController)
     }
+
+    func homeCoordinatorDidTapSearch(_ coordinator: HomeCoordinator) {
+        let searchCoordinator = SearchCoordinator(navigationController: coordinator.navigationController, container: container)
+        searchCoordinator.parentDelegate = self
+        addChild(searchCoordinator)
+        searchCoordinator.start()
+    }
+}
+
+// MARK: - SearchCoordinatorDelegate
+extension DashboardCoordinator: SearchCoordinatorDelegate {
+    func searchCoordinator(_ coordinator: SearchCoordinator, didSelectRecipeWithId id: Int) {
+        showRecipeDetail(id: id, on: coordinator.navigationController)
+    }
+
+    func searchCoordinatorDidFinish(_ coordinator: SearchCoordinator) {
+        removeChild(coordinator)
+    }
 }
 
 // MARK: - SavedCoordinatorDelegate
