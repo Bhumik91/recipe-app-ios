@@ -66,7 +66,9 @@ private extension DashboardCoordinator {
             homeCoordinator.parentDelegate = self
             coordinator = homeCoordinator
         case .saved:
-            coordinator = SavedCoordinator(navigationController: nav, container: container)
+            let savedCoordinator = SavedCoordinator(navigationController: nav, container: container)
+            savedCoordinator.parentDelegate = self
+            coordinator = savedCoordinator
         case .notification:
             coordinator = NotificationCoordinator(navigationController: nav)
         case .profile:
@@ -95,8 +97,37 @@ extension DashboardCoordinator: AddCoordinatorDelegate {
         removeChild(coordinator)
     }
 }
-// MARK: - Child coordinator delegates (currently no requirements — empty by design)
-extension DashboardCoordinator: HomeCoordinatorDelegate {}
+// MARK: - HomeCoordinatorDelegate
+extension DashboardCoordinator: HomeCoordinatorDelegate {
+    func homeCoordinator(_ coordinator: HomeCoordinator, didSelectRecipeWithId id: Int) {
+        showRecipeDetail(id: id, on: coordinator.navigationController)
+    }
+}
 
-// MARK: - SavedCoordinatorDelegate (currently no requirements — empty by design)
-extension DashboardCoordinator: SavedCoordinatorDelegate {}
+// MARK: - SavedCoordinatorDelegate
+extension DashboardCoordinator: SavedCoordinatorDelegate {
+    func savedCoordinator(_ coordinator: SavedCoordinator, didSelectRecipeWithId id: Int) {
+        showRecipeDetail(id: id, on: coordinator.navigationController)
+    }
+}
+
+// MARK: - RecipeDetailCoordinatorDelegate
+extension DashboardCoordinator: RecipeDetailCoordinatorDelegate {
+    func recipeDetailCoordinatorDidFinish(_ coordinator: RecipeDetailCoordinator) {
+        removeChild(coordinator)
+    }
+}
+
+// MARK: - Recipe Detail
+private extension DashboardCoordinator {
+    func showRecipeDetail(id: Int, on navigationController: UINavigationController) {
+        let recipeDetailCoordinator = RecipeDetailCoordinator(
+            navigationController: navigationController,
+            recipeId: id,
+            container: container
+        )
+        recipeDetailCoordinator.parentDelegate = self
+        addChild(recipeDetailCoordinator)
+        recipeDetailCoordinator.start()
+    }
+}

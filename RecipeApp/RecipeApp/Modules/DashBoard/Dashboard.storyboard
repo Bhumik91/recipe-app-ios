@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -146,7 +147,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SavedPlaceholderID" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2300" y="-68"/>
+            <point key="canvasLocation" x="2300" y="-68.309859154929583"/>
         </scene>
         <!--Add View Controller-->
         <scene sceneID="add-scene-id">
@@ -208,5 +209,180 @@
             </objects>
             <point key="canvasLocation" x="847" y="-68"/>
         </scene>
+        <!--Recipe Detail View Controller-->
+        <scene sceneID="recipe-detail-scene-id">
+            <objects>
+                <viewController storyboardIdentifier="RecipeDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RecipeDetailViewControllerID" customClass="RecipeDetailViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RecipeDetailViewID">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-scroll">
+                                <rect key="frame" x="0.0" y="118" width="393" height="734"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-content">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="806"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="ic_default_image" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-hero">
+                                                <rect key="frame" x="16" y="16" width="361" height="200"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="200" id="rdv-c-hero-h"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" image="ic_saved_outlined" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-save">
+                                                <rect key="frame" x="331" y="166" width="30" height="30"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" name="BrandPrimary"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="rdv-c-save-h"/>
+                                                    <constraint firstAttribute="width" constant="30" id="rdv-c-save-w"/>
+                                                </constraints>
+                                            </imageView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-info-stack">
+                                                <rect key="frame" x="24" y="232.00000000000003" width="345" height="75.333333333333343"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Classic Greek Salad" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-title">
+                                                        <rect key="frame" x="0.0" y="0.0" width="345" height="31"/>
+                                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="22"/>
+                                                        <color key="textColor" name="BrandGray1"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="By Full of Plants" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-attribution">
+                                                        <rect key="frame" x="0.0" y="35" width="345" height="18.333333333333329"/>
+                                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="13"/>
+                                                        <color key="textColor" name="BrandGray3"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-timer-row">
+                                                        <rect key="frame" x="0.0" y="57.333333333333314" width="345" height="18"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="ic_timer_outlined" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-timer-icon">
+                                                                <rect key="frame" x="0.0" y="0.0" width="18" height="18"/>
+                                                                <color key="tintColor" name="BrandGray3"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="18" id="rdv-c-timer-icon-h"/>
+                                                                    <constraint firstAttribute="width" constant="18" id="rdv-c-timer-icon-w"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="35 mins" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-ready-time">
+                                                                <rect key="frame" x="22" y="0.0" width="323" height="18"/>
+                                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                                                <color key="textColor" name="BrandGray3"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Servings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-servings-label">
+                                                <rect key="frame" x="24" y="331.33333333333331" width="70.333333333333329" height="22.666666666666686"/>
+                                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                                <color key="textColor" name="BrandGray1"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-stepper" customClass="CustomStepperView" customModule="RecipeApp" customModuleProvider="target">
+                                                <rect key="frame" x="24" y="362" width="112" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" priority="750" constant="32" id="rdv-c-stepper-h-placeholder"/>
+                                                    <constraint firstAttribute="width" priority="750" constant="112" id="rdv-c-stepper-w-placeholder"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 ingredients" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-items-count">
+                                                <rect key="frame" x="277.66666666666669" y="331.33333333333331" width="91.333333333333314" height="22.666666666666686"/>
+                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                                <color key="textColor" name="BrandGray2"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-segment" customClass="SegmentedSelectorView" customModule="RecipeApp" customModuleProvider="target">
+                                                <rect key="frame" x="24" y="418" width="345" height="48"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="48" id="rdv-c-segment-h"/>
+                                                </constraints>
+                                            </view>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-table" customClass="SelfSizingTableView" customModule="RecipeApp" customModuleProvider="target">
+                                                <rect key="frame" x="24" y="482" width="345" height="300"/>
+                                            </tableView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="rdv-table" secondAttribute="bottom" constant="24" id="58t-EQ-yKB"/>
+                                            <constraint firstItem="rdv-hero" firstAttribute="top" secondItem="rdv-content" secondAttribute="top" constant="16" id="rdv-c1"/>
+                                            <constraint firstItem="rdv-info-stack" firstAttribute="top" secondItem="rdv-hero" secondAttribute="bottom" constant="16" id="rdv-c10"/>
+                                            <constraint firstItem="rdv-info-stack" firstAttribute="leading" secondItem="rdv-content" secondAttribute="leading" constant="24" id="rdv-c11"/>
+                                            <constraint firstAttribute="trailing" secondItem="rdv-info-stack" secondAttribute="trailing" constant="24" id="rdv-c12"/>
+                                            <constraint firstItem="rdv-servings-label" firstAttribute="top" secondItem="rdv-info-stack" secondAttribute="bottom" constant="24" id="rdv-c13"/>
+                                            <constraint firstItem="rdv-servings-label" firstAttribute="leading" secondItem="rdv-info-stack" secondAttribute="leading" id="rdv-c14"/>
+                                            <constraint firstItem="rdv-stepper" firstAttribute="top" secondItem="rdv-servings-label" secondAttribute="bottom" constant="8" id="rdv-c15"/>
+                                            <constraint firstItem="rdv-stepper" firstAttribute="leading" secondItem="rdv-info-stack" secondAttribute="leading" id="rdv-c16"/>
+                                            <constraint firstItem="rdv-items-count" firstAttribute="top" secondItem="rdv-servings-label" secondAttribute="top" id="rdv-c17"/>
+                                            <constraint firstItem="rdv-items-count" firstAttribute="bottom" secondItem="rdv-servings-label" secondAttribute="bottom" id="rdv-c18"/>
+                                            <constraint firstItem="rdv-items-count" firstAttribute="trailing" secondItem="rdv-info-stack" secondAttribute="trailing" id="rdv-c19"/>
+                                            <constraint firstItem="rdv-hero" firstAttribute="leading" secondItem="rdv-content" secondAttribute="leading" constant="16" id="rdv-c2"/>
+                                            <constraint firstItem="rdv-segment" firstAttribute="top" secondItem="rdv-stepper" secondAttribute="bottom" constant="24" id="rdv-c20"/>
+                                            <constraint firstItem="rdv-segment" firstAttribute="leading" secondItem="rdv-info-stack" secondAttribute="leading" id="rdv-c21"/>
+                                            <constraint firstItem="rdv-segment" firstAttribute="trailing" secondItem="rdv-info-stack" secondAttribute="trailing" id="rdv-c22"/>
+                                            <constraint firstItem="rdv-table" firstAttribute="top" secondItem="rdv-segment" secondAttribute="bottom" constant="16" id="rdv-c23"/>
+                                            <constraint firstItem="rdv-table" firstAttribute="leading" secondItem="rdv-info-stack" secondAttribute="leading" id="rdv-c24"/>
+                                            <constraint firstItem="rdv-table" firstAttribute="trailing" secondItem="rdv-info-stack" secondAttribute="trailing" id="rdv-c25"/>
+                                            <constraint firstAttribute="trailing" secondItem="rdv-hero" secondAttribute="trailing" constant="16" id="rdv-c3"/>
+                                            <constraint firstItem="rdv-hero" firstAttribute="trailing" secondItem="rdv-save" secondAttribute="trailing" constant="16" id="rdv-c8"/>
+                                            <constraint firstItem="rdv-hero" firstAttribute="bottom" secondItem="rdv-save" secondAttribute="bottom" constant="20" id="rdv-c9"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="rdv-content" firstAttribute="bottom" secondItem="rdv-content-lg" secondAttribute="bottom" id="rdv-c-content-bottom"/>
+                                    <constraint firstItem="rdv-content" firstAttribute="leading" secondItem="rdv-content-lg" secondAttribute="leading" id="rdv-c-content-lead"/>
+                                    <constraint firstItem="rdv-content" firstAttribute="top" secondItem="rdv-content-lg" secondAttribute="top" id="rdv-c-content-top"/>
+                                    <constraint firstItem="rdv-content" firstAttribute="trailing" secondItem="rdv-content-lg" secondAttribute="trailing" id="rdv-c-content-trail"/>
+                                    <constraint firstItem="rdv-content" firstAttribute="width" secondItem="rdv-frame-lg" secondAttribute="width" id="rdv-c-content-w"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="rdv-content-lg"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="rdv-frame-lg"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="RecipeDetailSafeAreaID"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="rdv-scroll" firstAttribute="bottom" secondItem="RecipeDetailViewID" secondAttribute="bottom" id="rdv-c-scroll-bottom"/>
+                            <constraint firstItem="rdv-scroll" firstAttribute="leading" secondItem="RecipeDetailViewID" secondAttribute="leading" id="rdv-c-scroll-lead"/>
+                            <constraint firstItem="rdv-scroll" firstAttribute="top" secondItem="RecipeDetailSafeAreaID" secondAttribute="top" id="rdv-c-scroll-top"/>
+                            <constraint firstItem="rdv-scroll" firstAttribute="trailing" secondItem="RecipeDetailViewID" secondAttribute="trailing" id="rdv-c-scroll-trail"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="attributionLabel" destination="rdv-attribution" id="rdv-oc1"/>
+                        <outlet property="itemsCountLabel" destination="rdv-items-count" id="yTr-Ry-ckD"/>
+                        <outlet property="readyTimeLabel" destination="rdv-ready-time" id="rdv-oc6"/>
+                        <outlet property="recipeImageView" destination="rdv-hero" id="hRe-hi-SHm"/>
+                        <outlet property="saveImageView" destination="rdv-save" id="D9x-sp-QoF"/>
+                        <outlet property="scrollView" destination="rdv-scroll" id="rdv-oc8"/>
+                        <outlet property="segmentedSelector" destination="rdv-segment" id="rdv-oc9"/>
+                        <outlet property="stepperView" destination="rdv-stepper" id="rdv-oc10"/>
+                        <outlet property="tableView" destination="rdv-table" id="rdv-oc11"/>
+                        <outlet property="titleLabel" destination="rdv-title" id="rdv-oc12"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RecipeDetailPlaceholderID" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1628" y="700"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="ic_default_image" width="109" height="110"/>
+        <image name="ic_saved_outlined" width="24" height="24"/>
+        <image name="ic_timer_outlined" width="24" height="24"/>
+        <namedColor name="BrandGray1">
+            <color red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BrandGray2">
+            <color red="0.47450980392156861" green="0.47450980392156861" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BrandGray3">
+            <color red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BrandPrimary">
+            <color red="0.074509803921568626" green="0.58431372549019611" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

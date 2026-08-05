@@ -31,4 +31,9 @@ final class SavedCoordinator: ChildCoordinator {
         savedVC.coordinator = self
         navigationController.setViewControllers([savedVC], animated: false)
     }
+
+    // MARK: - Recipe selection
+    func recipeTapped(id: Int) {
+        parentDelegate?.savedCoordinator(self, didSelectRecipeWithId: id)
+    }
 }
