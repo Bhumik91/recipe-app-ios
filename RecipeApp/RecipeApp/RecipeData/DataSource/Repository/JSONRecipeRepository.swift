@@ -65,12 +65,12 @@ final class JSONRecipeRepository: RecipeRepositoryProtocol {
     }
 
     // MARK: - Local-Only Operations
-    func toggleSavedRecipe(recipeId: Int) {
-        savedDishesManager.toggleSaved(dishId: recipeId)
+    func toggleSavedRecipe(recipeId: Int, recipeName: String?, recipeImageURL: String?) {
+        savedDishesManager.toggleSaved(dishId: recipeId, recipeName: recipeName, recipeImageURL: recipeImageURL)
     }
 
-    func removeSavedRecipe(recipeId: Int)  {
-        savedDishesManager.remove(dishId: recipeId)
+    func removeSavedRecipe(recipeId: Int, recipeName: String?, recipeImageURL: String?)  {
+        savedDishesManager.remove(dishId: recipeId, recipeName: recipeName, recipeImageURL: recipeImageURL)
     }
 
     func isRecipeSaved(recipeId: Int) -> Bool {

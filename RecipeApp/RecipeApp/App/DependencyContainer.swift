@@ -17,6 +17,7 @@ final class DependencyContainer {
     let recipeRepository: RecipeRepositoryProtocol
     let permissionManager: PermissionManaging
     let recipeNotifier: RecipeNotifying
+    let notificationLogStore: NotificationLogStoring
     // MARK: - Initializer
     init() {
         let sessionManager = KeychainSessionStore()
@@ -29,9 +30,16 @@ final class DependencyContainer {
         self.permissionManager = permissionManager
         let recipeNotifier = SystemRecipeNotifier(permissionManager: permissionManager)
         self.recipeNotifier = recipeNotifier
+        // Records every save/remove regardless of notification permission.
+        let notificationLogStore = CoreDataNotificationLogStore(
+            stack: CoreDataStack(),
+            sessionManager: sessionManager
+        )
+        self.notificationLogStore = notificationLogStore
         let savedDishesManager = UserDefaultsSavedRecipeStore(
             userId: sessionManager.userId,
-            recipeNotifier: recipeNotifier
+            recipeNotifier: recipeNotifier,
+            notificationLogStore: notificationLogStore
         )
         self.savedDishesManager = savedDishesManager
         self.recentSearchesManager = UserDefaultsRecentSearchesStore(userId: sessionManager.userId)

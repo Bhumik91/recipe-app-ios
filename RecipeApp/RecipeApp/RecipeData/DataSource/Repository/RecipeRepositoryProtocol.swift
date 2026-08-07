@@ -21,12 +21,26 @@ protocol RecipeRepositoryProtocol {
     func fetchRecipeDetail(id: Int) async throws -> RecipeDetailDTO
     
     // Local-only operations (never hit the network)
+    // Name and image travel with the id so the banner and log row need no network round-trip.
     // TODO: consumed by the recipe card's bookmark toggle
-    func toggleSavedRecipe(recipeId: Int)
+    func toggleSavedRecipe(recipeId: Int, recipeName: String?, recipeImageURL: String?)
     // TODO: consumed by the Saved screen's remove action
-    func removeSavedRecipe(recipeId: Int)
+    func removeSavedRecipe(recipeId: Int, recipeName: String?, recipeImageURL: String?)
     // TODO: consumed by the recipe card's bookmark state
     func isRecipeSaved(recipeId: Int) -> Bool
     // TODO: consumed by the cuisine filter chips
     func getCuisines() -> [String]
+}
+
+// MARK: - Id-only Convenience
+// Protocol requirements can't carry default arguments, so the id-only forms live here.
+extension RecipeRepositoryProtocol {
+
+    func toggleSavedRecipe(recipeId: Int) {
+        toggleSavedRecipe(recipeId: recipeId, recipeName: nil, recipeImageURL: nil)
+    }
+
+    func removeSavedRecipe(recipeId: Int) {
+        removeSavedRecipe(recipeId: recipeId, recipeName: nil, recipeImageURL: nil)
+    }
 }
