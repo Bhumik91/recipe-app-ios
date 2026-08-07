@@ -66,6 +66,8 @@ class HomeViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        // Above the first-appearance return: the prompt belongs on the first Home after login.
+        viewModel.requestNotificationPermissionIfNeeded()
         guard !isFirstAppearance else {
             isFirstAppearance = false
             return
