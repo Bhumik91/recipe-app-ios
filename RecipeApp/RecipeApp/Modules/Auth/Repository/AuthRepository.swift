@@ -6,6 +6,7 @@
 //
 protocol AuthRepositoryProtocol {
     func login(userName: String, password: String) async throws
+    func getCurrentUser() async throws -> UserDetailsDTO
 }
 
 final class AuthRepository: AuthRepositoryProtocol {
@@ -26,6 +27,10 @@ final class AuthRepository: AuthRepositoryProtocol {
             throw NetworkError.decodingFailed
         }
         sessionManager.saveAuthSession(response)
-        return 
+        return
+    }
+
+    func getCurrentUser() async throws -> UserDetailsDTO {
+        try await apiClient.request(AuthEndPoint.currentUser, responseType: UserDetailsDTO.self)
     }
 }

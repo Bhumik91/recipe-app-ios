@@ -19,7 +19,7 @@ final class DependencyContainer {
     init() {
         let sessionManager = KeychainSessionStore()
         self.sessionManager = sessionManager
-        let apiClient = APIClient()
+        let apiClient = APIClient(sessionManager: sessionManager)
         self.apiClient = apiClient
         let savedDishesManager = UserDefaultsSavedRecipeStore(userId: sessionManager.userId)
         self.savedDishesManager = savedDishesManager
