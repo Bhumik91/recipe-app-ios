@@ -15,13 +15,24 @@ final class DependencyContainer {
     let savedDishesManager: SavedRecipeStoring
     let recentSearchesManager: RecentSearchesStoring
     let recipeRepository: RecipeRepositoryProtocol
+    let permissionManager: PermissionManaging
+    let recipeNotifier: RecipeNotifying
     // MARK: - Initializer
     init() {
         let sessionManager = KeychainSessionStore()
         self.sessionManager = sessionManager
         let apiClient = APIClient(sessionManager: sessionManager)
         self.apiClient = apiClient
-        let savedDishesManager = UserDefaultsSavedRecipeStore(userId: sessionManager.userId)
+        // The notifier goes to the saved-recipe store so a save/remove posts at the point
+        // the state actually changes.
+        let permissionManager = PermissionManager()
+        self.permissionManager = permissionManager
+        let recipeNotifier = SystemRecipeNotifier(permissionManager: permissionManager)
+        self.recipeNotifier = recipeNotifier
+        let savedDishesManager = UserDefaultsSavedRecipeStore(
+            userId: sessionManager.userId,
+            recipeNotifier: recipeNotifier
+        )
         self.savedDishesManager = savedDishesManager
         self.recentSearchesManager = UserDefaultsRecentSearchesStore(userId: sessionManager.userId)
         let jsonRecipeRepository = JSONRecipeRepository(
