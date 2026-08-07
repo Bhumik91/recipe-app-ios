@@ -24,6 +24,11 @@ final class KeychainSessionStore: SessionManaging {
     var accessToken: String? {
         return read(forKey: Keys.accessToken)
     }
+    // Stored in UserDefaults rather than the Keychain on purpose: clearSession() wipes every
+    // Keychain entry, and this flag has to outlive a logout so the intro isn't shown again.
+    var hasCompletedOnboarding: Bool {
+        UserDefaults.standard.bool(forKey: Keys.hasCompletedOnboarding)
+    }
     // MARK: - Save Session
     func saveAuthSession(_ response: LoginResponse) {
         if let userId = response.userId {
@@ -40,7 +45,11 @@ final class KeychainSessionStore: SessionManaging {
         }
         save("true", forKey: Keys.isLoggedIn)
     }
-    
+
+    func markOnboardingCompleted() {
+        UserDefaults.standard.set(true, forKey: Keys.hasCompletedOnboarding)
+    }
+
     // MARK: - Clear Session
     func clearSession() {
         delete(forKey: Keys.isLoggedIn)
@@ -56,6 +65,7 @@ final class KeychainSessionStore: SessionManaging {
         static let userName = "com.recipeapp.userName"
         static let accessToken = "com.recipeapp.accessToken"
         static let refreshToken = "com.recipeapp.refreshToken"
+        static let hasCompletedOnboarding = "com.recipeapp.hasCompletedOnboarding"
     }
     // MARK: - Keychain Helpers
     private func save(_ value: String, forKey key: String) {
