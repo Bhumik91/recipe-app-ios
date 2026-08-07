@@ -69,7 +69,9 @@ private extension DashboardCoordinator {
         case .notification:
             coordinator = NotificationCoordinator(navigationController: nav)
         case .profile:
-            coordinator = ProfileCoordinator(navigationController: nav)
+            let profileCoordinator = ProfileCoordinator(navigationController: nav, container: container)
+            profileCoordinator.parentDelegate = self
+            coordinator = profileCoordinator
         }
 
         addChild(coordinator)
@@ -123,6 +125,21 @@ extension DashboardCoordinator: SearchCoordinatorDelegate {
 extension DashboardCoordinator: SavedRecipeCoordinatorDelegate {
     func savedRecipeCoordinator(_ coordinator: SavedRecipeCoordinator, didSelectRecipeWithId id: Int) {
         showRecipeDetail(id: id, on: coordinator.navigationController)
+    }
+}
+
+// MARK: - ProfileCoordinatorDelegate
+extension DashboardCoordinator: ProfileCoordinatorDelegate {
+    func profileCoordinator(_ coordinator: ProfileCoordinator, didSelectRecipeWithId id: Int) {
+        showRecipeDetail(id: id, on: coordinator.navigationController)
+    }
+
+    func profileCoordinatorDidTapExploreRecipes(_ coordinator: ProfileCoordinator) {
+        tabBarController?.selectedIndex = TabBarItem.home.rawValue
+    }
+
+    func profileCoordinatorDidLogout(_ coordinator: ProfileCoordinator) {
+        parentDelegate?.dashboardCoordinatorDidLogout(self)
     }
 }
 
