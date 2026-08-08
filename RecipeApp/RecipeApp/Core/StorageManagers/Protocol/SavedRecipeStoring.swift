@@ -6,14 +6,16 @@
 //
 
 /// Owns the saved-state of recipes, and is where a save or remove fans out to the
-/// notification side effects. Name and image are optional — callers holding only an id
-/// fall back to a "Recipe #<id>" placeholder.
+/// notification side effects. Name, image, prep time and cuisines are optional — callers
+/// holding only an id fall back to a "Recipe #<id>" placeholder.
 protocol SavedRecipeStoring {
     func savedDishIds() -> [Int]
     func isSaved(dishId: Int) -> Bool
-    func save(dishId: Int, recipeName: String?, recipeImageURL: String?)
+    func save(dishId: Int, recipeName: String?, recipeImageURL: String?, readyInMinutes: Int?, cuisines: [String]?)
     func remove(dishId: Int, recipeName: String?, recipeImageURL: String?)
-    func toggleSaved(dishId: Int, recipeName: String?, recipeImageURL: String?)
+    func toggleSaved(dishId: Int, recipeName: String?, recipeImageURL: String?, readyInMinutes: Int?, cuisines: [String]?)
+    /// The current user's saved recipes, read locally — no network round-trip.
+    func fetchAllSaved() -> [RecipeUIModel]
 }
 
 // MARK: - Id-only Convenience
@@ -21,7 +23,7 @@ protocol SavedRecipeStoring {
 extension SavedRecipeStoring {
 
     func save(dishId: Int) {
-        save(dishId: dishId, recipeName: nil, recipeImageURL: nil)
+        save(dishId: dishId, recipeName: nil, recipeImageURL: nil, readyInMinutes: nil, cuisines: nil)
     }
 
     func remove(dishId: Int) {
@@ -29,6 +31,6 @@ extension SavedRecipeStoring {
     }
 
     func toggleSaved(dishId: Int) {
-        toggleSaved(dishId: dishId, recipeName: nil, recipeImageURL: nil)
+        toggleSaved(dishId: dishId, recipeName: nil, recipeImageURL: nil, readyInMinutes: nil, cuisines: nil)
     }
 }
