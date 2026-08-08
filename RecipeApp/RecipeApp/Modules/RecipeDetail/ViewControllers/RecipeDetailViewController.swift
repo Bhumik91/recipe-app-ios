@@ -62,10 +62,8 @@ final class RecipeDetailViewController: UIViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        // Disable implicit actions so the gradient's frame snaps to the card's current
-        // bounds immediately, instead of interpolating (and briefly rendering at the
-        // wrong size) when this layout pass lands inside another animation's transaction
-        // — e.g. the segment-switch table crossfade.
+        // Disable implicit actions so the gradient snaps to the card's bounds instead of
+        // interpolating when this layout lands inside another animation's transaction.
         CATransaction.begin()
         CATransaction.setDisableActions(true)
         recipeImageGradientLayer?.frame = recipeImageView.bounds

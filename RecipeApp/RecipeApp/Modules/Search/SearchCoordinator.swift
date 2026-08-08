@@ -43,9 +43,8 @@ final class SearchCoordinator: NSObject, ChildCoordinator {
 
 // MARK: - UINavigationControllerDelegate
 extension SearchCoordinator: UINavigationControllerDelegate {
-    // Fires after ANY pop that reveals a different top view controller — the back button's
-    // plain popViewController(animated:) and the interactive swipe-back gesture both land
-    // here, so this is the one place that needs to notice the screen is gone and clean up.
+    // Fires after any pop revealing a different top controller — back button and swipe-back
+    // both land here, so this is the single cleanup point.
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         guard !navigationController.viewControllers.contains(where: { $0 is SearchViewController }) else { return }
         navigationController.delegate = nil

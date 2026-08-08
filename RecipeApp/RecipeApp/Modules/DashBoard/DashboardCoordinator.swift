@@ -2,10 +2,7 @@
 import UIKit
 
 /// Coordinator responsible for the dashboard tab-bar flow.
-///
-/// Conforms to `ChildCoordinator` (it is a child of the app coordinator) and to
-/// `ParentCoordinator` (it owns the per-tab child coordinators). Child
-/// management (`addChild`/`removeChild`) is provided by `ParentCoordinator`.
+/// A `ChildCoordinator` of the app coordinator, and `ParentCoordinator` of the per-tab ones.
 final class DashboardCoordinator: ChildCoordinator, ParentCoordinator {
     // MARK: - ChildCoordinator
     typealias ParentDelegate = DashboardCoordinatorDelegate

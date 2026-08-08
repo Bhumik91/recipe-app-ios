@@ -14,9 +14,13 @@ protocol APIClientProtocol {
 final class APIClient: APIClientProtocol {
     // MARK: - Properties
     private let session: Session
+    /// Supplies the bearer token for endpoints with `requiresAuthToken` — the equivalent of
+    /// Android's AuthInterceptor. Optional so unauthenticated callers can still build a client.
+    private let sessionManager: SessionManaging?
     // MARK: - Initializer
-    init(session: Session = .default) {
+    init(session: Session = .default, sessionManager: SessionManaging? = nil) {
         self.session = session
+        self.sessionManager = sessionManager
     }
     // MARK: - Request Methods
     func request<T: Decodable>(_ endpoint: APIEndPoint,responseType: T.Type) async throws -> T {
@@ -47,6 +51,13 @@ final class APIClient: APIClientProtocol {
         var request = URLRequest(url: url)
         request.httpMethod = endpoint.method.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Accept")
+        // Attaching the bearer token for endpoints that need it (e.g. /auth/me).
+        // Mirrors Android's AuthInterceptor: skipped entirely when there's no token.
+        if endpoint.requiresAuthToken,
+           let accessToken = sessionManager?.accessToken,
+           !accessToken.isEmpty {
+            request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        }
         // Adding body in url request
         if let body = endpoint.body {
             request.httpBody = try JSONEncoder().encode(body)
