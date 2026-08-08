@@ -60,10 +60,15 @@ final class RecipeDetailViewModel {
         recipe.isSaved.toggle()
         state = .success(recipe)
         // The detail is already loaded, so the notification can name the recipe outright.
+        // cuisines: nil — RecipeDetailUIModel carries no cuisine data, so a recipe saved from
+        // here won't match a cuisine filter on the Saved tab until re-saved from a screen
+        // that has it. Narrow, accepted gap — see the migration plan's Phase 5 notes.
         recipeRepository.toggleSavedRecipe(
             recipeId: recipeId,
             recipeName: recipe.title,
-            recipeImageURL: recipe.imageURL
+            recipeImageURL: recipe.imageURL,
+            readyInMinutes: recipe.readyInMinutes,
+            cuisines: nil
         )
     }
 }

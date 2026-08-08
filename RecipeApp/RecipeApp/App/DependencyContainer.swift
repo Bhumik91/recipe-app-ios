@@ -30,14 +30,17 @@ final class DependencyContainer {
         self.permissionManager = permissionManager
         let recipeNotifier = SystemRecipeNotifier(permissionManager: permissionManager)
         self.recipeNotifier = recipeNotifier
+        // One stack backs both entities in RecipeApp.xcdatamodeld.
+        let coreDataStack = CoreDataStack()
         // Records every save/remove regardless of notification permission.
         let notificationLogStore = CoreDataNotificationLogStore(
-            stack: CoreDataStack(),
+            stack: coreDataStack,
             sessionManager: sessionManager
         )
         self.notificationLogStore = notificationLogStore
-        let savedDishesManager = UserDefaultsSavedRecipeStore(
-            userId: sessionManager.userId,
+        let savedDishesManager = CoreDataSavedRecipeStore(
+            stack: coreDataStack,
+            sessionManager: sessionManager,
             recipeNotifier: recipeNotifier,
             notificationLogStore: notificationLogStore
         )

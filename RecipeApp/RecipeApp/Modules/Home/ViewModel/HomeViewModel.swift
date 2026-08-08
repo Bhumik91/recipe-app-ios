@@ -208,7 +208,9 @@ final class HomeViewModel {
         recipeRepository.toggleSavedRecipe(
             recipeId: dishId,
             recipeName: recipe?.title,
-            recipeImageURL: recipe?.imageURL
+            recipeImageURL: recipe?.imageURL,
+            readyInMinutes: recipe?.readyInMinutes,
+            cuisines: recipe?.cuisines
         )
 
         if let index = exploreItems.firstIndex(where: { $0.id == dishId }) {
