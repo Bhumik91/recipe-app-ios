@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Bold.ttf">
+            <string>Poppins-Bold</string>
+        </array>
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+        <array key="Poppins-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" customClass="LogoutConfirmationView" customModule="RecipeApp" customModuleProvider="target">
+            <connections>
+                <outlet property="cancelButton" destination="lgo-cancel" id="lgo-oc1"/>
+                <outlet property="confirmButton" destination="lgo-confirm" id="lgo-oc2"/>
+                <outlet property="contentView" destination="lgo-root" id="lgo-oc3"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="lgo-root">
+            <rect key="frame" x="0.0" y="0.0" width="345" height="196"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log out?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgo-title">
+                    <rect key="frame" x="24" y="24" width="297" height="30"/>
+                    <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="20"/>
+                    <color key="textColor" name="BrandBlack"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You'll need to log in again to access your saved recipes and account." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgo-body">
+                    <rect key="frame" x="24" y="62" width="297" height="42"/>
+                    <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                    <color key="textColor" name="BrandGray3"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lgo-cancel">
+                    <rect key="frame" x="150" y="128" width="72" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="lgo-c-cancel-h"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
+                    <state key="normal" title="Cancel">
+                        <color key="titleColor" name="BrandGray2"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lgo-confirm">
+                    <rect key="frame" x="246" y="128" width="75" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="lgo-c-confirm-h"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
+                    <state key="normal" title="Logout">
+                        <color key="titleColor" name="BrandPrimary"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" name="BrandWhite"/>
+            <constraints>
+                <constraint firstItem="lgo-title" firstAttribute="top" secondItem="lgo-root" secondAttribute="top" constant="24" id="lgo-c1"/>
+                <constraint firstItem="lgo-title" firstAttribute="leading" secondItem="lgo-root" secondAttribute="leading" constant="24" id="lgo-c2"/>
+                <constraint firstAttribute="trailing" secondItem="lgo-title" secondAttribute="trailing" constant="24" id="lgo-c3"/>
+                <constraint firstItem="lgo-body" firstAttribute="top" secondItem="lgo-title" secondAttribute="bottom" constant="8" id="lgo-c4"/>
+                <constraint firstItem="lgo-body" firstAttribute="leading" secondItem="lgo-title" secondAttribute="leading" id="lgo-c5"/>
+                <constraint firstItem="lgo-body" firstAttribute="trailing" secondItem="lgo-title" secondAttribute="trailing" id="lgo-c6"/>
+                <constraint firstItem="lgo-confirm" firstAttribute="top" secondItem="lgo-body" secondAttribute="bottom" constant="24" id="lgo-c7"/>
+                <constraint firstAttribute="trailing" secondItem="lgo-confirm" secondAttribute="trailing" constant="24" id="lgo-c8"/>
+                <constraint firstItem="lgo-cancel" firstAttribute="centerY" secondItem="lgo-confirm" secondAttribute="centerY" id="lgo-c9"/>
+                <constraint firstItem="lgo-confirm" firstAttribute="leading" secondItem="lgo-cancel" secondAttribute="trailing" constant="24" id="lgo-c10"/>
+                <constraint firstAttribute="bottom" secondItem="lgo-confirm" secondAttribute="bottom" constant="24" id="lgo-c11"/>
+            </constraints>
+            <point key="canvasLocation" x="132" y="-8"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="BrandBlack">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BrandGray2">
+            <color red="0.47450980392156861" green="0.47450980392156861" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BrandGray3">
+            <color red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BrandPrimary">
+            <color red="0.074509803921568626" green="0.58431372549019611" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BrandWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
