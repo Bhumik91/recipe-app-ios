@@ -57,7 +57,8 @@ private extension DashboardCoordinator {
                 navigationController: nav,
                 homeViewModel: HomeViewModel(
                     recipeRepository: container.recipeRepository,
-                    sessionManager: container.sessionManager
+                    sessionManager: container.sessionManager,
+                    permissionManager: container.permissionManager
                 ),
                 container: container
             )

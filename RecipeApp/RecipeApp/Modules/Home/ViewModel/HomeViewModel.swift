@@ -18,6 +18,7 @@ final class HomeViewModel {
     // MARK: - Dependencies
     private let recipeRepository: RecipeRepositoryProtocol
     private let sessionManager: SessionManaging
+    private let permissionManager: PermissionManaging
     private let cuisineOptions: [String]
 
     // MARK: - Pagination State
@@ -36,10 +37,29 @@ final class HomeViewModel {
         sessionManager.userName ?? "there"
     }
 
+    // MARK: - Notification Permission
+    // Avoids a redundant status lookup on every return to the Home tab.
+    private var hasRequestedNotificationPermission = false
+
+    /// Asks for notification authorization the first time Home is shown.
+    /// Fire-and-forget — neither the prompt nor a refusal may block the screen.
+    func requestNotificationPermissionIfNeeded() {
+        guard !hasRequestedNotificationPermission else { return }
+        hasRequestedNotificationPermission = true
+        Task { [permissionManager] in
+            await permissionManager.requestIfNeeded(.notifications)
+        }
+    }
+
     // MARK: - Initialization
-    init(recipeRepository: RecipeRepositoryProtocol, sessionManager: SessionManaging) {
+    init(
+        recipeRepository: RecipeRepositoryProtocol,
+        sessionManager: SessionManaging,
+        permissionManager: PermissionManaging
+    ) {
         self.recipeRepository = recipeRepository
         self.sessionManager = sessionManager
+        self.permissionManager = permissionManager
         self.cuisineOptions = recipeRepository.getCuisines()
         filterState.cuisineChips = Self.buildCuisineChips(from: cuisineOptions, selected: [])
         setupScreenState()
