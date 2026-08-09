@@ -68,7 +68,15 @@ final class RemoteRecipeRepository: RecipeRepositoryProtocol {
 
     // Local-only operations (never hit the network)
     func toggleSavedRecipe(recipeId: Int, recipeName: String?, recipeImageURL: String?) {
-        savedDishesManager.toggleSaved(dishId: recipeId, recipeName: recipeName, recipeImageURL: recipeImageURL)
+        // readyInMinutes/cuisines land in a follow-up commit that widens this method's own
+        // signature; the store already accepts them.
+        savedDishesManager.toggleSaved(
+            dishId: recipeId,
+            recipeName: recipeName,
+            recipeImageURL: recipeImageURL,
+            readyInMinutes: nil,
+            cuisines: nil
+        )
     }
 
     func removeSavedRecipe(recipeId: Int, recipeName: String?, recipeImageURL: String?) {

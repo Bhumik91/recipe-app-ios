@@ -33,7 +33,9 @@ final class UserDefaultsSavedRecipeStore: SavedRecipeStoring {
         savedDishIds().contains(dishId)
     }
     // MARK: - Write
-    func save(dishId: Int, recipeName: String?, recipeImageURL: String?) {
+    // readyInMinutes/cuisines are unused here — this store is being replaced by
+    // CoreDataSavedRecipeStore, which is the one that persists them.
+    func save(dishId: Int, recipeName: String?, recipeImageURL: String?, readyInMinutes: Int?, cuisines: [String]?) {
         var ids = savedDishIds()
 
         guard !ids.contains(dishId) else { return }
@@ -47,13 +49,16 @@ final class UserDefaultsSavedRecipeStore: SavedRecipeStoring {
         defaults.set(ids, forKey: storageKey)
         notifyAndLog(dishId: dishId, recipeName: recipeName, recipeImageURL: recipeImageURL, action: .removed)
     }
-    func toggleSaved(dishId: Int, recipeName: String?, recipeImageURL: String?) {
+    func toggleSaved(dishId: Int, recipeName: String?, recipeImageURL: String?, readyInMinutes: Int?, cuisines: [String]?) {
         if isSaved(dishId: dishId) {
             remove(dishId: dishId, recipeName: recipeName, recipeImageURL: recipeImageURL)
         } else {
-            save(dishId: dishId, recipeName: recipeName, recipeImageURL: recipeImageURL)
+            save(dishId: dishId, recipeName: recipeName, recipeImageURL: recipeImageURL, readyInMinutes: readyInMinutes, cuisines: cuisines)
         }
     }
+    // Unused during the transition — repositories still fetch by id over the network in
+    // this commit. CoreDataSavedRecipeStore.fetchAllSaved() is the real implementation.
+    func fetchAllSaved() -> [RecipeUIModel] { [] }
     // MARK: - Notification Side Effects
     // The banner needs notification permission; the log row does not.
     private func notifyAndLog(dishId: Int, recipeName: String?, recipeImageURL: String?, action: RecipeAction) {

@@ -66,7 +66,15 @@ final class JSONRecipeRepository: RecipeRepositoryProtocol {
 
     // MARK: - Local-Only Operations
     func toggleSavedRecipe(recipeId: Int, recipeName: String?, recipeImageURL: String?) {
-        savedDishesManager.toggleSaved(dishId: recipeId, recipeName: recipeName, recipeImageURL: recipeImageURL)
+        // readyInMinutes/cuisines land in a follow-up commit that widens this method's own
+        // signature; the store already accepts them.
+        savedDishesManager.toggleSaved(
+            dishId: recipeId,
+            recipeName: recipeName,
+            recipeImageURL: recipeImageURL,
+            readyInMinutes: nil,
+            cuisines: nil
+        )
     }
 
     func removeSavedRecipe(recipeId: Int, recipeName: String?, recipeImageURL: String?)  {
