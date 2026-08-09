@@ -46,10 +46,10 @@ final class RemoteRecipeRepository: RecipeRepositoryProtocol {
         }
     }
 
+    // Local read, no network — matches RemoteRecipeRepositoryImpl delegating straight to
+    // savedRecipesManager.observeSavedRecipes().first() on Android.
     func fetchSavedRecipes() async throws -> [RecipeUIModel] {
-        let ids = savedDishesManager.savedDishIds()
-        guard !ids.isEmpty else { return [] }
-        return try await fetchRecipes(byIds: ids)
+        savedDishesManager.fetchAllSaved()
     }
 
     func searchRecipes(query: String, diet: String?) async throws -> [RecipeUIModel] {
@@ -67,15 +67,13 @@ final class RemoteRecipeRepository: RecipeRepositoryProtocol {
     }
 
     // Local-only operations (never hit the network)
-    func toggleSavedRecipe(recipeId: Int, recipeName: String?, recipeImageURL: String?) {
-        // readyInMinutes/cuisines land in a follow-up commit that widens this method's own
-        // signature; the store already accepts them.
+    func toggleSavedRecipe(recipeId: Int, recipeName: String?, recipeImageURL: String?, readyInMinutes: Int?, cuisines: [String]?) {
         savedDishesManager.toggleSaved(
             dishId: recipeId,
             recipeName: recipeName,
             recipeImageURL: recipeImageURL,
-            readyInMinutes: nil,
-            cuisines: nil
+            readyInMinutes: readyInMinutes,
+            cuisines: cuisines
         )
     }
 

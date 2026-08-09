@@ -21,9 +21,10 @@ protocol RecipeRepositoryProtocol {
     func fetchRecipeDetail(id: Int) async throws -> RecipeDetailDTO
     
     // Local-only operations (never hit the network)
-    // Name and image travel with the id so the banner and log row need no network round-trip.
+    // Name, image, prep time and cuisines travel with the id so the banner, log row and the
+    // Saved tab's local cache all need no further network round-trip.
     // TODO: consumed by the recipe card's bookmark toggle
-    func toggleSavedRecipe(recipeId: Int, recipeName: String?, recipeImageURL: String?)
+    func toggleSavedRecipe(recipeId: Int, recipeName: String?, recipeImageURL: String?, readyInMinutes: Int?, cuisines: [String]?)
     // TODO: consumed by the Saved screen's remove action
     func removeSavedRecipe(recipeId: Int, recipeName: String?, recipeImageURL: String?)
     // TODO: consumed by the recipe card's bookmark state
@@ -37,7 +38,7 @@ protocol RecipeRepositoryProtocol {
 extension RecipeRepositoryProtocol {
 
     func toggleSavedRecipe(recipeId: Int) {
-        toggleSavedRecipe(recipeId: recipeId, recipeName: nil, recipeImageURL: nil)
+        toggleSavedRecipe(recipeId: recipeId, recipeName: nil, recipeImageURL: nil, readyInMinutes: nil, cuisines: nil)
     }
 
     func removeSavedRecipe(recipeId: Int) {

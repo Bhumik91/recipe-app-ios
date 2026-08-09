@@ -50,10 +50,9 @@ final class JSONRecipeRepository: RecipeRepositoryProtocol {
             }
     }
 
+    // Local read, no network — see RemoteRecipeRepository's counterpart for why.
     func fetchSavedRecipes() async throws -> [RecipeUIModel] {
-        let ids = savedDishesManager.savedDishIds()
-        guard !ids.isEmpty else { return [] }
-        return try await fetchRecipes(byIds: ids)
+        savedDishesManager.fetchAllSaved()
     }
 
     // No server to filter against, so query/diet are ignored and the full bundled set is returned.
@@ -65,15 +64,13 @@ final class JSONRecipeRepository: RecipeRepositoryProtocol {
     }
 
     // MARK: - Local-Only Operations
-    func toggleSavedRecipe(recipeId: Int, recipeName: String?, recipeImageURL: String?) {
-        // readyInMinutes/cuisines land in a follow-up commit that widens this method's own
-        // signature; the store already accepts them.
+    func toggleSavedRecipe(recipeId: Int, recipeName: String?, recipeImageURL: String?, readyInMinutes: Int?, cuisines: [String]?) {
         savedDishesManager.toggleSaved(
             dishId: recipeId,
             recipeName: recipeName,
             recipeImageURL: recipeImageURL,
-            readyInMinutes: nil,
-            cuisines: nil
+            readyInMinutes: readyInMinutes,
+            cuisines: cuisines
         )
     }
 
