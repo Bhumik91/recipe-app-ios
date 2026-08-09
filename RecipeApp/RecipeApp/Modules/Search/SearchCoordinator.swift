@@ -31,7 +31,9 @@ final class SearchCoordinator: NSObject, ChildCoordinator {
         )
         let searchVC = SearchViewController.instantiate(viewModel: viewModel)
         searchVC.coordinator = self
-        navigationController.delegate = self
+        // Observer, not `navigationController.delegate` — several objects watch this stack
+        // and the single delegate slot let the last assignment cancel the others.
+        (navigationController as? DashboardNavigationController)?.addStackObserver(self)
         navigationController.pushViewController(searchVC, animated: true)
     }
 
@@ -41,13 +43,13 @@ final class SearchCoordinator: NSObject, ChildCoordinator {
     }
 }
 
-// MARK: - UINavigationControllerDelegate
-extension SearchCoordinator: UINavigationControllerDelegate {
+// MARK: - NavigationStackObserving
+extension SearchCoordinator: NavigationStackObserving {
     // Fires after any pop revealing a different top controller — back button and swipe-back
     // both land here, so this is the single cleanup point.
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         guard !navigationController.viewControllers.contains(where: { $0 is SearchViewController }) else { return }
-        navigationController.delegate = nil
+        (navigationController as? DashboardNavigationController)?.removeStackObserver(self)
         parentDelegate?.searchCoordinatorDidFinish(self)
     }
 }

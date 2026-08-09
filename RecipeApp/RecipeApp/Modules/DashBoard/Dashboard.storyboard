@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fov-ud-gUN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
@@ -72,7 +72,7 @@
             </objects>
             <point key="canvasLocation" x="1628" y="-68"/>
         </scene>
-        <!--Saved View Controller-->
+        <!--Saved Recipe View Controller-->
         <scene sceneID="saved-scene-id">
             <objects>
                 <viewController storyboardIdentifier="SavedRecipeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SavedViewControllerID" customClass="SavedRecipeViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -187,71 +187,71 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-scroll">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-scroll">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-content">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-content">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="600"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_default_image" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-avatar">
-                                                <rect key="frame" x="156.5" y="24" width="80" height="80"/>
+                                                <rect key="frame" x="156.66666666666666" y="24" width="80" height="80"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="80" id="pfv-c-avatar-w"/>
                                                     <constraint firstAttribute="height" constant="80" id="pfv-c-avatar-h"/>
+                                                    <constraint firstAttribute="width" constant="80" id="pfv-c-avatar-w"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jane Doe" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-display-name">
-                                                <rect key="frame" x="24" y="120" width="345" height="30"/>
+                                                <rect key="frame" x="24" y="120" width="345" height="28"/>
                                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="20"/>
                                                 <color key="textColor" name="BrandBlack"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@janedoe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-username">
-                                                <rect key="frame" x="24" y="154" width="345" height="21"/>
+                                                <rect key="frame" x="24" y="152" width="345" height="19.666666666666657"/>
                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
                                                 <color key="textColor" name="BrandGray2"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jane@example.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-email">
-                                                <rect key="frame" x="24" y="179" width="345" height="21"/>
+                                                <rect key="frame" x="24" y="175.66666666666669" width="345" height="19.666666666666657"/>
                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
                                                 <color key="textColor" name="BrandGray2"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-segment" customClass="SegmentedSelectorView" customModule="RecipeApp" customModuleProvider="target">
-                                                <rect key="frame" x="24" y="224" width="345" height="48"/>
+                                                <rect key="frame" x="24" y="219.33333333333331" width="345" height="48"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="pfv-c-segment-h"/>
                                                 </constraints>
                                             </view>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="NO" scrollEnabled="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="166" sectionHeaderHeight="0.0" sectionFooterHeight="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-table" customClass="SelfSizingTableView" customModule="RecipeApp" customModuleProvider="target">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="166" sectionHeaderHeight="0.0" sectionFooterHeight="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-table" customClass="SelfSizingTableView" customModule="RecipeApp" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="288" width="393" height="300"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-empty-container" userLabel="Tab Empty State">
-                                                <rect key="frame" x="24" y="288" width="345" height="180"/>
+                                                <rect key="frame" x="24" y="299.33333333333331" width="345" height="162"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_chef_het" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-empty-icon">
-                                                        <rect key="frame" x="140.5" y="0.0" width="64" height="64"/>
+                                                        <rect key="frame" x="140.66666666666666" y="0.0" width="64" height="64"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="64" id="pfv-c-empty-icon-w"/>
                                                             <constraint firstAttribute="height" constant="64" id="pfv-c-empty-icon-h"/>
+                                                            <constraint firstAttribute="width" constant="64" id="pfv-c-empty-icon-w"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Saved Recipes" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-empty-title">
-                                                        <rect key="frame" x="0.0" y="80" width="345" height="24"/>
+                                                        <rect key="frame" x="0.0" y="80" width="345" height="22.666666666666671"/>
                                                         <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
                                                         <color key="textColor" name="BrandGray1"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please explore recipes to save your favorites." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-empty-body">
-                                                        <rect key="frame" x="0.0" y="108" width="345" height="21"/>
+                                                        <rect key="frame" x="0.0" y="106.66666666666669" width="345" height="19.666666666666671"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
                                                         <color key="textColor" name="BrandGray3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explore Recipes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-empty-action">
-                                                        <rect key="frame" x="0.0" y="145" width="345" height="21"/>
+                                                        <rect key="frame" x="0.0" y="142.33333333333331" width="345" height="19.666666666666657"/>
                                                         <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
                                                         <color key="textColor" name="BrandPrimary"/>
                                                         <nil key="highlightedColor"/>
@@ -259,32 +259,24 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstItem="pfv-empty-icon" firstAttribute="top" secondItem="pfv-empty-container" secondAttribute="top" id="pfv-c-ei-top"/>
-                                                    <constraint firstItem="pfv-empty-icon" firstAttribute="centerX" secondItem="pfv-empty-container" secondAttribute="centerX" id="pfv-c-ei-cx"/>
-                                                    <constraint firstItem="pfv-empty-title" firstAttribute="top" secondItem="pfv-empty-icon" secondAttribute="bottom" constant="16" id="pfv-c-et-top"/>
-                                                    <constraint firstItem="pfv-empty-title" firstAttribute="leading" secondItem="pfv-empty-container" secondAttribute="leading" id="pfv-c-et-lead"/>
-                                                    <constraint firstAttribute="trailing" secondItem="pfv-empty-title" secondAttribute="trailing" id="pfv-c-et-trail"/>
-                                                    <constraint firstItem="pfv-empty-body" firstAttribute="top" secondItem="pfv-empty-title" secondAttribute="bottom" constant="4" id="pfv-c-eb-top"/>
-                                                    <constraint firstItem="pfv-empty-body" firstAttribute="leading" secondItem="pfv-empty-container" secondAttribute="leading" id="pfv-c-eb-lead"/>
-                                                    <constraint firstAttribute="trailing" secondItem="pfv-empty-body" secondAttribute="trailing" id="pfv-c-eb-trail"/>
-                                                    <constraint firstItem="pfv-empty-action" firstAttribute="top" secondItem="pfv-empty-body" secondAttribute="bottom" constant="16" id="pfv-c-ea-top"/>
-                                                    <constraint firstItem="pfv-empty-action" firstAttribute="leading" secondItem="pfv-empty-container" secondAttribute="leading" id="pfv-c-ea-lead"/>
-                                                    <constraint firstAttribute="trailing" secondItem="pfv-empty-action" secondAttribute="trailing" id="pfv-c-ea-trail"/>
                                                     <constraint firstAttribute="bottom" secondItem="pfv-empty-action" secondAttribute="bottom" id="pfv-c-ea-bot"/>
+                                                    <constraint firstItem="pfv-empty-action" firstAttribute="leading" secondItem="pfv-empty-container" secondAttribute="leading" id="pfv-c-ea-lead"/>
+                                                    <constraint firstItem="pfv-empty-action" firstAttribute="top" secondItem="pfv-empty-body" secondAttribute="bottom" constant="16" id="pfv-c-ea-top"/>
+                                                    <constraint firstAttribute="trailing" secondItem="pfv-empty-action" secondAttribute="trailing" id="pfv-c-ea-trail"/>
+                                                    <constraint firstItem="pfv-empty-body" firstAttribute="leading" secondItem="pfv-empty-container" secondAttribute="leading" id="pfv-c-eb-lead"/>
+                                                    <constraint firstItem="pfv-empty-body" firstAttribute="top" secondItem="pfv-empty-title" secondAttribute="bottom" constant="4" id="pfv-c-eb-top"/>
+                                                    <constraint firstAttribute="trailing" secondItem="pfv-empty-body" secondAttribute="trailing" id="pfv-c-eb-trail"/>
+                                                    <constraint firstItem="pfv-empty-icon" firstAttribute="centerX" secondItem="pfv-empty-container" secondAttribute="centerX" id="pfv-c-ei-cx"/>
+                                                    <constraint firstItem="pfv-empty-icon" firstAttribute="top" secondItem="pfv-empty-container" secondAttribute="top" id="pfv-c-ei-top"/>
+                                                    <constraint firstItem="pfv-empty-title" firstAttribute="leading" secondItem="pfv-empty-container" secondAttribute="leading" id="pfv-c-et-lead"/>
+                                                    <constraint firstItem="pfv-empty-title" firstAttribute="top" secondItem="pfv-empty-icon" secondAttribute="bottom" constant="16" id="pfv-c-et-top"/>
+                                                    <constraint firstAttribute="trailing" secondItem="pfv-empty-title" secondAttribute="trailing" id="pfv-c-et-trail"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="pfv-avatar" firstAttribute="top" secondItem="pfv-content" secondAttribute="top" constant="24" id="pfv-c1"/>
-                                            <constraint firstItem="pfv-avatar" firstAttribute="centerX" secondItem="pfv-content" secondAttribute="centerX" id="pfv-c2"/>
-                                            <constraint firstItem="pfv-display-name" firstAttribute="top" secondItem="pfv-avatar" secondAttribute="bottom" constant="16" id="pfv-c3"/>
-                                            <constraint firstItem="pfv-display-name" firstAttribute="leading" secondItem="pfv-content" secondAttribute="leading" constant="24" id="pfv-c4"/>
-                                            <constraint firstAttribute="trailing" secondItem="pfv-display-name" secondAttribute="trailing" constant="24" id="pfv-c5"/>
-                                            <constraint firstItem="pfv-username" firstAttribute="top" secondItem="pfv-display-name" secondAttribute="bottom" constant="4" id="pfv-c6"/>
-                                            <constraint firstItem="pfv-username" firstAttribute="leading" secondItem="pfv-display-name" secondAttribute="leading" id="pfv-c7"/>
-                                            <constraint firstItem="pfv-username" firstAttribute="trailing" secondItem="pfv-display-name" secondAttribute="trailing" id="pfv-c8"/>
-                                            <constraint firstItem="pfv-email" firstAttribute="top" secondItem="pfv-username" secondAttribute="bottom" constant="4" id="pfv-c9"/>
                                             <constraint firstItem="pfv-email" firstAttribute="leading" secondItem="pfv-display-name" secondAttribute="leading" id="pfv-c10"/>
                                             <constraint firstItem="pfv-email" firstAttribute="trailing" secondItem="pfv-display-name" secondAttribute="trailing" id="pfv-c11"/>
                                             <constraint firstItem="pfv-segment" firstAttribute="top" secondItem="pfv-email" secondAttribute="bottom" constant="24" id="pfv-c12"/>
@@ -295,19 +287,27 @@
                                             <constraint firstAttribute="trailing" secondItem="pfv-table" secondAttribute="trailing" id="pfv-c17"/>
                                             <constraint firstItem="pfv-empty-container" firstAttribute="top" secondItem="pfv-segment" secondAttribute="bottom" constant="32" id="pfv-c18"/>
                                             <constraint firstItem="pfv-empty-container" firstAttribute="leading" secondItem="pfv-display-name" secondAttribute="leading" id="pfv-c19"/>
+                                            <constraint firstItem="pfv-avatar" firstAttribute="centerX" secondItem="pfv-content" secondAttribute="centerX" id="pfv-c2"/>
                                             <constraint firstItem="pfv-empty-container" firstAttribute="trailing" secondItem="pfv-display-name" secondAttribute="trailing" id="pfv-c20"/>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="pfv-table" secondAttribute="bottom" constant="120" id="pfv-c21"/>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="pfv-empty-container" secondAttribute="bottom" constant="120" id="pfv-c22"/>
-                                            <constraint firstAttribute="bottom" priority="250" secondItem="pfv-table" secondAttribute="bottom" constant="120" id="pfv-c23"/>
+                                            <constraint firstAttribute="bottom" secondItem="pfv-table" secondAttribute="bottom" priority="250" constant="120" id="pfv-c23"/>
+                                            <constraint firstItem="pfv-display-name" firstAttribute="top" secondItem="pfv-avatar" secondAttribute="bottom" constant="16" id="pfv-c3"/>
+                                            <constraint firstItem="pfv-display-name" firstAttribute="leading" secondItem="pfv-content" secondAttribute="leading" constant="24" id="pfv-c4"/>
+                                            <constraint firstAttribute="trailing" secondItem="pfv-display-name" secondAttribute="trailing" constant="24" id="pfv-c5"/>
+                                            <constraint firstItem="pfv-username" firstAttribute="top" secondItem="pfv-display-name" secondAttribute="bottom" constant="4" id="pfv-c6"/>
+                                            <constraint firstItem="pfv-username" firstAttribute="leading" secondItem="pfv-display-name" secondAttribute="leading" id="pfv-c7"/>
+                                            <constraint firstItem="pfv-username" firstAttribute="trailing" secondItem="pfv-display-name" secondAttribute="trailing" id="pfv-c8"/>
+                                            <constraint firstItem="pfv-email" firstAttribute="top" secondItem="pfv-username" secondAttribute="bottom" constant="4" id="pfv-c9"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="pfv-content" firstAttribute="top" secondItem="pfv-content-lg" secondAttribute="top" id="pfv-c-cl-top"/>
-                                    <constraint firstItem="pfv-content" firstAttribute="leading" secondItem="pfv-content-lg" secondAttribute="leading" id="pfv-c-cl-lead"/>
-                                    <constraint firstItem="pfv-content" firstAttribute="trailing" secondItem="pfv-content-lg" secondAttribute="trailing" id="pfv-c-cl-trail"/>
                                     <constraint firstItem="pfv-content" firstAttribute="bottom" secondItem="pfv-content-lg" secondAttribute="bottom" id="pfv-c-cl-bot"/>
+                                    <constraint firstItem="pfv-content" firstAttribute="leading" secondItem="pfv-content-lg" secondAttribute="leading" id="pfv-c-cl-lead"/>
+                                    <constraint firstItem="pfv-content" firstAttribute="top" secondItem="pfv-content-lg" secondAttribute="top" id="pfv-c-cl-top"/>
+                                    <constraint firstItem="pfv-content" firstAttribute="trailing" secondItem="pfv-content-lg" secondAttribute="trailing" id="pfv-c-cl-trail"/>
                                     <constraint firstItem="pfv-content" firstAttribute="width" secondItem="pfv-frame-lg" secondAttribute="width" id="pfv-c-cl-w"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="pfv-content-lg"/>
@@ -317,10 +317,10 @@
                         <viewLayoutGuide key="safeArea" id="ProfileSafeAreaID"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="pfv-scroll" firstAttribute="top" secondItem="ProfileSafeAreaID" secondAttribute="top" id="pfv-c-s-top"/>
-                            <constraint firstItem="pfv-scroll" firstAttribute="leading" secondItem="ProfileViewID" secondAttribute="leading" id="pfv-c-s-lead"/>
-                            <constraint firstAttribute="trailing" secondItem="pfv-scroll" secondAttribute="trailing" id="pfv-c-s-trail"/>
                             <constraint firstAttribute="bottom" secondItem="pfv-scroll" secondAttribute="bottom" id="pfv-c-s-bot"/>
+                            <constraint firstItem="pfv-scroll" firstAttribute="leading" secondItem="ProfileViewID" secondAttribute="leading" id="pfv-c-s-lead"/>
+                            <constraint firstItem="pfv-scroll" firstAttribute="top" secondItem="ProfileSafeAreaID" secondAttribute="top" id="pfv-c-s-top"/>
+                            <constraint firstAttribute="trailing" secondItem="pfv-scroll" secondAttribute="trailing" id="pfv-c-s-trail"/>
                         </constraints>
                     </view>
                     <connections>
@@ -340,21 +340,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ProfilePlaceholderID" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4316" y="-68"/>
-        </scene>
-        <!--Dashboard Tab Bar Controller-->
-        <scene sceneID="qJo-Lj-QYy">
-            <objects>
-                <tabBarController storyboardIdentifier="DashboardTabBarViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fov-ud-gUN" customClass="DashboardTabBarController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="FuF-py-xhu"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Z8X-Fx-0jR" customClass="CustomTabBar" customModule="RecipeApp" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rJj-GE-P4b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="847" y="-68"/>
         </scene>
         <!--Recipe Detail View Controller-->
         <scene sceneID="recipe-detail-scene-id">
@@ -620,6 +605,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ic_chef_het" width="79" height="79"/>
         <image name="ic_default_image" width="109" height="110"/>
         <image name="ic_saved_outlined" width="24" height="24"/>
         <image name="ic_search_outlined" width="18" height="18"/>

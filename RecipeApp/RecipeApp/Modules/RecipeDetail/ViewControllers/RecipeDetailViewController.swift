@@ -154,6 +154,10 @@ extension RecipeDetailViewController {
     }
 }
 
+// MARK: - BottomNavHidable
+// Replaces `hidesBottomBarWhenPushed`; DashboardViewController checks for this conformance.
+extension RecipeDetailViewController: BottomNavHidable {}
+
 // MARK: - Instantiation
 extension RecipeDetailViewController {
     static func instantiate(viewModel: RecipeDetailViewModel) -> RecipeDetailViewController {
