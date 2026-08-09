@@ -31,6 +31,12 @@ final class DashboardCoordinator: ChildCoordinator, ParentCoordinator {
         navigationController.setNavigationBarHidden(true, animated: false)
         navigationController.setViewControllers([controller], animated: false)
     }
+
+    // MARK: - Deep Links
+    /// Selects the Notification tab when the user taps a recipe notification.
+    func showNotificationTab() {
+        tabBarController?.selectedIndex = TabBarItem.notification.rawValue
+    }
 }
 
 // MARK: - Tab factory

@@ -21,6 +21,7 @@ final class AppCoordinator: ParentCoordinator {
     }
     // MARK: - Coordinator
     func start() {
+        installNotificationDeepLinkHandler()
         if(container.sessionManager.isLoggedIn) {
             showDashboard()
             return
@@ -32,6 +33,25 @@ final class AppCoordinator: ParentCoordinator {
             return
         }
         showOnboarding()
+    }
+}
+// MARK: - Notification Deep Links
+extension AppCoordinator {
+    /// Installing the handler also drains anything the app delegate buffered before this
+    /// coordinator existed — the cold-launch-from-a-notification-tap case.
+    private func installNotificationDeepLinkHandler() {
+        NotificationDeepLinkRouter.shared.handler = { [weak self] deepLink in
+            self?.handle(deepLink)
+        }
+    }
+
+    private func handle(_ deepLink: NotificationDeepLink) {
+        // A logged-out user has no dashboard to route into; the tap just opens the app.
+        guard let dashboardCoordinator = childCoordinators.compactMap({ $0 as? DashboardCoordinator }).first else { return }
+        switch deepLink {
+        case .notificationTab:
+            dashboardCoordinator.showNotificationTab()
+        }
     }
 }
 // MARK: - Navigation
