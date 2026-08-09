@@ -21,4 +21,10 @@ enum ViewState<T> {
     case loading
     case success(T)
     case failure(DisplayableError)
+
+    /// The loaded value, or nil in any non-success state.
+    var value: T? {
+        guard case .success(let value) = self else { return nil }
+        return value
+    }
 }

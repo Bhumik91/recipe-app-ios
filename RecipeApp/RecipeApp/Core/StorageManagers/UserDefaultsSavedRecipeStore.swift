@@ -13,11 +13,17 @@ final class UserDefaultsSavedRecipeStore: SavedRecipeStoring {
     // MARK: - Notification Side Effects
     // Optional so the store stays usable without a notifier attached.
     private let recipeNotifier: RecipeNotifying?
+    private let notificationLogStore: NotificationLogStoring?
     // MARK: - Init
-    init(userId: Int, recipeNotifier: RecipeNotifying? = nil) {
+    init(
+        userId: Int,
+        recipeNotifier: RecipeNotifying? = nil,
+        notificationLogStore: NotificationLogStoring? = nil
+    ) {
         self.userId = userId
         self.defaults = UserDefaults(suiteName: "com.recipeapp.saveddishes") ?? .standard
         self.recipeNotifier = recipeNotifier
+        self.notificationLogStore = notificationLogStore
     }
     // MARK: - Read
     func savedDishIds() -> [Int] {
@@ -49,12 +55,16 @@ final class UserDefaultsSavedRecipeStore: SavedRecipeStoring {
         }
     }
     // MARK: - Notification Side Effects
-    // Posts the system notification (which no-ops unless the user authorized notifications).
-    // TODO: also write the in-app notification log row here once the Core Data store lands —
-    // the log is permission-independent history, unlike the banner above.
+    // The banner needs notification permission; the log row does not.
     private func notifyAndLog(dishId: Int, recipeName: String?, recipeImageURL: String?, action: RecipeAction) {
         let displayName = recipeName ?? "Recipe #\(dishId)"
         recipeNotifier?.notify(recipeId: dishId, recipeName: displayName, action: action)
+        notificationLogStore?.log(
+            recipeId: dishId,
+            recipeName: displayName,
+            recipeImageURL: recipeImageURL,
+            action: action
+        )
     }
     // MARK: - Helper
     private var storageKey: String {

@@ -59,6 +59,11 @@ final class RecipeDetailViewModel {
         guard case .success(var recipe) = state else { return }
         recipe.isSaved.toggle()
         state = .success(recipe)
-        recipeRepository.toggleSavedRecipe(recipeId: recipeId)
+        // The detail is already loaded, so the notification can name the recipe outright.
+        recipeRepository.toggleSavedRecipe(
+            recipeId: recipeId,
+            recipeName: recipe.title,
+            recipeImageURL: recipe.imageURL
+        )
     }
 }

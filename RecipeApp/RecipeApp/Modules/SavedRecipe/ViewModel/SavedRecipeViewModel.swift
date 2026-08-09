@@ -79,7 +79,12 @@ final class SavedRecipeViewModel {
         pendingDeleteTask = Task { [weak self] in
             try? await Task.sleep(for: Self.undoWindow)
             guard !Task.isCancelled else { return }
-            self?.recipeRepository.removeSavedRecipe(recipeId: recipe.id)
+            // Fires on the committed deletion, so an undone swipe logs nothing.
+            self?.recipeRepository.removeSavedRecipe(
+                recipeId: recipe.id,
+                recipeName: recipe.title,
+                recipeImageURL: recipe.imageURL
+            )
             self?.clearPendingDelete()
         }
     }

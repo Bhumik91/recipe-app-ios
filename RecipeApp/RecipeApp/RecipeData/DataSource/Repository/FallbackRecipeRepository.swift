@@ -59,12 +59,12 @@ final class FallbackRecipeRepository: RecipeRepositoryProtocol {
     // This is safe because both remote and dummy share the same savedDishesManager instance,
     // so delegating to either gives the same result. If repositories ever get separate
     // managers, this contract must change to delegate to both or switch based on which is active.
-    func toggleSavedRecipe(recipeId: Int) {
-        remote.toggleSavedRecipe(recipeId: recipeId)
+    func toggleSavedRecipe(recipeId: Int, recipeName: String?, recipeImageURL: String?) {
+        remote.toggleSavedRecipe(recipeId: recipeId, recipeName: recipeName, recipeImageURL: recipeImageURL)
     }
 
-    func removeSavedRecipe(recipeId: Int) {
-        remote.removeSavedRecipe(recipeId: recipeId)
+    func removeSavedRecipe(recipeId: Int, recipeName: String?, recipeImageURL: String?) {
+        remote.removeSavedRecipe(recipeId: recipeId, recipeName: recipeName, recipeImageURL: recipeImageURL)
     }
 
     func isRecipeSaved(recipeId: Int) -> Bool {

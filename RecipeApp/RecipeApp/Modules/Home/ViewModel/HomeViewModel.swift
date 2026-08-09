@@ -182,7 +182,14 @@ final class HomeViewModel {
     // Flips the saved flag locally and patches the saved list from data already in hand,
     // instead of refetching — avoids a flicker/reload on every bookmark tap.
     func toggleSaved(dishId: Int) {
-        recipeRepository.toggleSavedRecipe(recipeId: dishId)
+        // Look the recipe up first so the notification can name it.
+        let recipe = exploreItems.first { $0.id == dishId }
+            ?? savedState.value?.first { $0.id == dishId }
+        recipeRepository.toggleSavedRecipe(
+            recipeId: dishId,
+            recipeName: recipe?.title,
+            recipeImageURL: recipe?.imageURL
+        )
 
         if let index = exploreItems.firstIndex(where: { $0.id == dishId }) {
             exploreItems[index].isSaved.toggle()
