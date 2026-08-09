@@ -10,11 +10,9 @@ final class DashboardCoordinator: ChildCoordinator, ParentCoordinator {
     var navigationController: UINavigationController
     weak var parentDelegate: DashboardCoordinatorDelegate?
     var container: DependencyContainer?
-    private var tabBarController: DashboardTabBarController?
+    private var dashboardViewController: DashboardViewController?
     // MARK: - ParentCoordinator
     var childCoordinators: [any Coordinator] = []
-    // MARK: - Constants
-    let storyboard = UIStoryboard(name: "Dashboard", bundle: nil)
     // MARK: - Initializer
     init(navigationController: UINavigationController, container: DependencyContainer) {
         self.navigationController = navigationController
@@ -22,10 +20,11 @@ final class DashboardCoordinator: ChildCoordinator, ParentCoordinator {
     }
     // MARK: - Start
     func start() {
-        let controller = DashboardTabBarController()
-        controller.tabBarDelegate = self
-        controller.viewControllers = TabBarItem.allCases.map { makeTab(for: $0) }
-        self.tabBarController = controller
+        let controller = DashboardViewController()
+        controller.delegate = self
+        let tabs = DashboardTab.allCases
+        controller.setTabControllers(tabs.map { makeTab(for: $0) }, tabs: tabs)
+        self.dashboardViewController = controller
         // Each tab hosts its own navigation controller, so this outer one would otherwise
         // stack a second, permanently empty bar above every dashboard screen.
         navigationController.setNavigationBarHidden(true, animated: false)
@@ -35,20 +34,16 @@ final class DashboardCoordinator: ChildCoordinator, ParentCoordinator {
     // MARK: - Deep Links
     /// Selects the Notification tab when the user taps a recipe notification.
     func showNotificationTab() {
-        tabBarController?.selectedIndex = TabBarItem.notification.rawValue
+        dashboardViewController?.selectTab(at: DashboardTab.notification.rawValue)
     }
 }
 
 // MARK: - Tab factory
 private extension DashboardCoordinator {
-    /// Returns a navigation controller hosting the dedicated coordinator for the given tab item.
-    func makeTab(for item: TabBarItem) -> UINavigationController {
-        let nav = UINavigationController()
-        nav.tabBarItem = UITabBarItem(
-            title: nil,
-            image: item.unselectedIcon,
-            tag: item.rawValue
-        )
+    /// Returns a navigation controller hosting the coordinator for the given tab.
+    /// `DashboardNavigationController` so container and children can both observe the stack.
+    func makeTab(for item: DashboardTab) -> DashboardNavigationController {
+        let nav = DashboardNavigationController()
 
         guard let container else {
             assertionFailure("DashboardCoordinator requires a DependencyContainer")
@@ -86,9 +81,9 @@ private extension DashboardCoordinator {
     }
 }
 
-// MARK: - DashboardTabBarDelegate
-extension DashboardCoordinator: DashboardTabBarDelegate {
-    func dashboardTabBarDidTapAdd() {
+// MARK: - DashboardViewControllerDelegate
+extension DashboardCoordinator: DashboardViewControllerDelegate {
+    func dashboardViewControllerDidTapAdd(_ controller: DashboardViewController) {
         let addCoordinator = AddCoordinator(navigationController: navigationController)
         addCoordinator.parentDelegate = self
         addChild(addCoordinator)
@@ -141,7 +136,7 @@ extension DashboardCoordinator: ProfileCoordinatorDelegate {
     }
 
     func profileCoordinatorDidTapExploreRecipes(_ coordinator: ProfileCoordinator) {
-        tabBarController?.selectedIndex = TabBarItem.home.rawValue
+        dashboardViewController?.selectTab(at: DashboardTab.home.rawValue)
     }
 
     func profileCoordinatorDidLogout(_ coordinator: ProfileCoordinator) {
