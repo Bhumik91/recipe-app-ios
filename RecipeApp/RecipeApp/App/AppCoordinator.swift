@@ -22,14 +22,10 @@ final class AppCoordinator: ParentCoordinator {
     // MARK: - Coordinator
     func start() {
         installNotificationDeepLinkHandler()
-        if(container.sessionManager.isLoggedIn) {
+        // Onboarding is the entry point for every logged-out launch — first install,
+        // reopening without having logged in, or right after a logout.
+        if container.sessionManager.isLoggedIn {
             showDashboard()
-            return
-        }
-        // Onboarding is a one-time introduction. Once it's been through, a logged-out
-        // launch (including the one right after a logout) belongs on Login instead.
-        if container.sessionManager.hasCompletedOnboarding {
-            showAuth()
             return
         }
         showOnboarding()
@@ -93,7 +89,6 @@ extension AppCoordinator {
 extension AppCoordinator: OnBoardingCoordinatorDelegate {
     func onBoardingFlowDidFinish(_ coordinator: any Coordinator) {
         removeChild(coordinator)
-        container.sessionManager.markOnboardingCompleted()
         showAuth()
     }
 }
@@ -101,20 +96,17 @@ extension AppCoordinator: OnBoardingCoordinatorDelegate {
 extension AppCoordinator: AuthCoordinatorDelegate {
     func authFlowDidFinish(_ coordinator: any Coordinator) {
         removeChild(coordinator)
-        // Covers anyone who onboarded before this flag existed: reaching Login at all
-        // means the intro is behind them.
-        container.sessionManager.markOnboardingCompleted()
         showDashboard()
     }
 }
 // MARK: - DashboardCoordinatorDelegate
 extension AppCoordinator: DashboardCoordinatorDelegate {
-    /// Session already cleared. Rebuild the dependency graph before showing auth — the
-    /// stores bake in the userId they were created with.
+    /// Session already cleared. Rebuild the dependency graph before showing onboarding —
+    /// the stores bake in the userId they were created with.
     func dashboardCoordinatorDidLogout(_ coordinator: DashboardCoordinator) {
         removeChild(coordinator)
         childCoordinators.removeAll()
         container = DependencyContainer()
-        showAuth()
+        showOnboarding()
     }
 }
