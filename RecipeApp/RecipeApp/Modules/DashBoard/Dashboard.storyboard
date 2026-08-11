@@ -110,6 +110,51 @@
                                     <constraint firstItem="SavedRetryLabelID" firstAttribute="top" secondItem="SavedErrorMessageLabelID" secondAttribute="bottom" constant="16" id="SavedRetryTopID"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SavedEmptyContainerID" userLabel="Empty State Container">
+                                <rect key="frame" x="0.0" y="118" width="393" height="734"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_chef_het" translatesAutoresizingMaskIntoConstraints="NO" id="SavedEmptyIconID">
+                                        <rect key="frame" x="164.5" y="286" width="64" height="64"/>
+                                        <color key="tintColor" name="BrandBlack"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="SavedEmptyIconHID"/>
+                                            <constraint firstAttribute="width" constant="64" id="SavedEmptyIconWID"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Saved Recipes" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SavedEmptyTitleID">
+                                        <rect key="frame" x="24" y="366" width="345" height="22.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                        <color key="textColor" name="BrandGray1"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please explore recipes to save your favorites." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SavedEmptyBodyID">
+                                        <rect key="frame" x="24" y="392.66666666666669" width="345" height="19.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                        <color key="textColor" name="BrandGray3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explore Recipes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SavedEmptyActionID">
+                                        <rect key="frame" x="24" y="428.33333333333331" width="345" height="19.666666666666657"/>
+                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
+                                        <color key="textColor" name="BrandPrimary"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="SavedEmptyIconID" firstAttribute="centerX" secondItem="SavedEmptyContainerID" secondAttribute="centerX" id="SavedEmptyIconCXID"/>
+                                    <constraint firstItem="SavedEmptyIconID" firstAttribute="centerY" secondItem="SavedEmptyContainerID" secondAttribute="centerY" constant="-81" id="SavedEmptyIconCYID"/>
+                                    <constraint firstItem="SavedEmptyTitleID" firstAttribute="leading" secondItem="SavedEmptyContainerID" secondAttribute="leading" constant="24" id="SavedEmptyTitleLeadID"/>
+                                    <constraint firstItem="SavedEmptyTitleID" firstAttribute="top" secondItem="SavedEmptyIconID" secondAttribute="bottom" constant="16" id="SavedEmptyTitleTopID"/>
+                                    <constraint firstAttribute="trailing" secondItem="SavedEmptyTitleID" secondAttribute="trailing" constant="24" id="SavedEmptyTitleTrailID"/>
+                                    <constraint firstItem="SavedEmptyBodyID" firstAttribute="leading" secondItem="SavedEmptyContainerID" secondAttribute="leading" constant="24" id="SavedEmptyBodyLeadID"/>
+                                    <constraint firstItem="SavedEmptyBodyID" firstAttribute="top" secondItem="SavedEmptyTitleID" secondAttribute="bottom" constant="4" id="SavedEmptyBodyTopID"/>
+                                    <constraint firstAttribute="trailing" secondItem="SavedEmptyBodyID" secondAttribute="trailing" constant="24" id="SavedEmptyBodyTrailID"/>
+                                    <constraint firstItem="SavedEmptyActionID" firstAttribute="leading" secondItem="SavedEmptyContainerID" secondAttribute="leading" constant="24" id="SavedEmptyActionLeadID"/>
+                                    <constraint firstItem="SavedEmptyActionID" firstAttribute="top" secondItem="SavedEmptyBodyID" secondAttribute="bottom" constant="16" id="SavedEmptyActionTopID"/>
+                                    <constraint firstAttribute="trailing" secondItem="SavedEmptyActionID" secondAttribute="trailing" constant="24" id="SavedEmptyActionTrailID"/>
+                                </constraints>
+                            </view>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SavedTopGlassID" userLabel="Top Glass Block">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="60"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="SavedTopGlassContentID">
@@ -129,6 +174,10 @@
                             <constraint firstItem="SavedErrorContainerID" firstAttribute="leading" secondItem="SavedViewID" secondAttribute="leading" id="SavedErrLeadID"/>
                             <constraint firstItem="SavedErrorContainerID" firstAttribute="top" secondItem="SavedSafeAreaID" secondAttribute="top" id="SavedErrTopID"/>
                             <constraint firstItem="SavedErrorContainerID" firstAttribute="trailing" secondItem="SavedViewID" secondAttribute="trailing" id="SavedErrTrailID"/>
+                            <constraint firstItem="SavedEmptyContainerID" firstAttribute="bottom" secondItem="SavedViewID" secondAttribute="bottom" id="SavedEmptyBotID"/>
+                            <constraint firstItem="SavedEmptyContainerID" firstAttribute="leading" secondItem="SavedViewID" secondAttribute="leading" id="SavedEmptyLeadID"/>
+                            <constraint firstItem="SavedEmptyContainerID" firstAttribute="top" secondItem="SavedSafeAreaID" secondAttribute="top" id="SavedEmptyTopID"/>
+                            <constraint firstItem="SavedEmptyContainerID" firstAttribute="trailing" secondItem="SavedViewID" secondAttribute="trailing" id="SavedEmptyTrailID"/>
                             <constraint firstItem="SavedTableViewID" firstAttribute="bottom" secondItem="SavedViewID" secondAttribute="bottom" id="SavedTableBotID"/>
                             <constraint firstItem="SavedTableViewID" firstAttribute="leading" secondItem="SavedViewID" secondAttribute="leading" id="SavedTableLeadID"/>
                             <constraint firstItem="SavedTableViewID" firstAttribute="top" secondItem="SavedViewID" secondAttribute="top" id="SavedTableTopID"/>
@@ -139,6 +188,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="emptyActionLabel" destination="SavedEmptyActionID" id="SavedOutletEmptyActionID"/>
+                        <outlet property="emptyStateContainer" destination="SavedEmptyContainerID" id="SavedOutletEmptyContainerID"/>
                         <outlet property="errorContainerView" destination="SavedErrorContainerID" id="SavedOutletErrContainerID"/>
                         <outlet property="errorMessageLabel" destination="SavedErrorMessageLabelID" id="SavedOutletErrMsgID"/>
                         <outlet property="retryLabel" destination="SavedRetryLabelID" id="SavedOutletRetryID"/>
@@ -233,6 +284,7 @@
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_chef_het" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-empty-icon">
                                                         <rect key="frame" x="140.66666666666666" y="0.0" width="64" height="64"/>
+                                                        <color key="tintColor" name="BrandBlack"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="64" id="pfv-c-empty-icon-h"/>
                                                             <constraint firstAttribute="width" constant="64" id="pfv-c-empty-icon-w"/>

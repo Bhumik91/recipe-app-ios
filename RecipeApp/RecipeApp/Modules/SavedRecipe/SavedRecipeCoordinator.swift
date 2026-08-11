@@ -36,4 +36,8 @@ final class SavedRecipeCoordinator: ChildCoordinator {
     func recipeTapped(id: Int) {
         parentDelegate?.savedRecipeCoordinator(self, didSelectRecipeWithId: id)
     }
+
+    func exploreRecipesTapped() {
+        parentDelegate?.savedRecipeCoordinatorDidTapExploreRecipes(self)
+    }
 }

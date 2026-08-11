@@ -137,6 +137,10 @@ extension DashboardCoordinator: SavedRecipeCoordinatorDelegate {
     func savedRecipeCoordinator(_ coordinator: SavedRecipeCoordinator, didSelectRecipeWithId id: Int) {
         showRecipeDetail(id: id, on: coordinator.navigationController)
     }
+
+    func savedRecipeCoordinatorDidTapExploreRecipes(_ coordinator: SavedRecipeCoordinator) {
+        dashboardViewController?.selectTab(at: DashboardTab.home.rawValue)
+    }
 }
 
 // MARK: - ProfileCoordinatorDelegate

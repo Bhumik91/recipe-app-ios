@@ -40,8 +40,7 @@ final class EmptyStateView: UIView {
     }
 
     private func setupUI(title: String, message: String, retryTitle: String?) {
-        // Template rendering so the brand tint applies to the flat PDF glyph.
-        iconImageView.image = UIImage(named: "ic_chef_het")?.withRenderingMode(.alwaysTemplate)
+        iconImageView.image = UIImage(named: "ic_chef_het")
         iconImageView.tintColor = UIColor(named: "BrandBlack") ?? .black
         iconImageView.contentMode = .scaleAspectFit
 
