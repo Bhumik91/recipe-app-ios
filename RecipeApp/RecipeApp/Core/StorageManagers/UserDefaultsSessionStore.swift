@@ -15,9 +15,6 @@ final class UserDefaultsSessionStore: SessionManaging {
     var userId: Int { defaults.integer(forKey: Keys.userId) }
     var userName: String? { defaults.string(forKey: Keys.userName) }
     var accessToken: String? { defaults.string(forKey: Keys.accessToken) }
-    // Kept in .standard, not the session suite: clearSession() wipes the whole suite, and
-    // this flag has to outlive a logout so the intro isn't shown again.
-    var hasCompletedOnboarding: Bool { UserDefaults.standard.bool(forKey: Keys.hasCompletedOnboarding) }
     // MARK: - Save Session
     func saveAuthSession(_ response: LoginResponse) {
         defaults.set(response.userId, forKey: Keys.userId)
@@ -25,10 +22,6 @@ final class UserDefaultsSessionStore: SessionManaging {
         defaults.set(response.accessToken, forKey: Keys.accessToken)
         defaults.set(response.refreshToken, forKey: Keys.refreshToken)
         defaults.set(true, forKey: Keys.isLoggedIn)
-    }
-
-    func markOnboardingCompleted() {
-        UserDefaults.standard.set(true, forKey: Keys.hasCompletedOnboarding)
     }
     // MARK: - Clear Session
     func clearSession() {
@@ -41,6 +34,5 @@ final class UserDefaultsSessionStore: SessionManaging {
         static let userName = "userName"
         static let accessToken = "accessToken"
         static let refreshToken = "refreshToken"
-        static let hasCompletedOnboarding = "hasCompletedOnboarding"
     }
 }
