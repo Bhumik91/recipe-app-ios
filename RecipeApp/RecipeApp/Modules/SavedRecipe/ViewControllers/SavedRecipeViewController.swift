@@ -26,6 +26,8 @@ final class SavedRecipeViewController: UIViewController {
     @IBOutlet weak var errorContainerView: UIView!
     @IBOutlet weak var errorMessageLabel: UILabel!
     @IBOutlet weak var retryLabel: UILabel!
+    @IBOutlet weak var emptyStateContainer: UIView!
+    @IBOutlet weak var emptyActionLabel: UILabel!
 
     // MARK: - UI
     lazy var loadingIndicator = createLoadingIndicator()
@@ -37,6 +39,7 @@ final class SavedRecipeViewController: UIViewController {
         setupNavigationBar()
         setupTableView()
         setupRetryTap()
+        setupEmptyStateAction()
         bindViewModel()
         viewModel.loadRecipes()
     }
@@ -100,6 +103,17 @@ private extension SavedRecipeViewController {
 
     @objc func retryTapped() {
         viewModel.loadRecipes()
+    }
+
+    func setupEmptyStateAction() {
+        emptyActionLabel.isUserInteractionEnabled = true
+        emptyActionLabel.addGestureRecognizer(
+            UITapGestureRecognizer(target: self, action: #selector(exploreRecipesTapped))
+        )
+    }
+
+    @objc func exploreRecipesTapped() {
+        coordinator?.exploreRecipesTapped()
     }
 
     /// The table starts at the very top of the screen, so it needs a top inset to clear

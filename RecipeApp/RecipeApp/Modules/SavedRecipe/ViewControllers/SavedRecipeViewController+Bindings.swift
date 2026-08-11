@@ -32,20 +32,29 @@ private extension SavedRecipeViewController {
 
     func render(_ state: ViewState<[RecipeUIModel]>) {
         switch state {
-        case .idle, .success:
+        case .idle:
             showLoading(false)
             errorContainerView.isHidden = true
+            emptyStateContainer.isHidden = true
             tableView.isHidden = false
+
+        case .success(let recipes):
+            showLoading(false)
+            errorContainerView.isHidden = true
+            emptyStateContainer.isHidden = !recipes.isEmpty
+            tableView.isHidden = recipes.isEmpty
 
         case .loading:
             showLoading(true)
             errorContainerView.isHidden = true
+            emptyStateContainer.isHidden = true
             tableView.isHidden = true
 
         case .failure(let error):
             showLoading(false)
             errorMessageLabel.text = error.message
             errorContainerView.isHidden = false
+            emptyStateContainer.isHidden = true
             tableView.isHidden = true
         }
     }
