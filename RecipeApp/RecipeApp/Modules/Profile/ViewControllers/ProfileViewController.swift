@@ -11,7 +11,7 @@ import Combine
 /// The signed-in user's profile: details header, segmented selector, and logout.
 ///
 /// Split across three files:
-/// - this one     : properties, lifecycle, one-time setup, logout
+/// - this one     : properties, lifecycle, one-time setup, logout, hide/show title bar on scroll
 /// - `+TableView` : saved-recipe rows and segment selection
 /// - `+Bindings`  : view model subscriptions and screen states
 final class ProfileViewController: UIViewController {
@@ -20,6 +20,10 @@ final class ProfileViewController: UIViewController {
     weak var coordinator: ProfileCoordinator?
     var viewModel: ProfileViewModel!
     var cancellables = Set<AnyCancellable>()
+
+    // MARK: - Scroll
+    // Drives the title-bar hide/show below.
+    private let navBarVisibilityTracker = ScrollVisibilityTracker()
 
     /// Latest saved-recipes result, kept so switching back to the Recipes tab can
     /// re-render without re-fetching — mirrors Android's `latestRecipesState`.
@@ -52,6 +56,7 @@ final class ProfileViewController: UIViewController {
         setupNavigationBar()
         setupSegmentedSelector()
         setupTableView()
+        setupScrollView()
         setupEmptyStateAction()
         bindViewModel()
         viewModel.loadProfile()
@@ -61,8 +66,16 @@ final class ProfileViewController: UIViewController {
     // another tab should be reflected here on return. Matches Android's onResume().
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+        navBarVisibilityTracker.forceShow()
+        setNavigationBar(hidden: false, animated: animated)
         viewModel.loadSavedRecipes()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // Scroll may have left the bar hidden, and the next screen shares this
+        // navigation controller — hand it back a visible bar.
+        setNavigationBar(hidden: false)
     }
 
     override func viewDidLayoutSubviews() {
@@ -116,6 +129,12 @@ private extension ProfileViewController {
         )
     }
 
+    // `tableView` has scrolling disabled and is sized to its content — `scrollView` is
+    // the one actually being dragged, so it's what drives the title-bar visibility.
+    func setupScrollView() {
+        scrollView.delegate = self
+    }
+
     func setupEmptyStateAction() {
         emptyActionLabel.isUserInteractionEnabled = true
         emptyActionLabel.addGestureRecognizer(
@@ -136,6 +155,22 @@ private extension ProfileViewController {
         }
         present(alert, animated: true)
     }
+}
+
+// MARK: - Hide Title Bar While Scrolling
+extension ProfileViewController: UIScrollViewDelegate {
+
+    /// Hides the title bar as the user reads down the profile, brings it back the
+    /// instant they scroll back up — same tracker-driven behaviour as Saved Recipes.
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let hidden = navBarVisibilityTracker.handle(scrollView: scrollView) else { return }
+        setNavigationBar(hidden: hidden)
+    }
+}
+
+// MARK: - ScrollTrackingBottomNavHost
+extension ProfileViewController: ScrollTrackingBottomNavHost {
+    var scrollViewDrivingBottomNav: UIScrollView { scrollView }
 }
 
 // MARK: - Instantiation

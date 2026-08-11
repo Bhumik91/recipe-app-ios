@@ -1,5 +1,6 @@
 // DashboardViewController.swift
 import UIKit
+import Combine
 
 /// Custom container replacing `UITabBarController`. Owns the four tab navigation
 /// controllers and the bottom nav, using only plain views and child view controllers.
@@ -13,6 +14,17 @@ final class DashboardViewController: UIViewController {
     private var tabControllers: [DashboardNavigationController] = []
     private var isBottomNavHidden = false
 
+    // MARK: - Scroll
+    // Drives the bottom-nav hide/show for whichever visible screen opts in via
+    // `ScrollTrackingBottomNavHost` — see `observeScroll(for:)`.
+    private let bottomNavScrollTracker = ScrollVisibilityTracker()
+    private var scrollCancellable: AnyCancellable?
+    // Set when `observeScroll(for:)` wants a screen's scroll view but that screen's
+    // view hasn't loaded yet (its outlets, like `mainTableView`, aren't safe to touch
+    // right after `installTab` — that only happens on the next layout pass).
+    // `viewDidLayoutSubviews` retries once it's actually loaded.
+    private weak var pendingScrollHost: UIViewController?
+
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,11 +32,15 @@ final class DashboardViewController: UIViewController {
         setupContentView()
         setupBottomNav()
         installTab(at: selectedIndex)
+        updateBottomNavVisibility(animated: false)
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         updateChildSafeAreaInsets()
+        if let pendingScrollHost, pendingScrollHost.isViewLoaded {
+            observeScroll(for: pendingScrollHost)
+        }
     }
 
     // MARK: - Child forwarding
@@ -148,6 +164,7 @@ private extension DashboardViewController {
         let topViewController = tabControllers[safe: selectedIndex]?.topViewController
         let shouldHide = (topViewController as? BottomNavHidable)?.hidesBottomNav ?? false
         setBottomNavHidden(shouldHide, animated: animated)
+        observeScroll(for: shouldHide ? nil : topViewController)
     }
 
     func setBottomNavHidden(_ hidden: Bool, animated: Bool) {
@@ -171,6 +188,41 @@ private extension DashboardViewController {
     }
 }
 
+// MARK: - Scroll-driven visibility
+private extension DashboardViewController {
+    /// Starts (or stops) watching the visible screen's scroll view so dragging it
+    /// hides/shows the bar the instant direction reverses — same feel as the nav-bar
+    /// hiding already on Saved Recipes/Profile. `nil` when the screen already forces
+    /// the bar hidden via `BottomNavHidable`, since there's nothing to reveal.
+    func observeScroll(for viewController: UIViewController?) {
+        scrollCancellable = nil
+        pendingScrollHost = nil
+        bottomNavScrollTracker.forceShow()
+
+        guard let host = viewController as? ScrollTrackingBottomNavHost else { return }
+
+        // Right after `installTab`/a push, the screen may be attached to the
+        // hierarchy but not yet have loaded its own view — `scrollViewDrivingBottomNav`
+        // force-unwraps an IBOutlet, so touching it now would crash. Wait for
+        // `viewDidLayoutSubviews` to confirm it's loaded, then retry.
+        guard let viewController, viewController.isViewLoaded else {
+            pendingScrollHost = viewController
+            return
+        }
+
+        let scrollView = host.scrollViewDrivingBottomNav
+
+        scrollCancellable = scrollView
+            .publisher(for: \.contentOffset)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self, weak scrollView] _ in
+                guard let self, let scrollView else { return }
+                guard let hidden = bottomNavScrollTracker.handle(scrollView: scrollView) else { return }
+                setBottomNavHidden(hidden, animated: true)
+            }
+    }
+}
+
 // MARK: - BottomNavWithFabDelegate
 extension DashboardViewController: BottomNavWithFabDelegate {
     func bottomNav(_ bottomNav: BottomNavWithFab, didSelectItemAt index: Int) {
@@ -191,6 +243,7 @@ extension DashboardViewController: NavigationStackObserving {
     ) {
         guard navigationController === tabControllers[safe: selectedIndex] else { return }
         let shouldHide = (viewController as? BottomNavHidable)?.hidesBottomNav ?? false
+        observeScroll(for: shouldHide ? nil : viewController)
 
         // Ride the push/pop transition so the bar moves in step with the
         // screen, and put it back if an interactive swipe-back is cancelled.

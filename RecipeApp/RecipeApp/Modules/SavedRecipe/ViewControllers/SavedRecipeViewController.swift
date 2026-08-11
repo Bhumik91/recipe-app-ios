@@ -32,6 +32,10 @@ final class SavedRecipeViewController: UIViewController {
     // MARK: - UI
     lazy var loadingIndicator = createLoadingIndicator()
 
+    // MARK: - Scroll
+    // Drives the nav-bar hide/show in +TableView.
+    let navBarVisibilityTracker = ScrollVisibilityTracker()
+
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +50,7 @@ final class SavedRecipeViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navBarVisibilityTracker.forceShow()
         setNavigationBar(hidden: false)
         viewModel.loadRecipes()
     }

@@ -26,8 +26,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         mainTableView.rowHeight = UITableView.automaticDimension
         mainTableView.estimatedRowHeight = 100
 
-        mainTableView.register(HomeHeaderTableViewCell.self, forCellReuseIdentifier: "HomeHeaderTableViewCell")
-
         let sectionHeaderCellNib = UINib(nibName: "RecipeSectionHeaderTableViewCell", bundle: nil)
         mainTableView.register(sectionHeaderCellNib, forCellReuseIdentifier: "RecipeSectionHeaderTableViewCell")
 
@@ -46,19 +44,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch sections[section] {
         case .exploreRecipes: return exploreRecipes.count
-        case .header, .savedHeader, .savedRecipes, .exploreHeader: return 1
+        case .savedHeader, .savedRecipes, .exploreHeader: return 1
         }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch sections[indexPath.section] {
-        case .header:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "HomeHeaderTableViewCell", for: indexPath) as? HomeHeaderTableViewCell else {
-                return UITableViewCell()
-            }
-            cell.embed(headerView)
-            return cell
-
         case .savedHeader:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeSectionHeaderTableViewCell", for: indexPath) as? RecipeSectionHeaderTableViewCell else {
                 return UITableViewCell()
@@ -102,10 +93,16 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         coordinator?.recipeTapped(id: exploreRecipes[indexPath.row].id)
     }
 
-    // MARK: - Pagination
-    // Triggers the next explore-recipes page once the user scrolls near the bottom of the
-    // table. HomeViewModel.loadNextExplorePage() guards against overlapping/last-page calls.
+    // This delegate is shared with headerView.chipsCollectionView (see below), whose
+    // horizontal scroll has nothing to do with the header's own show/hide or pagination.
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard scrollView === mainTableView else { return }
+
+        updateHeaderVisibility(for: scrollView)
+
+        // MARK: - Pagination
+        // Triggers the next explore-recipes page once the user scrolls near the bottom of
+        // the table. HomeViewModel.loadNextExplorePage() guards against overlapping/last-page calls.
         let distanceToBottom = scrollView.contentSize.height - scrollView.contentOffset.y - scrollView.bounds.height
         guard distanceToBottom < 200 else { return }
         viewModel.loadNextExplorePage()
