@@ -56,9 +56,9 @@ extension LoginViewController {
                 if let fieldError = error as? AuthFieldError {
                     self.highlightError(fieldError)
                 } else if let networkError = error as? NetworkError {
-                    self.showAlert(with: networkError)
+                    self.showToast(with: networkError)
                 } else {
-                    self.showAlert(with: NetworkError.unknown)
+                    self.showToast(with: NetworkError.unknown)
                 }
             }
         }.store(in: &cancellabels)
@@ -205,7 +205,7 @@ extension LoginViewController {
             passwordTextField.becomeFirstResponder()
             passwordErrorLabel.isHidden = false
             passwordErrorLabel.text = error.message
-        default: showAlert(with: NetworkError.unknown)
+        default: showToast(with: NetworkError.unknown)
         }
     }
     private func resetFieldStyles() {
