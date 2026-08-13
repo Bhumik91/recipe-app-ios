@@ -37,7 +37,14 @@ class HomeViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var mainTableView: UITableView!
 
+    // Floating overlay above mainTableView, not a table row — see
+    // HomeViewController+HeaderVisibility for the hide/show-on-scroll behaviour.
     let headerView = HomeHeaderView()
+
+    // MARK: - Scroll
+    // Drives the header hide/show in HomeViewController+HeaderVisibility.
+    let headerVisibilityTracker = ScrollVisibilityTracker()
+    var isHeaderHidden = false
 
     // redundant duplicate fetch, only refreshing on later appearances (returning to the tab).
     private var isFirstAppearance = true
@@ -48,6 +55,7 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .systemBackground
         configureGreeting()
         setupTableView()
+        setupHeaderOverlay()
         setupChipsCollectionView()
         setupHeaderTapHandlers()
         setupUIStateViews()
@@ -58,10 +66,17 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        headerVisibilityTracker.forceShow()
+        setHeaderHidden(false, animated: false)
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        updateTableTopInset()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -96,6 +111,11 @@ class HomeViewController: UIViewController {
             attributes: [.font: font]
         )
     }
+}
+
+// MARK: - ScrollTrackingBottomNavHost
+extension HomeViewController: ScrollTrackingBottomNavHost {
+    var scrollViewDrivingBottomNav: UIScrollView { mainTableView }
 }
 
 // MARK: - Instantiation

@@ -183,6 +183,11 @@ extension NotificationViewController: SegmentedSelectorViewDelegate {
     }
 }
 
+// MARK: - ScrollTrackingBottomNavHost
+extension NotificationViewController: ScrollTrackingBottomNavHost {
+    var scrollViewDrivingBottomNav: UIScrollView { tableView }
+}
+
 // MARK: - Strings
 // Kept private to the module; the project has no Localizable.strings yet.
 private extension NotificationViewController {

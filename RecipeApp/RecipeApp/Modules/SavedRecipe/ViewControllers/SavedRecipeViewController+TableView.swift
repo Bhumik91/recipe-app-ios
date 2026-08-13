@@ -59,35 +59,16 @@ extension SavedRecipeViewController: UITableViewDelegate {
 // MARK: - Hide Nav Bar While Scrolling
 extension SavedRecipeViewController {
 
-    /// Hides the title bar as the user reads down the list, brings it back when they
-    /// scroll up or return to the top.
+    /// Hides the title bar as the user reads down the list, brings it back immediately
+    /// when they scroll up — driven by the shared `ScrollVisibilityTracker` so the
+    /// direction/tolerance logic isn't duplicated per screen.
     private func updateNavigationBarVisibility(for scrollView: UIScrollView) {
-        // At the top the bar is always visible, whichever way the last swipe went.
-        let topOffset = -scrollView.contentInset.top
-        guard scrollView.contentOffset.y > topOffset + Scroll.topTolerance else {
-            setNavigationBar(hidden: false)
-            return
-        }
-
-        // Direction of the user's finger. This is 0 once they let go, so the bar holds
-        // still during momentum scrolling instead of flickering.
-        let velocity = scrollView.panGestureRecognizer.velocity(in: view).y
-        if velocity < -Scroll.minVelocity {
-            setNavigationBar(hidden: true)      // dragging up = reading further down
-        } else if velocity > Scroll.minVelocity {
-            setNavigationBar(hidden: false)     // dragging back down
-        }
+        guard let hidden = navBarVisibilityTracker.handle(scrollView: scrollView) else { return }
+        setNavigationBar(hidden: hidden)
     }
+}
 
-    func setNavigationBar(hidden: Bool) {
-        guard navigationController?.isNavigationBarHidden != hidden else { return }
-        navigationController?.setNavigationBarHidden(hidden, animated: true)
-    }
-
-    private enum Scroll {
-        /// How close to the top counts as "at the top".
-        static let topTolerance: CGFloat = 8
-        /// Ignore slower drags so the bar doesn't twitch.
-        static let minVelocity: CGFloat = 50
-    }
+// MARK: - ScrollTrackingBottomNavHost
+extension SavedRecipeViewController: ScrollTrackingBottomNavHost {
+    var scrollViewDrivingBottomNav: UIScrollView { tableView }
 }

@@ -25,31 +25,36 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="w4i-tP-n7h">
-                    <rect key="frame" x="8" y="8" width="2489" height="388"/>
+                    <rect key="frame" x="8" y="16" width="2489" height="388"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIQ-0j-HZq">
-                            <rect key="frame" x="0.0" y="0.0" width="2489" height="45"/>
-                            <attributedString key="attributedText">
-                                <fragment content="Hello Bhumik">
-                                    <attributes>
-                                        <font key="NSFont" size="32" name="Poppins-Bold"/>
-                                    </attributes>
-                                </fragment>
-                            </attributedString>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yjt-gp-wgl">
-                            <rect key="frame" x="0.0" y="65" width="2489" height="183"/>
-                            <attributedString key="attributedText">
-                                <fragment content="What are you cooking today?">
-                                    <attributes>
-                                        <color key="NSColor" name="BrandGray2"/>
-                                        <font key="NSFont" size="16" name="Poppins-Regular"/>
-                                    </attributes>
-                                </fragment>
-                            </attributedString>
-                            <nil key="highlightedColor"/>
-                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="gRt-Ex-8sW">
+                            <rect key="frame" x="0.0" y="0.0" width="2489" height="94"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIQ-0j-HZq">
+                                    <rect key="frame" x="0.0" y="0.0" width="2489" height="45"/>
+                                    <attributedString key="attributedText">
+                                        <fragment content="Hello Bhumik">
+                                            <attributes>
+                                                <font key="NSFont" size="32" name="Poppins-Bold"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yjt-gp-wgl">
+                                    <rect key="frame" x="0.0" y="49" width="2489" height="45"/>
+                                    <attributedString key="attributedText">
+                                        <fragment content="What are you cooking today?">
+                                            <attributes>
+                                                <color key="NSColor" name="BrandGray2"/>
+                                                <font key="NSFont" size="16" name="Poppins-Regular"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P9k-67-Z4D" customClass="HighlightableControl" customModule="RecipeApp" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="268" width="2489" height="56"/>
                             <subviews>
@@ -98,7 +103,7 @@
                 <constraint firstAttribute="bottom" secondItem="w4i-tP-n7h" secondAttribute="bottom" constant="8" id="0Gf-C9-myL"/>
                 <constraint firstAttribute="trailing" secondItem="w4i-tP-n7h" secondAttribute="trailing" constant="8" id="NeO-Oq-9Ki"/>
                 <constraint firstItem="w4i-tP-n7h" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Ojz-dm-aSj"/>
-                <constraint firstItem="w4i-tP-n7h" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="Ule-fX-s26"/>
+                <constraint firstItem="w4i-tP-n7h" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="Ule-fX-s26"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="1641.9847328244275" y="92.253521126760575"/>

@@ -46,7 +46,7 @@ extension HomeViewController {
     }
 
     func buildSections() -> [HomeSection] {
-        var sections: [HomeSection] = [.header]
+        var sections: [HomeSection] = []
         if !savedRecipes.isEmpty {
             sections += [.savedHeader, .savedRecipes]
         } else if savedSectionErrorMessage != nil {

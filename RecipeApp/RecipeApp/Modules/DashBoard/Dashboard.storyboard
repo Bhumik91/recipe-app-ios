@@ -40,27 +40,13 @@
                                 </visualEffectView>
                                 <sections/>
                             </tableView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1JO-Rm-GjR">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="60"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="NPv-yb-psh">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="60"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                </view>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="i6B-By-fhW"/>
-                                </constraints>
-                                <blurEffect style="regular"/>
-                            </visualEffectView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HomeSafeAreaID"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="1JO-Rm-GjR" secondAttribute="trailing" id="BOH-1B-tqz"/>
-                            <constraint firstItem="1JO-Rm-GjR" firstAttribute="top" secondItem="HomeViewID" secondAttribute="top" id="Drp-HT-MbF"/>
-                            <constraint firstItem="1JO-Rm-GjR" firstAttribute="leading" secondItem="HomeViewID" secondAttribute="leading" id="EA7-JI-ZNu"/>
                             <constraint firstItem="mainTableView" firstAttribute="bottom" secondItem="HomeSafeAreaID" secondAttribute="bottom" id="main-tb-bottom"/>
                             <constraint firstItem="mainTableView" firstAttribute="leading" secondItem="HomeViewID" secondAttribute="leading" id="main-tb-leading"/>
-                            <constraint firstItem="mainTableView" firstAttribute="top" secondItem="HomeViewID" secondAttribute="top" id="main-tb-top"/>
+                            <constraint firstItem="mainTableView" firstAttribute="top" secondItem="HomeSafeAreaID" secondAttribute="top" id="main-tb-top"/>
                             <constraint firstItem="mainTableView" firstAttribute="trailing" secondItem="HomeViewID" secondAttribute="trailing" id="main-tb-trailing"/>
                         </constraints>
                     </view>
