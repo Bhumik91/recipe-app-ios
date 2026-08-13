@@ -86,20 +86,12 @@ private extension DashboardCoordinator {
 
 // MARK: - DashboardViewControllerDelegate
 extension DashboardCoordinator: DashboardViewControllerDelegate {
+    // Add feature isn't built yet — surface that inline instead.
     func dashboardViewControllerDidTapAdd(_ controller: DashboardViewController) {
-        let addCoordinator = AddCoordinator(navigationController: navigationController)
-        addCoordinator.parentDelegate = self
-        addChild(addCoordinator)
-        addCoordinator.start()
+        navigationController.showToast(message: "Add feature is coming soon!")
     }
 }
 
-// MARK: - AddCoordinatorDelegate
-extension DashboardCoordinator: AddCoordinatorDelegate {
-    func addCoordinatorDidFinish(_ coordinator: AddCoordinator) {
-        removeChild(coordinator)
-    }
-}
 // MARK: - HomeCoordinatorDelegate
 extension DashboardCoordinator: HomeCoordinatorDelegate {
     func homeCoordinator(_ coordinator: HomeCoordinator, didSelectRecipeWithId id: Int) {

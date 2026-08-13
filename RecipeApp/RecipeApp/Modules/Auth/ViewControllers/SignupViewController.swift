@@ -68,9 +68,9 @@ extension SignupViewController {
                 if let fieldError = error as? AuthFieldError {
                     self.highlightError(fieldError)
                 } else if let networkError = error as? NetworkError {
-                    self.showAlert(with: networkError)
+                    self.showToast(with: networkError)
                 } else {
-                    self.showAlert(with: NetworkError.unknown)
+                    self.showToast(with: NetworkError.unknown)
                 }
             }
         }.store(in: &cancellabels)

@@ -10,6 +10,7 @@ import Foundation
 enum NetworkError {
     case invalidURL
     case noInternetConnection
+    case invalidCredentials
     case unauthorized
     case forbidden
     case notFound
@@ -28,6 +29,8 @@ extension NetworkError {
             return "Invalid URL"
         case .noInternetConnection:
             return "No Internet Connection"
+        case .invalidCredentials:
+            return "Invalid Credentials"
         case .unauthorized:
             return "Credentials Issue"
         case .forbidden:
@@ -55,6 +58,8 @@ extension NetworkError: DisplayableError {
             return "Somthing went wrong. Please try again."
         case .noInternetConnection:
             return "No internet connnection. Please check your network."
+        case .invalidCredentials:
+            return "Incorrect username or password. Please try again."
         case .unauthorized:
             return "Your session has expired. Please sign in again."
         case .forbidden: 
@@ -78,7 +83,7 @@ extension NetworkError: DisplayableError {
     // skip the "Try Again" affordance; everything transient (network/server/unknown) keeps it.
     var isRetryable: Bool {
         switch self {
-        case .unauthorized, .forbidden, .notFound, .decodingFailed:
+        case .invalidCredentials, .unauthorized, .forbidden, .notFound, .decodingFailed:
             return false
         case .invalidURL, .noInternetConnection, .quotaExceeded, .serverError, .requestFailed, .unknown:
             return true
@@ -92,6 +97,7 @@ extension NetworkError {
             return .noInternetConnection
         }
         switch error.responseCode {
+        case 400: return .invalidCredentials
         case 401: return .unauthorized
         case 402: return .quotaExceeded
         case 403: return .forbidden
