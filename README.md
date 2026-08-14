@@ -13,15 +13,9 @@
 
 ## 📖 About the Project
 
-The **Recipe App** focuses on implementing real-world mobile application features such as
-authentication, API integration, searching, data handling, navigation, and UI state management.
+The **Recipe App** focuses on implementing real-world mobile application features such as authentication, API integration, advanced searching & filtering, data handling, and robust UI state management.
 
-This is the iOS counterpart of the project's [Android app](https://github.com/Bhumik91/recipe-demo-android),
-built independently but kept behaviourally and architecturally equivalent to it
-feature-for-feature.
-
-This project is part of a Mobile Development learning program and is intended to showcase clean
-architecture, scalable code organization, and best-in-class iOS development practices.
+This project showcase clean architecture, scalable code organization, and best-in-class iOS development practices.
 
 ---
 
@@ -51,20 +45,21 @@ architecture, scalable code organization, and best-in-class iOS development prac
 
 ## 🛠 Tech Stack & Libraries
 
-| Category | Library | Notes |
-|---|---|---|
-| Language | [Swift](https://www.swift.org/) | |
-| UI | UIKit, Storyboards for screen scaffolding, code for reusable components | |
-| Architecture | MVVM + Repository, Coordinator-based navigation | See [Architecture](#-architecture) |
-| Reactive | Combine (`@Published`, `AnyPublisher`) | No RxSwift/third-party reactive dependency |
-| Networking | [Alamofire](https://github.com/Alamofire/Alamofire) | |
-| Local persistence | Core Data (`RecipeApp.xcdatamodeld`) — saved recipes, notification log | Room equivalent |
-| Secure storage | Keychain (`KeychainSessionStore`) for session tokens | Keystore equivalent |
-| Non-sensitive prefs | `UserDefaults` — recent searches | SharedPreferences equivalent |
-| Notifications | `UserNotifications` (local only — no push, no APNs) | |
-| Messaging / toasts | [SwiftMessages](https://github.com/SwiftKickMobile/SwiftMessages) | |
-| Async | Swift Concurrency (`async`/`await`, `Task`) | |
-| Deployment target | iOS 18.1 | |
+| Category               | Library                                                                | Version |
+|-------------------------|-------------------------------------------------------------------------|---------|
+| Language                | [Swift](https://www.swift.org/)                                         | 5.0     |
+| UI                      | UIKit — Storyboards for screen scaffolding, code for reusable components | —       |
+| Architecture            | MVVM + Repository, Coordinator-based navigation                         | —       |
+| Reactive                | Combine (`@Published`, `AnyPublisher`)                                  | —       |
+| Concurrency             | Swift Concurrency (`async`/`await`, `Task`), `@MainActor` view models   | —       |
+| Networking              | [Alamofire](https://github.com/Alamofire/Alamofire)                     | 5.12+   |
+| Local persistence       | Core Data (`RecipeApp.xcdatamodeld`) — saved recipes, notification log  | —       |
+| Secure storage          | Keychain (`KeychainSessionStore`) for session tokens                    | —       |
+| Non-sensitive prefs     | `UserDefaults` — recent searches                                        | —       |
+| Notifications           | `UserNotifications` — local only, no push or APNs                       | —       |
+| Toasts / snackbars      | [SwiftMessages](https://github.com/SwiftKickMobile/SwiftMessages)       | 10.0.2+ |
+| Dependency management   | Swift Package Manager                                                   | —       |
+| Deployment target       | iOS 26.0                                                                 | Built with Xcode 26 / iOS 26.5 SDK |
 
 ---
 
@@ -101,13 +96,26 @@ View (Storyboard/UIKit) → ViewModel (Combine) → Repository → Store (Keycha
 
 ```
 RecipeApp/RecipeApp/
-├── App/                 # AppDelegate, SceneDelegate, AppCoordinator, DependencyContainer
-├── Core/                # Navigation, Networking, Persistence, Permissions, Notifications, Storage
-├── Common/              # Shared UI components, extensions, view state
-├── Modules/              # One folder per screen: Auth, Home, Search, RecipeDetail,
-│                          SavedRecipe, Notification, Profile, DashBoard, OnBoarding, Add
-└── RecipeData/           # DTOs, UI models, repositories
+├── App/            # AppDelegate, SceneDelegate, AppCoordinator, DependencyContainer
+├── Core/           # Cross-cutting infrastructure
+│   ├── Configuration/   # AppSecrets — bundled Secrets.plist reader
+│   ├── Navigation/      # Coordinator protocols, DashboardNavigationController
+│   ├── Networking/      # APIClient, NetworkError, endpoint definitions
+│   ├── Notifications/   # Local notification scheduling and deep links
+│   ├── Permissions/     # Extensible runtime-permission layer
+│   ├── Persistence/     # CoreDataStack and managed-object subclasses
+│   ├── StorageManagers/ # Keychain, UserDefaults, and Core Data stores
+│   └── Extensions/      # Foundation and UIKit helpers
+├── Common/         # Shared UI: ViewState, EmptyStateView, ScrollVisibilityTracker, view extensions
+├── Modules/        # One folder per screen — each with its own Coordinator, ViewModel(s),
+│                   # ViewController(s), and protocols:
+│                   # Auth, OnBoarding, DashBoard, Home, Search, RecipeDetail,
+│                   # SavedRecipe, Notification, Profile
+└── RecipeData/     # DTOs, UI models, and repository implementations
 ```
+
+Modules are self-contained: a screen's coordinator, view models, view controllers, and delegate
+protocols live together, so a feature can be read or removed without tracing it across the tree.
 
 ---
 
