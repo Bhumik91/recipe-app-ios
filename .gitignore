@@ -24,3 +24,6 @@ xcuserdata/
 
 # CocoaPods (If you use them later)
 Pods/
+
+# Secrets — real API keys, never commit. Secrets.plist.example stays tracked.
+Secrets.plist

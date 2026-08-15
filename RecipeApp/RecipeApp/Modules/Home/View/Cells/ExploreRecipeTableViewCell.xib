@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="150" id="KGk-i7-Jjw" customClass="ExploreRecipeTableViewCell" customModule="RecipeApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="150"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="393" height="150"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="containerView">
+                        <rect key="frame" x="24" y="8" width="345" height="134"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="58" translatesAutoresizingMaskIntoConstraints="NO" id="bLk-VP-Y4Q">
+                                <rect key="frame" x="16" y="16" width="156.66666666666666" height="102"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Recipe Title" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="titleLabel">
+                                        <rect key="frame" x="0.0" y="0.0" width="156.66666666666666" height="20"/>
+                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
+                                        <color key="textColor" name="BrandGray1"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Vpa-fm-DNl">
+                                        <rect key="frame" x="0.0" y="78" width="156.66666666666666" height="24"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_timer_outlined" translatesAutoresizingMaskIntoConstraints="NO" id="timerIcon">
+                                                <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                                <color key="tintColor" name="BrandGray3"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="timeLabel">
+                                                <rect key="frame" x="32.000000000000007" y="0.0" width="124.66666666666669" height="24"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="15 mins">
+                                                        <attributes>
+                                                            <color key="NSColor" name="BrandGray3"/>
+                                                            <font key="NSFont" size="14" name="Poppins-Regular"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bookmarkButton">
+                                <rect key="frame" x="193" y="82" width="36" height="36"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="bookmarkButton" secondAttribute="height" multiplier="1:1" id="7Ps-RF-kb4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="tintColor" name="BrandGray3"/>
+                                <state key="normal" image="ic_saved_outlined">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                </state>
+                                <state key="selected" image="ic_saved"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="18"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_default_image" translatesAutoresizingMaskIntoConstraints="NO" id="recipeImageView">
+                                <rect key="frame" x="237" y="21" width="92" height="92"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="recipeImageView" secondAttribute="height" multiplier="1:1" id="ewa-Vy-F9u"/>
+                                    <constraint firstAttribute="width" constant="92" id="img-w"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" name="BrandPrimary20"/>
+                        <constraints>
+                            <constraint firstItem="bLk-VP-Y4Q" firstAttribute="top" secondItem="containerView" secondAttribute="top" constant="16" id="7MO-kt-hmb"/>
+                            <constraint firstAttribute="bottom" secondItem="bookmarkButton" secondAttribute="bottom" constant="16" id="Gty-To-dYs"/>
+                            <constraint firstItem="recipeImageView" firstAttribute="leading" secondItem="bookmarkButton" secondAttribute="trailing" constant="8" id="L2k-w4-Wal"/>
+                            <constraint firstAttribute="bottom" secondItem="bLk-VP-Y4Q" secondAttribute="bottom" constant="16" id="XCv-dK-xdE"/>
+                            <constraint firstItem="bookmarkButton" firstAttribute="width" constant="36" id="bm-w"/>
+                            <constraint firstItem="recipeImageView" firstAttribute="centerY" secondItem="containerView" secondAttribute="centerY" id="img-cy"/>
+                            <constraint firstAttribute="trailing" secondItem="recipeImageView" secondAttribute="trailing" constant="16" id="img-r"/>
+                            <constraint firstItem="bLk-VP-Y4Q" firstAttribute="leading" secondItem="containerView" secondAttribute="leading" constant="16" id="x1J-Mg-gvZ"/>
+                            <constraint firstAttribute="centerX" secondItem="bLk-VP-Y4Q" secondAttribute="trailing" id="xbv-2A-69m"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="18"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                <integer key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                <color key="value" name="BrandPrimary20"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                <real key="value" value="0.080000000000000002"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                <real key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                <size key="value" width="0.0" height="3"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="containerView" secondAttribute="bottom" constant="8" id="cont-b"/>
+                    <constraint firstItem="containerView" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="cont-l"/>
+                    <constraint firstAttribute="trailing" secondItem="containerView" secondAttribute="trailing" constant="24" id="cont-r"/>
+                    <constraint firstItem="containerView" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="cont-t"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="bookmarkButton" destination="bookmarkButton" id="outlet-bookmark"/>
+                <outlet property="containerView" destination="containerView" id="outlet-container"/>
+                <outlet property="recipeImageView" destination="recipeImageView" id="outlet-img"/>
+                <outlet property="timeLabel" destination="timeLabel" id="outlet-time"/>
+                <outlet property="titleLabel" destination="titleLabel" id="outlet-title"/>
+            </connections>
+            <point key="canvasLocation" x="136.64122137404578" y="40.140845070422536"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_default_image" width="109" height="110"/>
+        <image name="ic_saved" width="24" height="24"/>
+        <image name="ic_saved_outlined" width="24" height="24"/>
+        <image name="ic_timer_outlined" width="24" height="24"/>
+        <namedColor name="BrandGray1">
+            <color red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BrandGray3">
+            <color red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BrandPrimary20">
+            <color red="0.96470588235294119" green="0.98039215686274506" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

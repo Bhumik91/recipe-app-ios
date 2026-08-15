@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+        <array key="Poppins-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Home View Controller-->
+        <scene sceneID="home-scene-id">
+            <objects>
+                <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HomeViewControllerID" customClass="HomeViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HomeViewID">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="mainTableView">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="784"/>
+                                <visualEffectView key="tableFooterView" opaque="NO" contentMode="scaleToFill" id="vh2-NY-hhx">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="cDj-Qj-x9u">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </view>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="100" id="z7T-U2-NbP"/>
+                                    </constraints>
+                                    <blurEffect style="regular"/>
+                                </visualEffectView>
+                                <sections/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HomeSafeAreaID"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mainTableView" firstAttribute="bottom" secondItem="HomeSafeAreaID" secondAttribute="bottom" id="main-tb-bottom"/>
+                            <constraint firstItem="mainTableView" firstAttribute="leading" secondItem="HomeViewID" secondAttribute="leading" id="main-tb-leading"/>
+                            <constraint firstItem="mainTableView" firstAttribute="top" secondItem="HomeSafeAreaID" secondAttribute="top" id="main-tb-top"/>
+                            <constraint firstItem="mainTableView" firstAttribute="trailing" secondItem="HomeViewID" secondAttribute="trailing" id="main-tb-trailing"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mainTableView" destination="mainTableView" id="main-tb-outlet"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HomePlaceholderID" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1628" y="-68"/>
+        </scene>
+        <!--Saved Recipe View Controller-->
+        <scene sceneID="saved-scene-id">
+            <objects>
+                <viewController storyboardIdentifier="SavedRecipeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SavedViewControllerID" customClass="SavedRecipeViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SavedViewID">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="166" sectionHeaderHeight="0.0" sectionFooterHeight="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="SavedTableViewID">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SavedErrorContainerID" userLabel="Error State Container">
+                                <rect key="frame" x="0.0" y="118" width="393" height="734"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Something went wrong." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SavedErrorMessageLabelID">
+                                        <rect key="frame" x="20" y="337.66666666666669" width="353" height="22.666666666666686"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Try Again" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SavedRetryLabelID">
+                                        <rect key="frame" x="162.66666666666666" y="376.33333333333331" width="68" height="19.666666666666686"/>
+                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
+                                        <color key="textColor" red="0.074509803920000006" green="0.58522206539999999" blue="0.45850461720000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="SavedErrorMessageLabelID" firstAttribute="centerX" secondItem="SavedErrorContainerID" secondAttribute="centerX" id="SavedErrMsgCenterXID"/>
+                                    <constraint firstItem="SavedErrorMessageLabelID" firstAttribute="centerY" secondItem="SavedErrorContainerID" secondAttribute="centerY" constant="-18" id="SavedErrMsgCenterYID"/>
+                                    <constraint firstItem="SavedErrorMessageLabelID" firstAttribute="leading" secondItem="SavedErrorContainerID" secondAttribute="leading" constant="20" id="SavedErrMsgLeadID"/>
+                                    <constraint firstItem="SavedErrorMessageLabelID" firstAttribute="trailing" secondItem="SavedErrorContainerID" secondAttribute="trailing" constant="-20" id="SavedErrMsgTrailID"/>
+                                    <constraint firstItem="SavedRetryLabelID" firstAttribute="centerX" secondItem="SavedErrorContainerID" secondAttribute="centerX" id="SavedRetryCenterXID"/>
+                                    <constraint firstItem="SavedRetryLabelID" firstAttribute="top" secondItem="SavedErrorMessageLabelID" secondAttribute="bottom" constant="16" id="SavedRetryTopID"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SavedEmptyContainerID" userLabel="Empty State Container">
+                                <rect key="frame" x="0.0" y="118" width="393" height="734"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_chef_het" translatesAutoresizingMaskIntoConstraints="NO" id="SavedEmptyIconID">
+                                        <rect key="frame" x="164.5" y="286" width="64" height="64"/>
+                                        <color key="tintColor" name="BrandBlack"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="SavedEmptyIconHID"/>
+                                            <constraint firstAttribute="width" constant="64" id="SavedEmptyIconWID"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Saved Recipes" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SavedEmptyTitleID">
+                                        <rect key="frame" x="24" y="366" width="345" height="22.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                        <color key="textColor" name="BrandGray1"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please explore recipes to save your favorites." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SavedEmptyBodyID">
+                                        <rect key="frame" x="24" y="392.66666666666669" width="345" height="19.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                        <color key="textColor" name="BrandGray3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explore Recipes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SavedEmptyActionID">
+                                        <rect key="frame" x="24" y="428.33333333333331" width="345" height="19.666666666666657"/>
+                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
+                                        <color key="textColor" name="BrandPrimary"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="SavedEmptyIconID" firstAttribute="centerX" secondItem="SavedEmptyContainerID" secondAttribute="centerX" id="SavedEmptyIconCXID"/>
+                                    <constraint firstItem="SavedEmptyIconID" firstAttribute="centerY" secondItem="SavedEmptyContainerID" secondAttribute="centerY" constant="-81" id="SavedEmptyIconCYID"/>
+                                    <constraint firstItem="SavedEmptyTitleID" firstAttribute="leading" secondItem="SavedEmptyContainerID" secondAttribute="leading" constant="24" id="SavedEmptyTitleLeadID"/>
+                                    <constraint firstItem="SavedEmptyTitleID" firstAttribute="top" secondItem="SavedEmptyIconID" secondAttribute="bottom" constant="16" id="SavedEmptyTitleTopID"/>
+                                    <constraint firstAttribute="trailing" secondItem="SavedEmptyTitleID" secondAttribute="trailing" constant="24" id="SavedEmptyTitleTrailID"/>
+                                    <constraint firstItem="SavedEmptyBodyID" firstAttribute="leading" secondItem="SavedEmptyContainerID" secondAttribute="leading" constant="24" id="SavedEmptyBodyLeadID"/>
+                                    <constraint firstItem="SavedEmptyBodyID" firstAttribute="top" secondItem="SavedEmptyTitleID" secondAttribute="bottom" constant="4" id="SavedEmptyBodyTopID"/>
+                                    <constraint firstAttribute="trailing" secondItem="SavedEmptyBodyID" secondAttribute="trailing" constant="24" id="SavedEmptyBodyTrailID"/>
+                                    <constraint firstItem="SavedEmptyActionID" firstAttribute="leading" secondItem="SavedEmptyContainerID" secondAttribute="leading" constant="24" id="SavedEmptyActionLeadID"/>
+                                    <constraint firstItem="SavedEmptyActionID" firstAttribute="top" secondItem="SavedEmptyBodyID" secondAttribute="bottom" constant="16" id="SavedEmptyActionTopID"/>
+                                    <constraint firstAttribute="trailing" secondItem="SavedEmptyActionID" secondAttribute="trailing" constant="24" id="SavedEmptyActionTrailID"/>
+                                </constraints>
+                            </view>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SavedTopGlassID" userLabel="Top Glass Block">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="60"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="SavedTopGlassContentID">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="60"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="SavedTopGlassHeightID"/>
+                                </constraints>
+                                <blurEffect style="regular"/>
+                            </visualEffectView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="SavedSafeAreaID"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SavedErrorContainerID" firstAttribute="bottom" secondItem="SavedViewID" secondAttribute="bottom" id="SavedErrBotID"/>
+                            <constraint firstItem="SavedErrorContainerID" firstAttribute="leading" secondItem="SavedViewID" secondAttribute="leading" id="SavedErrLeadID"/>
+                            <constraint firstItem="SavedErrorContainerID" firstAttribute="top" secondItem="SavedSafeAreaID" secondAttribute="top" id="SavedErrTopID"/>
+                            <constraint firstItem="SavedErrorContainerID" firstAttribute="trailing" secondItem="SavedViewID" secondAttribute="trailing" id="SavedErrTrailID"/>
+                            <constraint firstItem="SavedEmptyContainerID" firstAttribute="bottom" secondItem="SavedViewID" secondAttribute="bottom" id="SavedEmptyBotID"/>
+                            <constraint firstItem="SavedEmptyContainerID" firstAttribute="leading" secondItem="SavedViewID" secondAttribute="leading" id="SavedEmptyLeadID"/>
+                            <constraint firstItem="SavedEmptyContainerID" firstAttribute="top" secondItem="SavedSafeAreaID" secondAttribute="top" id="SavedEmptyTopID"/>
+                            <constraint firstItem="SavedEmptyContainerID" firstAttribute="trailing" secondItem="SavedViewID" secondAttribute="trailing" id="SavedEmptyTrailID"/>
+                            <constraint firstItem="SavedTableViewID" firstAttribute="bottom" secondItem="SavedViewID" secondAttribute="bottom" id="SavedTableBotID"/>
+                            <constraint firstItem="SavedTableViewID" firstAttribute="leading" secondItem="SavedViewID" secondAttribute="leading" id="SavedTableLeadID"/>
+                            <constraint firstItem="SavedTableViewID" firstAttribute="top" secondItem="SavedViewID" secondAttribute="top" id="SavedTableTopID"/>
+                            <constraint firstItem="SavedTableViewID" firstAttribute="trailing" secondItem="SavedViewID" secondAttribute="trailing" id="SavedTableTrailID"/>
+                            <constraint firstItem="SavedTopGlassID" firstAttribute="leading" secondItem="SavedViewID" secondAttribute="leading" id="SavedTopGlassLeadID"/>
+                            <constraint firstItem="SavedTopGlassID" firstAttribute="top" secondItem="SavedViewID" secondAttribute="top" id="SavedTopGlassTopID"/>
+                            <constraint firstAttribute="trailing" secondItem="SavedTopGlassID" secondAttribute="trailing" id="SavedTopGlassTrailID"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="emptyActionLabel" destination="SavedEmptyActionID" id="SavedOutletEmptyActionID"/>
+                        <outlet property="emptyStateContainer" destination="SavedEmptyContainerID" id="SavedOutletEmptyContainerID"/>
+                        <outlet property="errorContainerView" destination="SavedErrorContainerID" id="SavedOutletErrContainerID"/>
+                        <outlet property="errorMessageLabel" destination="SavedErrorMessageLabelID" id="SavedOutletErrMsgID"/>
+                        <outlet property="retryLabel" destination="SavedRetryLabelID" id="SavedOutletRetryID"/>
+                        <outlet property="tableView" destination="SavedTableViewID" id="SavedOutletTableID"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SavedPlaceholderID" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2300" y="-68.309859154929583"/>
+        </scene>
+        <!--Notification View Controller-->
+        <scene sceneID="notification-scene-id">
+            <objects>
+                <viewController storyboardIdentifier="NotificationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NotificationViewControllerID" customClass="NotificationViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NotificationViewID">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="NotificationSafeAreaID"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NotificationPlaceholderID" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3644" y="-68"/>
+        </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="profile-scene-id">
+            <objects>
+                <viewController storyboardIdentifier="ProfileViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ProfileViewControllerID" customClass="ProfileViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ProfileViewID">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-scroll">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-content">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="600"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_default_image" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-avatar">
+                                                <rect key="frame" x="156.66666666666666" y="24" width="80" height="80"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="80" id="pfv-c-avatar-h"/>
+                                                    <constraint firstAttribute="width" constant="80" id="pfv-c-avatar-w"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jane Doe" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-display-name">
+                                                <rect key="frame" x="24" y="120" width="345" height="28"/>
+                                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="20"/>
+                                                <color key="textColor" name="BrandBlack"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@janedoe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-username">
+                                                <rect key="frame" x="24" y="152" width="345" height="19.666666666666657"/>
+                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                                <color key="textColor" name="BrandGray2"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jane@example.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-email">
+                                                <rect key="frame" x="24" y="175.66666666666669" width="345" height="19.666666666666657"/>
+                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                                <color key="textColor" name="BrandGray2"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-segment" customClass="SegmentedSelectorView" customModule="RecipeApp" customModuleProvider="target">
+                                                <rect key="frame" x="24" y="219.33333333333331" width="345" height="48"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="48" id="pfv-c-segment-h"/>
+                                                </constraints>
+                                            </view>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="166" sectionHeaderHeight="0.0" sectionFooterHeight="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-table" customClass="SelfSizingTableView" customModule="RecipeApp" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="288" width="393" height="300"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </tableView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-empty-container" userLabel="Tab Empty State">
+                                                <rect key="frame" x="24" y="299.33333333333331" width="345" height="162"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_chef_het" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-empty-icon">
+                                                        <rect key="frame" x="140.66666666666666" y="0.0" width="64" height="64"/>
+                                                        <color key="tintColor" name="BrandBlack"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="64" id="pfv-c-empty-icon-h"/>
+                                                            <constraint firstAttribute="width" constant="64" id="pfv-c-empty-icon-w"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Saved Recipes" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-empty-title">
+                                                        <rect key="frame" x="0.0" y="80" width="345" height="22.666666666666671"/>
+                                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                                        <color key="textColor" name="BrandGray1"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please explore recipes to save your favorites." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-empty-body">
+                                                        <rect key="frame" x="0.0" y="106.66666666666669" width="345" height="19.666666666666671"/>
+                                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                                        <color key="textColor" name="BrandGray3"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explore Recipes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-empty-action">
+                                                        <rect key="frame" x="0.0" y="142.33333333333331" width="345" height="19.666666666666657"/>
+                                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
+                                                        <color key="textColor" name="BrandPrimary"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="pfv-empty-action" secondAttribute="bottom" id="pfv-c-ea-bot"/>
+                                                    <constraint firstItem="pfv-empty-action" firstAttribute="leading" secondItem="pfv-empty-container" secondAttribute="leading" id="pfv-c-ea-lead"/>
+                                                    <constraint firstItem="pfv-empty-action" firstAttribute="top" secondItem="pfv-empty-body" secondAttribute="bottom" constant="16" id="pfv-c-ea-top"/>
+                                                    <constraint firstAttribute="trailing" secondItem="pfv-empty-action" secondAttribute="trailing" id="pfv-c-ea-trail"/>
+                                                    <constraint firstItem="pfv-empty-body" firstAttribute="leading" secondItem="pfv-empty-container" secondAttribute="leading" id="pfv-c-eb-lead"/>
+                                                    <constraint firstItem="pfv-empty-body" firstAttribute="top" secondItem="pfv-empty-title" secondAttribute="bottom" constant="4" id="pfv-c-eb-top"/>
+                                                    <constraint firstAttribute="trailing" secondItem="pfv-empty-body" secondAttribute="trailing" id="pfv-c-eb-trail"/>
+                                                    <constraint firstItem="pfv-empty-icon" firstAttribute="centerX" secondItem="pfv-empty-container" secondAttribute="centerX" id="pfv-c-ei-cx"/>
+                                                    <constraint firstItem="pfv-empty-icon" firstAttribute="top" secondItem="pfv-empty-container" secondAttribute="top" id="pfv-c-ei-top"/>
+                                                    <constraint firstItem="pfv-empty-title" firstAttribute="leading" secondItem="pfv-empty-container" secondAttribute="leading" id="pfv-c-et-lead"/>
+                                                    <constraint firstItem="pfv-empty-title" firstAttribute="top" secondItem="pfv-empty-icon" secondAttribute="bottom" constant="16" id="pfv-c-et-top"/>
+                                                    <constraint firstAttribute="trailing" secondItem="pfv-empty-title" secondAttribute="trailing" id="pfv-c-et-trail"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="pfv-avatar" firstAttribute="top" secondItem="pfv-content" secondAttribute="top" constant="24" id="pfv-c1"/>
+                                            <constraint firstItem="pfv-email" firstAttribute="leading" secondItem="pfv-display-name" secondAttribute="leading" id="pfv-c10"/>
+                                            <constraint firstItem="pfv-email" firstAttribute="trailing" secondItem="pfv-display-name" secondAttribute="trailing" id="pfv-c11"/>
+                                            <constraint firstItem="pfv-segment" firstAttribute="top" secondItem="pfv-email" secondAttribute="bottom" constant="24" id="pfv-c12"/>
+                                            <constraint firstItem="pfv-segment" firstAttribute="leading" secondItem="pfv-display-name" secondAttribute="leading" id="pfv-c13"/>
+                                            <constraint firstItem="pfv-segment" firstAttribute="trailing" secondItem="pfv-display-name" secondAttribute="trailing" id="pfv-c14"/>
+                                            <constraint firstItem="pfv-table" firstAttribute="top" secondItem="pfv-segment" secondAttribute="bottom" constant="16" id="pfv-c15"/>
+                                            <constraint firstItem="pfv-table" firstAttribute="leading" secondItem="pfv-content" secondAttribute="leading" id="pfv-c16"/>
+                                            <constraint firstAttribute="trailing" secondItem="pfv-table" secondAttribute="trailing" id="pfv-c17"/>
+                                            <constraint firstItem="pfv-empty-container" firstAttribute="top" secondItem="pfv-segment" secondAttribute="bottom" constant="32" id="pfv-c18"/>
+                                            <constraint firstItem="pfv-empty-container" firstAttribute="leading" secondItem="pfv-display-name" secondAttribute="leading" id="pfv-c19"/>
+                                            <constraint firstItem="pfv-avatar" firstAttribute="centerX" secondItem="pfv-content" secondAttribute="centerX" id="pfv-c2"/>
+                                            <constraint firstItem="pfv-empty-container" firstAttribute="trailing" secondItem="pfv-display-name" secondAttribute="trailing" id="pfv-c20"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="pfv-table" secondAttribute="bottom" constant="120" id="pfv-c21"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="pfv-empty-container" secondAttribute="bottom" constant="120" id="pfv-c22"/>
+                                            <constraint firstAttribute="bottom" secondItem="pfv-table" secondAttribute="bottom" priority="250" constant="120" id="pfv-c23"/>
+                                            <constraint firstItem="pfv-display-name" firstAttribute="top" secondItem="pfv-avatar" secondAttribute="bottom" constant="16" id="pfv-c3"/>
+                                            <constraint firstItem="pfv-display-name" firstAttribute="leading" secondItem="pfv-content" secondAttribute="leading" constant="24" id="pfv-c4"/>
+                                            <constraint firstAttribute="trailing" secondItem="pfv-display-name" secondAttribute="trailing" constant="24" id="pfv-c5"/>
+                                            <constraint firstItem="pfv-username" firstAttribute="top" secondItem="pfv-display-name" secondAttribute="bottom" constant="4" id="pfv-c6"/>
+                                            <constraint firstItem="pfv-username" firstAttribute="leading" secondItem="pfv-display-name" secondAttribute="leading" id="pfv-c7"/>
+                                            <constraint firstItem="pfv-username" firstAttribute="trailing" secondItem="pfv-display-name" secondAttribute="trailing" id="pfv-c8"/>
+                                            <constraint firstItem="pfv-email" firstAttribute="top" secondItem="pfv-username" secondAttribute="bottom" constant="4" id="pfv-c9"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="pfv-content" firstAttribute="bottom" secondItem="pfv-content-lg" secondAttribute="bottom" id="pfv-c-cl-bot"/>
+                                    <constraint firstItem="pfv-content" firstAttribute="leading" secondItem="pfv-content-lg" secondAttribute="leading" id="pfv-c-cl-lead"/>
+                                    <constraint firstItem="pfv-content" firstAttribute="top" secondItem="pfv-content-lg" secondAttribute="top" id="pfv-c-cl-top"/>
+                                    <constraint firstItem="pfv-content" firstAttribute="trailing" secondItem="pfv-content-lg" secondAttribute="trailing" id="pfv-c-cl-trail"/>
+                                    <constraint firstItem="pfv-content" firstAttribute="width" secondItem="pfv-frame-lg" secondAttribute="width" id="pfv-c-cl-w"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="pfv-content-lg"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="pfv-frame-lg"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ProfileSafeAreaID"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="pfv-scroll" secondAttribute="bottom" id="pfv-c-s-bot"/>
+                            <constraint firstItem="pfv-scroll" firstAttribute="leading" secondItem="ProfileViewID" secondAttribute="leading" id="pfv-c-s-lead"/>
+                            <constraint firstItem="pfv-scroll" firstAttribute="top" secondItem="ProfileSafeAreaID" secondAttribute="top" id="pfv-c-s-top"/>
+                            <constraint firstAttribute="trailing" secondItem="pfv-scroll" secondAttribute="trailing" id="pfv-c-s-trail"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="avatarImageView" destination="pfv-avatar" id="pfv-oc1"/>
+                        <outlet property="displayNameLabel" destination="pfv-display-name" id="pfv-oc2"/>
+                        <outlet property="emailLabel" destination="pfv-email" id="pfv-oc3"/>
+                        <outlet property="emptyActionLabel" destination="pfv-empty-action" id="pfv-oc4"/>
+                        <outlet property="emptyBodyLabel" destination="pfv-empty-body" id="pfv-oc5"/>
+                        <outlet property="emptyStateContainer" destination="pfv-empty-container" id="pfv-oc6"/>
+                        <outlet property="emptyTitleLabel" destination="pfv-empty-title" id="pfv-oc7"/>
+                        <outlet property="scrollView" destination="pfv-scroll" id="pfv-oc9"/>
+                        <outlet property="segmentedSelector" destination="pfv-segment" id="pfv-oc10"/>
+                        <outlet property="tableView" destination="pfv-table" id="pfv-oc11"/>
+                        <outlet property="userNameLabel" destination="pfv-username" id="pfv-oc12"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ProfilePlaceholderID" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4316" y="-68"/>
+        </scene>
+        <!--Recipe Detail View Controller-->
+        <scene sceneID="recipe-detail-scene-id">
+            <objects>
+                <viewController storyboardIdentifier="RecipeDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RecipeDetailViewControllerID" customClass="RecipeDetailViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RecipeDetailViewID">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-scroll">
+                                <rect key="frame" x="0.0" y="118" width="393" height="734"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-content">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="806"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="ic_default_image" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-hero">
+                                                <rect key="frame" x="16" y="16" width="361" height="200"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="200" id="rdv-c-hero-h"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" image="ic_saved_outlined" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-save">
+                                                <rect key="frame" x="331" y="166" width="30" height="30"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" name="BrandPrimary"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="rdv-c-save-h"/>
+                                                    <constraint firstAttribute="width" constant="30" id="rdv-c-save-w"/>
+                                                </constraints>
+                                            </imageView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-info-stack">
+                                                <rect key="frame" x="24" y="232.00000000000003" width="345" height="75.333333333333343"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Classic Greek Salad" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-title">
+                                                        <rect key="frame" x="0.0" y="0.0" width="345" height="31"/>
+                                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="22"/>
+                                                        <color key="textColor" name="BrandGray1"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="By Full of Plants" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-attribution">
+                                                        <rect key="frame" x="0.0" y="35" width="345" height="18.333333333333329"/>
+                                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="13"/>
+                                                        <color key="textColor" name="BrandGray3"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-timer-row">
+                                                        <rect key="frame" x="0.0" y="57.333333333333314" width="345" height="18"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="ic_timer_outlined" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-timer-icon">
+                                                                <rect key="frame" x="0.0" y="0.0" width="18" height="18"/>
+                                                                <color key="tintColor" name="BrandGray3"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="18" id="rdv-c-timer-icon-h"/>
+                                                                    <constraint firstAttribute="width" constant="18" id="rdv-c-timer-icon-w"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="35 mins" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-ready-time">
+                                                                <rect key="frame" x="22" y="0.0" width="323" height="18"/>
+                                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                                                <color key="textColor" name="BrandGray3"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Servings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-servings-label">
+                                                <rect key="frame" x="24" y="331.33333333333331" width="70.333333333333329" height="22.666666666666686"/>
+                                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                                <color key="textColor" name="BrandGray1"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-stepper" customClass="CustomStepperView" customModule="RecipeApp" customModuleProvider="target">
+                                                <rect key="frame" x="24" y="362" width="112" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" priority="750" constant="32" id="rdv-c-stepper-h-placeholder"/>
+                                                    <constraint firstAttribute="width" priority="750" constant="112" id="rdv-c-stepper-w-placeholder"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 ingredients" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-items-count">
+                                                <rect key="frame" x="277.66666666666669" y="331.33333333333331" width="91.333333333333314" height="22.666666666666686"/>
+                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                                <color key="textColor" name="BrandGray2"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-segment" customClass="SegmentedSelectorView" customModule="RecipeApp" customModuleProvider="target">
+                                                <rect key="frame" x="24" y="418" width="345" height="48"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="48" id="rdv-c-segment-h"/>
+                                                </constraints>
+                                            </view>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-table" customClass="SelfSizingTableView" customModule="RecipeApp" customModuleProvider="target">
+                                                <rect key="frame" x="24" y="482" width="345" height="300"/>
+                                            </tableView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="rdv-table" secondAttribute="bottom" constant="24" id="58t-EQ-yKB"/>
+                                            <constraint firstItem="rdv-hero" firstAttribute="top" secondItem="rdv-content" secondAttribute="top" constant="16" id="rdv-c1"/>
+                                            <constraint firstItem="rdv-info-stack" firstAttribute="top" secondItem="rdv-hero" secondAttribute="bottom" constant="16" id="rdv-c10"/>
+                                            <constraint firstItem="rdv-info-stack" firstAttribute="leading" secondItem="rdv-content" secondAttribute="leading" constant="24" id="rdv-c11"/>
+                                            <constraint firstAttribute="trailing" secondItem="rdv-info-stack" secondAttribute="trailing" constant="24" id="rdv-c12"/>
+                                            <constraint firstItem="rdv-servings-label" firstAttribute="top" secondItem="rdv-info-stack" secondAttribute="bottom" constant="24" id="rdv-c13"/>
+                                            <constraint firstItem="rdv-servings-label" firstAttribute="leading" secondItem="rdv-info-stack" secondAttribute="leading" id="rdv-c14"/>
+                                            <constraint firstItem="rdv-stepper" firstAttribute="top" secondItem="rdv-servings-label" secondAttribute="bottom" constant="8" id="rdv-c15"/>
+                                            <constraint firstItem="rdv-stepper" firstAttribute="leading" secondItem="rdv-info-stack" secondAttribute="leading" id="rdv-c16"/>
+                                            <constraint firstItem="rdv-items-count" firstAttribute="top" secondItem="rdv-servings-label" secondAttribute="top" id="rdv-c17"/>
+                                            <constraint firstItem="rdv-items-count" firstAttribute="bottom" secondItem="rdv-servings-label" secondAttribute="bottom" id="rdv-c18"/>
+                                            <constraint firstItem="rdv-items-count" firstAttribute="trailing" secondItem="rdv-info-stack" secondAttribute="trailing" id="rdv-c19"/>
+                                            <constraint firstItem="rdv-hero" firstAttribute="leading" secondItem="rdv-content" secondAttribute="leading" constant="16" id="rdv-c2"/>
+                                            <constraint firstItem="rdv-segment" firstAttribute="top" secondItem="rdv-stepper" secondAttribute="bottom" constant="24" id="rdv-c20"/>
+                                            <constraint firstItem="rdv-segment" firstAttribute="leading" secondItem="rdv-info-stack" secondAttribute="leading" id="rdv-c21"/>
+                                            <constraint firstItem="rdv-segment" firstAttribute="trailing" secondItem="rdv-info-stack" secondAttribute="trailing" id="rdv-c22"/>
+                                            <constraint firstItem="rdv-table" firstAttribute="top" secondItem="rdv-segment" secondAttribute="bottom" constant="16" id="rdv-c23"/>
+                                            <constraint firstItem="rdv-table" firstAttribute="leading" secondItem="rdv-info-stack" secondAttribute="leading" id="rdv-c24"/>
+                                            <constraint firstItem="rdv-table" firstAttribute="trailing" secondItem="rdv-info-stack" secondAttribute="trailing" id="rdv-c25"/>
+                                            <constraint firstAttribute="trailing" secondItem="rdv-hero" secondAttribute="trailing" constant="16" id="rdv-c3"/>
+                                            <constraint firstItem="rdv-hero" firstAttribute="trailing" secondItem="rdv-save" secondAttribute="trailing" constant="16" id="rdv-c8"/>
+                                            <constraint firstItem="rdv-hero" firstAttribute="bottom" secondItem="rdv-save" secondAttribute="bottom" constant="20" id="rdv-c9"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="rdv-content" firstAttribute="bottom" secondItem="rdv-content-lg" secondAttribute="bottom" id="rdv-c-content-bottom"/>
+                                    <constraint firstItem="rdv-content" firstAttribute="leading" secondItem="rdv-content-lg" secondAttribute="leading" id="rdv-c-content-lead"/>
+                                    <constraint firstItem="rdv-content" firstAttribute="top" secondItem="rdv-content-lg" secondAttribute="top" id="rdv-c-content-top"/>
+                                    <constraint firstItem="rdv-content" firstAttribute="trailing" secondItem="rdv-content-lg" secondAttribute="trailing" id="rdv-c-content-trail"/>
+                                    <constraint firstItem="rdv-content" firstAttribute="width" secondItem="rdv-frame-lg" secondAttribute="width" id="rdv-c-content-w"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="rdv-content-lg"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="rdv-frame-lg"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="RecipeDetailSafeAreaID"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="rdv-scroll" firstAttribute="bottom" secondItem="RecipeDetailViewID" secondAttribute="bottom" id="rdv-c-scroll-bottom"/>
+                            <constraint firstItem="rdv-scroll" firstAttribute="leading" secondItem="RecipeDetailViewID" secondAttribute="leading" id="rdv-c-scroll-lead"/>
+                            <constraint firstItem="rdv-scroll" firstAttribute="top" secondItem="RecipeDetailSafeAreaID" secondAttribute="top" id="rdv-c-scroll-top"/>
+                            <constraint firstItem="rdv-scroll" firstAttribute="trailing" secondItem="RecipeDetailViewID" secondAttribute="trailing" id="rdv-c-scroll-trail"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="attributionLabel" destination="rdv-attribution" id="rdv-oc1"/>
+                        <outlet property="itemsCountLabel" destination="rdv-items-count" id="yTr-Ry-ckD"/>
+                        <outlet property="readyTimeLabel" destination="rdv-ready-time" id="rdv-oc6"/>
+                        <outlet property="recipeImageView" destination="rdv-hero" id="hRe-hi-SHm"/>
+                        <outlet property="saveImageView" destination="rdv-save" id="D9x-sp-QoF"/>
+                        <outlet property="scrollView" destination="rdv-scroll" id="rdv-oc8"/>
+                        <outlet property="segmentedSelector" destination="rdv-segment" id="rdv-oc9"/>
+                        <outlet property="stepperView" destination="rdv-stepper" id="rdv-oc10"/>
+                        <outlet property="tableView" destination="rdv-table" id="rdv-oc11"/>
+                        <outlet property="titleLabel" destination="rdv-title" id="rdv-oc12"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RecipeDetailPlaceholderID" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1628" y="700"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="search-scene-id">
+            <objects>
+                <viewController storyboardIdentifier="SearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SearchViewControllerID" customClass="SearchViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SearchViewID">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="srv-search-container">
+                                <rect key="frame" x="16" y="118" width="297" height="52"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="ic_search_outlined" translatesAutoresizingMaskIntoConstraints="NO" id="srv-search-icon">
+                                        <rect key="frame" x="16" y="16" width="20" height="20"/>
+                                        <color key="tintColor" name="BrandGray2"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="srv-c-icon-h"/>
+                                            <constraint firstAttribute="width" constant="20" id="srv-c-icon-w"/>
+                                        </constraints>
+                                    </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search recipe" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="srv-search-field">
+                                        <rect key="frame" x="48" y="0.0" width="233" height="52"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="yes" spellCheckingType="yes" keyboardType="alphabet" returnKeyType="search" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="name"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="srv-c-search-h"/>
+                                    <constraint firstItem="srv-search-icon" firstAttribute="leading" secondItem="srv-search-container" secondAttribute="leading" constant="16" id="srv-c1"/>
+                                    <constraint firstItem="srv-search-icon" firstAttribute="centerY" secondItem="srv-search-container" secondAttribute="centerY" id="srv-c2"/>
+                                    <constraint firstItem="srv-search-field" firstAttribute="leading" secondItem="srv-search-icon" secondAttribute="trailing" constant="12" id="srv-c3"/>
+                                    <constraint firstAttribute="trailing" secondItem="srv-search-field" secondAttribute="trailing" constant="16" id="srv-c4"/>
+                                    <constraint firstItem="srv-search-field" firstAttribute="top" secondItem="srv-search-container" secondAttribute="top" id="srv-c5"/>
+                                    <constraint firstAttribute="bottom" secondItem="srv-search-field" secondAttribute="bottom" id="srv-c6"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srv-filter">
+                                <rect key="frame" x="325" y="118" width="52" height="52"/>
+                                <color key="backgroundColor" red="0.074509803920000006" green="0.58522206539999999" blue="0.45850461720000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="srv-c-filter-h"/>
+                                    <constraint firstAttribute="width" constant="52" id="srv-c-filter-w"/>
+                                </constraints>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="srv-header-label">
+                                <rect key="frame" x="24" y="194" width="345" height="17"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Recent searches">
+                                        <attributes>
+                                            <color key="NSColor" name="BrandBlack"/>
+                                            <font key="NSFont" size="12" name="Poppins-SemiBold"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="srv-collection">
+                                <rect key="frame" x="16" y="227" width="361" height="557"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="16" id="srv-flow-layout">
+                                    <size key="itemSize" width="172" height="172"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                            </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="srv-filter-dot">
+                                <rect key="frame" x="368" y="119" width="10" height="10"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="srv-c-dot-h"/>
+                                    <constraint firstAttribute="width" constant="10" id="srv-c-dot-w"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="SearchSafeAreaID"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="srv-collection" firstAttribute="top" secondItem="srv-filter-dot" secondAttribute="bottom" constant="98" id="ov1-mN-w7d"/>
+                            <constraint firstAttribute="trailing" secondItem="srv-filter" secondAttribute="trailing" constant="16" id="srv-c10"/>
+                            <constraint firstItem="srv-search-container" firstAttribute="top" secondItem="SearchSafeAreaID" secondAttribute="top" id="srv-c13"/>
+                            <constraint firstItem="srv-search-container" firstAttribute="leading" secondItem="SearchViewID" secondAttribute="leading" constant="16" id="srv-c15"/>
+                            <constraint firstItem="srv-filter" firstAttribute="leading" secondItem="srv-search-container" secondAttribute="trailing" constant="12" id="srv-c16"/>
+                            <constraint firstItem="srv-header-label" firstAttribute="top" secondItem="srv-search-container" secondAttribute="bottom" constant="24" id="srv-c17"/>
+                            <constraint firstItem="srv-header-label" firstAttribute="leading" secondItem="SearchViewID" secondAttribute="leading" constant="24" id="srv-c18"/>
+                            <constraint firstAttribute="trailing" secondItem="srv-header-label" secondAttribute="trailing" constant="24" id="srv-c19"/>
+                            <constraint firstItem="srv-collection" firstAttribute="top" secondItem="srv-header-label" secondAttribute="bottom" constant="16" id="srv-c20"/>
+                            <constraint firstItem="srv-collection" firstAttribute="leading" secondItem="SearchViewID" secondAttribute="leading" constant="16" id="srv-c21"/>
+                            <constraint firstAttribute="trailing" secondItem="srv-collection" secondAttribute="trailing" constant="16" id="srv-c22"/>
+                            <constraint firstItem="SearchSafeAreaID" firstAttribute="bottom" secondItem="srv-collection" secondAttribute="bottom" id="srv-c23"/>
+                            <constraint firstItem="srv-filter" firstAttribute="top" secondItem="srv-search-container" secondAttribute="top" id="srv-c9"/>
+                            <constraint firstItem="SearchSafeAreaID" firstAttribute="trailing" secondItem="srv-filter-dot" secondAttribute="trailing" constant="15" id="vgt-kO-bNx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="srv-collection" id="srv-oc2"/>
+                        <outlet property="filterActiveDotView" destination="srv-filter-dot" id="srv-oc3"/>
+                        <outlet property="filterButton" destination="srv-filter" id="srv-oc4"/>
+                        <outlet property="headerLabel" destination="srv-header-label" id="srv-oc5"/>
+                        <outlet property="searchContainerView" destination="srv-search-container" id="srv-oc6"/>
+                        <outlet property="searchTextField" destination="srv-search-field" id="srv-oc8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SearchPlaceholderID" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2300" y="700"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ic_chef_het" width="79" height="79"/>
+        <image name="ic_default_image" width="109" height="110"/>
+        <image name="ic_saved_outlined" width="24" height="24"/>
+        <image name="ic_search_outlined" width="18" height="18"/>
+        <image name="ic_timer_outlined" width="24" height="24"/>
+        <namedColor name="BrandBlack">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BrandGray1">
+            <color red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BrandGray2">
+            <color red="0.47450980392156861" green="0.47450980392156861" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BrandGray3">
+            <color red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BrandPrimary">
+            <color red="0.074509803921568626" green="0.58431372549019611" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
